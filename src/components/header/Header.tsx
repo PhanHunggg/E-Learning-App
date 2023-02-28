@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CourseCatalogDto } from '../../interfaces/course';
 import { RootDispatch, RootState } from '../../store/config';
 import { fetchCourseCatalogAction } from '../../store/reducers/eduReducer';
-
+import "./header.scss"
 export default function Header(): JSX.Element {
     const dispatch = useDispatch<RootDispatch>();
     const courseState = useSelector((state: RootState) => state.eduReducer)
@@ -20,9 +20,9 @@ export default function Header(): JSX.Element {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light header">
             <a className="navbar-brand" href="#">
-                <img src="./images/logoEdu.png" alt="" />
+                <img src="https://demo2.cybersoft.edu.vn/logo.png" alt="" />
             </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon" />
