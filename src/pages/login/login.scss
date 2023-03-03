@@ -1,0 +1,114 @@
+.login {
+  margin: 40px 0 50px;
+
+  .form {
+    position: relative;
+    width: 970px;
+    height: 500px;
+    margin: 20px;
+
+    .background {
+      position: absolute;
+      top: 40px;
+      width: 100%;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #232946;
+      box-shadow: 0px 0px 9px 3px #888888;
+      .box {
+        width: 50%;
+        .box_2 {
+          position: relative;
+          height: 100%;
+          text-align: center;
+          h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+          }
+          h4{
+            color: #fff;
+          }
+          button {
+            cursor: pointer;
+            padding: 10px 20px;
+            color: #232946;
+            font-weight: 500;
+            font-size: 1rem;
+            border: none;
+            background-color: #eebbc3;
+            border-radius: 5px;
+            opacity: 0.7;
+            transition: all 0.5s;
+            &:hover{
+              opacity: 1;
+            }
+            &:focus{
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+    .formBx {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background-color: #e3f6f5;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 5px 45px rgba(0, 0, 0, 0.233);
+      transition: 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+      overflow: hidden;
+      .signInForm {
+        transition-delay: 0.25s;
+        position: absolute;
+        top: 24%;
+        left: 5%;
+        width: 100%;
+        /* padding: 50px; */
+        transition: 0.5s;
+        padding-right: 105px;
+        text-align: center;
+      }
+      &.active {
+        transform: translateX(105%);
+        .signInForm {
+          left: -100%;
+          transition-delay: 0s;
+        }
+        .signUpForm {
+          left: 0 !important;
+          transition-delay: 0s;
+        }
+      }
+      .signUpForm {
+        left: 100% !important;
+        transition-delay: 0.25s;
+        top: 7%;
+        padding-right: 545px;
+      }
+      .form {
+        position: absolute;
+        transition: 0.5s;
+      }
+    }
+  }
+}
+
+// form {
+//     padding-right: 68px;
+//     .button {
+//       display: flex;
+//       justify-content: center;
+//       gap: 30px;
+//       margin-top: 19px;
+//     }
+//   }

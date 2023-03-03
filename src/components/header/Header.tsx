@@ -1,20 +1,21 @@
 import { Empty } from 'antd';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 import { CourseCatalogDto } from '../../interfaces/course';
 import { RootDispatch, RootState } from '../../store/config';
-import { fetchCourseCatalogAction } from '../../store/reducers/eduReducer';
+import { eduAction, fetchCourseCatalogAction } from '../../store/reducers/eduReducer';
 import "./header.scss"
 export default function Header(): JSX.Element {
     const dispatch = useDispatch<RootDispatch>();
     const courseState = useSelector((state: RootState) => state.eduReducer)
-
+    const navigate = useNavigate();
     useEffect(() => {
         dispatch(fetchCourseCatalogAction())
     }, [])
 
     const renderCourseCatalog = (): JSX.Element[] => {
-        return courseState.courseCatalog.map((ele : CourseCatalogDto) => {
+        return courseState.courseCatalog.map((ele: CourseCatalogDto) => {
             return <li><a className="dropdown-item" href="#">{ele.tenDanhMuc}</a></li>
         })
     }
@@ -51,14 +52,21 @@ export default function Header(): JSX.Element {
                     <li className="nav-item">
                         <a className="nav-link disabled">Blog</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link disabled">Blog</a>
-                    </li>
+    
                     <li className="nav-item">
                         <a className="nav-link disabled">Thông tin</a>
                     </li>
                 </ul>
-                <button className='btn btn-warning'>Đăng nhập</button>
+                {
+                    Object.keys(courseState.userInfo).length ?
+                        <button onClick={() => dispatch(eduAction.handleLogOut())} className='btn btn-warning'>Đăng xuất</button>
+                        :
+                        <button onClick={() => {
+                            navigate("/login")
+                        }} className='btn btn-warning'>Đăng nhập</button>
+
+                }
+
 
             </div>
         </nav>
