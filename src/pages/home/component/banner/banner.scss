@@ -1,0 +1,154 @@
+.banner {
+  width: 100%;
+  height: 700px;
+  .row {
+    width: 100%;
+    height: 100%;
+    .title {
+      display: flex;
+      position: relative;
+      z-index: 10;
+      justify-content: center;
+      align-items: center;
+      .cloud {
+        position: absolute;
+        object-fit: cover;
+        left: 19%;
+        top: 11%;
+        animation: cloud 7s linear infinite alternate;
+        img {
+          width: 86px;
+          height: 76px;
+        }
+      }
+      .rocket {
+        position: absolute;
+        object-fit: cover;
+        left: 10%;
+        bottom: 33%;
+        animation: rocket 3.5s ease-in infinite;
+        img {
+          width: 70px;
+          height: 70px;
+        }
+      }
+      .slogan {
+        h1 {
+          font-weight: 600;
+          font-size: 50px;
+          &:last-of-type {
+            color: rgb(65, 178, 148);
+            font-size: 65px;
+            font-weight: 700;
+            overflow: hidden;
+            animation: slogan 4.5s ease-in-out 3s infinite;
+            span {
+              color: black;
+              font-size: 50px;
+              font-weight: 600;
+            }
+          }
+        }
+        .sliderPlaneImg {
+          position: absolute;
+          object-fit: cover;
+          right: 20%;
+          top: 20%;
+          width: 20%;
+          height: 20%;
+        }
+        button{
+            font-size: 20px;
+            font-weight: 500;
+            color: white;
+        }
+      }
+    }
+    .image {
+      position: relative;
+      .banner_img {
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .cloud {
+        position: absolute;
+        object-fit: cover;
+        left: 10%;
+        top: 4%;
+        animation: cloud_right 4s linear infinite;
+        &.mid {
+          left: 14%;
+          top: 16%;
+        }
+        &.bottom {
+          left: 18%;
+          top: 27%;
+        }
+        img {
+          width: 100px;
+          height: 90px;
+        }
+      }
+      .message {
+        position: absolute;
+        object-fit: cover;
+        top: 39%;
+        right: 46%;
+
+        animation: message 1.5s linear infinite alternate;
+        img {
+          width: 110px;
+          height: 106px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes rocket {
+  0% {
+    transform: rotate(-43deg) translate(0px, 0px);
+  }
+  100% {
+    transform: rotate(-43deg) translate(176px, -170px);
+  }
+}
+
+@keyframes cloud {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(350px);
+  }
+}
+
+@keyframes cloud_right {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(150px);
+    opacity: 0;
+  }
+}
+
+@keyframes message {
+  0% {
+    transform: rotate(-17deg) translateX(-16px);
+  }
+  100% {
+    transform: rotate(19deg) translate(24px, -9px);
+  }
+}
+@keyframes slogan {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

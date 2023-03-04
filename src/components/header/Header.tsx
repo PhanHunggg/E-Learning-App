@@ -16,7 +16,7 @@ export default function Header(): JSX.Element {
 
     const renderCourseCatalog = (): JSX.Element[] => {
         return courseState.courseCatalog.map((ele: CourseCatalogDto) => {
-            return <li><a className="dropdown-item" href="#">{ele.tenDanhMuc}</a></li>
+            return <li key={ele.maDanhMuc}><a className="dropdown-item" href="#">{ele.tenDanhMuc}</a></li>
         })
     }
 
