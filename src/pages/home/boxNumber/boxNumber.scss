@@ -1,8 +1,26 @@
 .boxNumber {
-  margin: 40px 0;
   .box {
-    height: 260px;
+    height: 275px;
     background-color: #f0f8ff;
     padding: 0;
+    .boxNumber {
+      text-align: center;
+      img {
+        width: 85px;
+        height: 85px;
+      }
+      p {
+        margin: 0;
+        font-weight: 500;
+      }
+      .textNumber {
+        color: #41b294;
+        font-size: 50px;
+        span{
+          font-weight: 500;
+        }
+        
+      }
+    }
   }
 }
