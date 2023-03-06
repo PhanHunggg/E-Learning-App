@@ -10,7 +10,7 @@ export default function Reference(props: Props) {
         return props.courseState?.courseList.map((ele, idx) => {
             return <React.Fragment key={ele.maKhoaHoc}>
                 {
-                    (4 < idx && idx <= 9) && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">
+                    (4 < idx && idx <= 8) && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">
                         <a href="#">
                             <div className="card_header">
                                 <img src="https://ectimes.files.wordpress.com/2019/03/cac-ngon-ngu-lap-trinh-pho-bien-2.jpg" alt={ele.biDanh} />

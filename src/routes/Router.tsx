@@ -4,7 +4,6 @@ import { useRoutes } from "react-router-dom"
 import HomeLayout from '../layouts/home/HomeLayout'
 import HomePage from '../pages/home/HomePage'
 import Login from '../pages/login/Login'
-import Register from '../pages/register/Register'
 
 export default function Router() {
     const routing = useRoutes([
@@ -20,10 +19,6 @@ export default function Router() {
                     path: "/login",
                     element: <Login />
                 },
-                {
-                    path: "/register",
-                    element: <Register />
-                }
             ]
         }
     ])

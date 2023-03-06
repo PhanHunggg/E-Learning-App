@@ -1,8 +1,9 @@
 import React from 'react'
-import BoxNumber from './boxNumber/BoxNumber'
+import BoxNumber from './component/boxNumber/BoxNumber'
 import Banner from './component/banner/Banner'
 import Course from './component/course/Course'
 import InfoCoureBox from './component/infoCoureBox/InfoCoureBox'
+import Testimonial from './component/testimonial/Testimonial'
 
 export default function HomePage(): JSX.Element {
   return (
@@ -11,6 +12,7 @@ export default function HomePage(): JSX.Element {
       <InfoCoureBox />
       <Course />
       <BoxNumber />
+      <Testimonial />
     </div>
   )
 }

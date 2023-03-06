@@ -11,7 +11,7 @@ export default function BoxNumber() {
                         <div className="boxNumber">
                             <img src="./images/students.png" alt="students" />
                             <div className="textNumber">
-                                <CountUp duration={3} start={0} end={9000} />
+                                <CountUp enableScrollSpy={true} duration={2} start={0} end={9000} />
                             </div>
                             <p >Học Viên</p>
                         </div>
@@ -20,7 +20,7 @@ export default function BoxNumber() {
                         <div className="boxNumber">
                             <img src="./images/timetable.png" alt="students" />
                             <div className="textNumber">
-                                <CountUp duration={3} start={0} end={1000} />
+                                <CountUp enableScrollSpy={true} duration={2} start={0} end={1000} />
                             </div>
                             <p >Khóa học</p>
                         </div>
@@ -29,7 +29,7 @@ export default function BoxNumber() {
                         <div className="boxNumber">
                             <img src="./images/hourglass.png" alt="students" />
                             <div className="textNumber">
-                                <CountUp duration={3} start={0} end={33200} />
+                                <CountUp enableScrollSpy={true} duration={2} start={0} end={33200} />
                             </div>
                             <p >Giờ học</p>
                         </div>
@@ -38,7 +38,7 @@ export default function BoxNumber() {
                         <div className="boxNumber">
                             <img src="./images/teacher.png" alt="students" />
                             <div className="textNumber">
-                                <CountUp duration={3} start={0} end={400} />
+                                <CountUp enableScrollSpy={true} duration={2} start={0} end={400} />
                             </div>
                             <p >Giảng viên</p>
                         </div>
