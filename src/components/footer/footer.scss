@@ -1,0 +1,111 @@
+.footer {
+  padding: 10px;
+  background-color: #f0f8ff;
+  margin-top: 50px;
+  .footer_top {
+    padding: 10px 40px;
+    a {
+      font-family: "Poppins", sans-serif;
+      color: black;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      font-size: 25px;
+      transition: all 0.3s;
+      text-shadow: 5px -2px 3px #54d2c0;
+      font-weight: 600;
+      span {
+        font-size: 45px;
+        color: #41b294;
+      }
+      i {
+        position: absolute;
+        top: 9px;
+        right: -4px;
+      }
+    }
+    .menuFooter {
+      list-style: none;
+
+      &.arrow {
+        li {
+          &:nth-child(2) {
+            i {
+              margin: 0;
+            }
+          }
+          i {
+            background-color: transparent;
+            margin: 0;
+            width: 35px;
+            height: 35px;
+            color: black;
+            border-radius: 0;
+          }
+          span {
+            font-weight: 500;
+          }
+        }
+      }
+      li {
+        transition: all 0.5s;
+        &:nth-child(2) {
+          i {
+            margin: 10px 10px;
+          }
+        }
+        i {
+          display: inline-block;
+          margin: 0 10px;
+          width: 40px;
+          height: 40px;
+          color: #fff;
+          background: #41b294;
+          border-radius: 50%;
+          line-height: 40px;
+          text-align: center;
+        }
+        &:hover {
+          transform: translateY(-3px);
+          color: #41b294;
+        }
+      }
+      span {
+        font-weight: 600;
+      }
+    }
+    .form {
+      input {
+        width: 270px;
+      }
+      button {
+        color: white;
+        font-weight: 500;
+      }
+    }
+  }
+  .footer_bottom {
+    padding: 10px 30px;
+    border-top: 1px solid #8888;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    .content {
+      i {
+        font-size: 20px;
+        background-color: #41b294;
+        padding: 9px;
+        border-radius: 50%;
+        color: white;
+        line-height: 20px;
+        &:first-child {
+          padding: 9px 13px;
+        }
+        &:nth-child(2) {
+          margin: 0 6px;
+        }
+      }
+    }
+  }
+}

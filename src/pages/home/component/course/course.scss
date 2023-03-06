@@ -1,0 +1,114 @@
+.course {
+  padding-right: 32px;
+  p {
+    margin: 0;
+  }
+  .course_list {
+    &.reference {
+      h6 {
+        margin-top: 38px;
+        margin-bottom: 0;
+      }
+    }
+    &.front_end {
+      h6 {
+        margin-top: 38px;
+        margin-bottom: 0;
+      }
+    }
+    h6 {
+      color: #f6ba35;
+      font-weight: 500;
+      font-size: 18px;
+    }
+    .cardGlobalRes {
+      padding: 0;
+      padding: 16px 0px 0px 62px;
+      border: none;
+      a {
+        color: black;
+        text-decoration: none;
+        width: 278px;
+        height: 355px;
+        box-shadow: 0 0 10px 4px rgb(0 0 0 / 20%);
+        .card_header {
+          position: relative;
+          height: 185px;
+          img {
+            object-fit: cover;
+            width: 278px;
+            height: 100%;
+          }
+          span {
+            color: white;
+            position: absolute;
+            bottom: -6%;
+            left: 0;
+            background-color: rgb(65, 178, 148);
+            padding: 0px 10px;
+          }
+        }
+        .card_body {
+          padding: 10px;
+          h6 {
+            font-size: 16px;
+            margin-top: 16px;
+          }
+          .author {
+            display: flex;
+            align-items: center;
+            .img {
+              padding: 2px;
+              border-color: #f6ba35 transparent;
+              border-left: 1px solid transparent;
+              border-bottom: 1px solid #f6ba35;
+              border-right: 1px solid transparent;
+              border-top: 1px solid #f6ba35;
+              height: 40px;
+              width: 40px;
+              border-radius: 50%;
+              margin-right: 10px;
+              img {
+                width: 100%;
+              }
+            }
+            span {
+              color: #8c8c8c;
+              font-weight: 500;
+            }
+          }
+        }
+        .card_footer {
+          padding: 10px;
+          border-top: 1px solid rgba(0, 0, 0, 0.125);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .total {
+            p {
+              font-size: 12px;
+              color: #8c8c8c;
+              text-decoration-line: line-through;
+              &:last-of-type {
+                font-size: 16px;
+                font-weight: 500;
+                color: #41b294;
+                text-decoration-line: none;
+              }
+            }
+          }
+          .rate {
+            color: #f6ba35;
+            span {
+              font-weight: 500;
+              &:last-of-type {
+                font-size: 12px;
+                color: #8c8c8c;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
