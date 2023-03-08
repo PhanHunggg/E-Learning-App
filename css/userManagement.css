@@ -1,0 +1,50 @@
+.userList thead tr th {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.userList tbody tr :nth-child(2) {
+  width: 12%;
+}
+.userList tbody tr :nth-child(3) {
+  width: 12%;
+}
+.userList tbody tr :nth-child(4) {
+  width: 12%;
+}
+.userList tbody tr :nth-child(5) {
+  width: 14%;
+}
+.userList tbody tr :nth-child(7) {
+  padding: 16px 0;
+  width: 50%;
+}
+.userList tbody tr td {
+  padding: 16px 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+.userList tbody tr td img {
+  position: absolute;
+  background-size: cover;
+  width: 120%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.userList tbody tr td .add-user {
+  width: 27% !important;
+  background-color: #41b294;
+  transition: all 0.3s;
+}
+.userList tbody tr td .add-user:hover {
+  background-color: #30826c;
+}
+.userList tbody tr td button {
+  width: 18% !important;
+  margin-right: 5px;
+  color: white;
+}/*# sourceMappingURL=userManagement.css.map */

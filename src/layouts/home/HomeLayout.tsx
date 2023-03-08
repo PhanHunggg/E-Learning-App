@@ -6,9 +6,9 @@ import Header from '../../components/header/Header'
 export default function HomeLayout(): JSX.Element {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

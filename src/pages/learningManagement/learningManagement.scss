@@ -1,0 +1,72 @@
+.leaningList {
+    thead {
+        tr {
+            th {
+                font-size: 18px;
+                font-weight: 700;
+                text-align: center !important;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            :nth-child(2) {
+                width: 15%;
+            }
+
+            :nth-child(3) {
+                width: 15%;
+            }
+
+            :nth-child(4) {
+                position: relative;
+                width: 25%;
+                padding: 45px 0;
+                overflow: hidden;
+            }
+
+            :nth-child(5) {
+                width: 14%;
+            }
+
+            :nth-child(6) {
+                width: 33%;
+                padding: 16px 0;
+            }
+
+            td {
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                text-align: center;
+                font-size: 18px;
+                font-weight: 600;
+
+                img {
+                    position: absolute;
+                    background-size: cover;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    overflow: hidden;
+                }
+
+                .add-user {
+                    width: 27% !important;
+                    background-color: #41b294;
+                    transition: all .3s;
+
+                    &:hover {
+                        background-color: #30826c;
+                    }
+                }
+
+                button {
+                    width: 18% !important;
+                    margin-right: 5px;
+                    color: white;
+                }
+            }
+        }
+    }
+}
