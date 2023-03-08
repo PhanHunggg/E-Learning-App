@@ -7,7 +7,7 @@ interface Props {
 
 export default function Reference(props: Props) {
     const renderReference = () => {
-        return props.courseState?.courseList.map((ele, idx) => {
+        return props.courseState?.courseList?.map((ele, idx) => {
             return <React.Fragment key={ele.maKhoaHoc}>
                 {
                     (4 < idx && idx <= 8) && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">

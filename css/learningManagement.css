@@ -1,0 +1,52 @@
+.leaningList thead tr th {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.leaningList tbody tr :nth-child(2) {
+  width: 15%;
+}
+.leaningList tbody tr :nth-child(3) {
+  width: 15%;
+}
+.leaningList tbody tr :nth-child(4) {
+  position: relative;
+  width: 25%;
+  padding: 45px 0;
+  overflow: hidden;
+}
+.leaningList tbody tr :nth-child(5) {
+  width: 14%;
+}
+.leaningList tbody tr :nth-child(6) {
+  width: 33%;
+  padding: 16px 0;
+}
+.leaningList tbody tr td {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+.leaningList tbody tr td img {
+  position: absolute;
+  background-size: cover;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.leaningList tbody tr td .add-user {
+  width: 27% !important;
+  background-color: #41b294;
+  transition: all 0.3s;
+}
+.leaningList tbody tr td .add-user:hover {
+  background-color: #30826c;
+}
+.leaningList tbody tr td button {
+  width: 18% !important;
+  margin-right: 5px;
+  color: white;
+}/*# sourceMappingURL=learningManagement.css.map */

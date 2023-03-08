@@ -6,7 +6,7 @@ interface Props {
 
 export default function Front_end(props: Props) {
     const renderCourseFrontEnd = () => {
-        return props.courseState?.courseList.map((ele, idx) => {
+        return props.courseState?.courseList?.map((ele, idx) => {
             return <React.Fragment key={ele.maKhoaHoc}>
                 {
                     ele.danhMucKhoaHoc.tenDanhMucKhoaHoc === "Thiết kế Web" && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">

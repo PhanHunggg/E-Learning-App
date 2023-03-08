@@ -1,5 +1,3 @@
-import { GROUP_ID } from "./../constants/index";
-
 import {
   CatalogDto,
   CourseCatalogDto,
@@ -8,6 +6,8 @@ import {
 } from "./../interfaces/course";
 import { AxiosPromise } from "axios";
 import { axiosRequest } from "../configs/axios.config";
+import { GROUP_ID } from "../constants";
+import { MaLoaiNguoiDung, UserList } from "../interfaces/userList";
 
 export const fetchCourseCatalogApi = (): AxiosPromise<CourseCatalogDto[]> => {
   return axiosRequest({
@@ -20,7 +20,26 @@ export const fetchCourseListApi = (): AxiosPromise<
   CourseListDto<ManageDto, CatalogDto>[]
 > => {
   return axiosRequest({
-    url: `/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=${GROUP_ID}`,
+    url: `/QuanLyKhoaHoc/LayDanhSachKhoaHoc`,
     method: "GET",
+  });
+};
+
+export const fetchUserListApi = (): AxiosPromise<
+  Array<UserList<MaLoaiNguoiDung>>
+> => {
+  return axiosRequest({
+    url: `/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP_ID}`,
+    method: "GET",
+  });
+};
+
+export const addCourseApi = (
+  data: Array<CourseListDto<ManageDto, CatalogDto>>
+): AxiosPromise<Array<CourseListDto<ManageDto, CatalogDto>>> => {
+  return axiosRequest({
+    url: `/QuanLyKhoaHoc/ThemKhoaHoc`,
+    method: "POST",
+    data: data,
   });
 };

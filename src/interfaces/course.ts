@@ -15,6 +15,7 @@ export interface CourseListDto<N, D> {
   soLuongHocVien: number;
   nguoiTao: N;
   danhMucKhoaHoc: D;
+  danhGia: number;
 }
 
 export interface CatalogDto {

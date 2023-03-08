@@ -1,24 +1,35 @@
-import {  userLoginDto } from "./../../interfaces/user";
+import { userLoginDto } from "./../../interfaces/user";
 import { login } from "./../../services/user";
-import { RootState } from "./../config";
+// import { RootState } from "./../config";
 import {
   CatalogDto,
   CourseCatalogDto,
   CourseListDto,
   ManageDto,
 } from "./../../interfaces/course";
+import { UserList, MaLoaiNguoiDung } from "./../../interfaces/userList";
+import { RootState } from "./../config";
 import {
   fetchCourseCatalogApi,
   fetchCourseListApi,
+  fetchUserListApi,
 } from "./../../services/course ";
 
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface EduState {
   courseCatalog: CourseCatalogDto[];
-  courseList:CourseListDto<ManageDto,CatalogDto>[];
+  courseList: CourseListDto<ManageDto, CatalogDto>[];
   userInfo: {};
+  UserList: Array<UserList<MaLoaiNguoiDung>>;
 }
+
+const DEFAULT_STATE = {
+  userInfo: {},
+  courseCatalog: [],
+  courseList: [],
+  UserList: [],
+} as EduState;
 
 export const fetchCourseCatalogAction = createAsyncThunk(
   "eduReducer/fetchCourseCatalogAction",
@@ -35,7 +46,7 @@ export const fetchCourseListAction = createAsyncThunk(
   "eduReducer/fetchCourseListAction",
   async (_, store) => {
     const rootState = store.getState() as RootState;
-    if (rootState.eduReducer.courseList.length)
+    if (rootState.eduReducer.courseList?.length)
       return rootState.eduReducer.courseList;
     const result = await fetchCourseListApi();
     return result.data;
@@ -49,12 +60,19 @@ export const fetchUserInfoAction = createAsyncThunk(
     return result.data;
   }
 );
+export const fetchUserListAction = createAsyncThunk(
+  "eduReducer/fetchUserListAction",
+  async (_, store) => {
+    const RootState = store.getState() as RootState;
 
-const DEFAULT_STATE = {
-  courseCatalog: [],
-  courseList: [],
-  userInfo: {},
-} as EduState;
+    if (RootState.eduReducer.UserList.length) {
+      return RootState.eduReducer.UserList;
+    }
+
+    const result = await fetchUserListApi();
+    return result.data;
+  }
+);
 
 const eduSlice = createSlice({
   name: "eduReducer",
@@ -77,14 +95,24 @@ const eduSlice = createSlice({
         state.userInfo = action.payload;
       }
     );
+
     builder.addCase(
       fetchCourseListAction.fulfilled,
       (
         state: EduState,
-        action: PayloadAction<CourseListDto<ManageDto,CatalogDto>[]>
+        action: PayloadAction<CourseListDto<ManageDto, CatalogDto>[]>
       ) => {
         state.courseList = action.payload;
-        console.log(action.payload);
+      }
+    );
+
+    builder.addCase(
+      fetchUserListAction.fulfilled,
+      (
+        state: EduState,
+        action: PayloadAction<Array<UserList<MaLoaiNguoiDung>>>
+      ) => {
+        state.UserList = action.payload;
       }
     );
   },

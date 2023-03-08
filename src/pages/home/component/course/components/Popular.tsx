@@ -6,7 +6,7 @@ interface Props {
 
 export default function Popular(props: Props): JSX.Element {
   const renderCoursePopalar = () => {
-    return props.courseState?.courseList.map((ele, idx) => {
+    return props.courseState?.courseList?.map((ele, idx) => {
       return <React.Fragment key={ele.maKhoaHoc}>
         {
           idx <= 5 && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">
