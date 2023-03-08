@@ -57,6 +57,7 @@ export const fetchUserInfoAction = createAsyncThunk(
   "eduReducer/fetchUserInfoAction",
   async (data: userLoginDto) => {
     const result = await login(data);
+    localStorage.setItem("USER_INFO_KEY", JSON.stringify(result.data));
     return result.data;
   }
 );
