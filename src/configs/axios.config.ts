@@ -9,7 +9,7 @@ const axiosRequest = axios.create({
 });
 
 axiosRequest.interceptors.request.use((config) => {
-  if (localStorage.getitem("USER_INFO_KEY")) {
+  if (localStorage.getItem("USER_INFO_KEY")) {
     const userInfo = JSON.parse(localStorage.getItem("USER_INFO_KEY") || "{}");
     const accessToken = userInfo.accessToken;
     config.headers.Authorization = `Bearer ${accessToken}`;

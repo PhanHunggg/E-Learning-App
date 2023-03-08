@@ -80,6 +80,7 @@ const eduSlice = createSlice({
   initialState: DEFAULT_STATE,
   reducers: {
     handleLogOut(state: EduState) {
+      localStorage.removeItem("USER_INFO_KEY");
       state.userInfo = {};
     },
   },
