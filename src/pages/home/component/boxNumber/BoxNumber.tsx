@@ -4,7 +4,7 @@ import CountUp from 'react-countup';
 
 export default function BoxNumber() {
     return (
-        <div className='boxNumber'>
+        <section className='boxNumber'>
             <div className="box px-5 py-5">
                 <div className="row">
                     <div className="col-lg-3 pt-2 col-md-6">
@@ -46,6 +46,6 @@ export default function BoxNumber() {
 
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

@@ -19,10 +19,10 @@ export default function Course(): JSX.Element {
 
 
     return (
-        <div className='course py-5 px-5'>
+        <section className='course py-5 px-5'>
             <Popular courseState={courseState} />
             <Reference courseState={courseState} />
             <Front_end courseState={courseState} />
-        </div>
+        </section>
     )
 }

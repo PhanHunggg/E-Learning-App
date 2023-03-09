@@ -3,7 +3,7 @@ import "./banner.scss"
 
 export default function Banner() {
   return (
-    <div className='banner px-5'>
+    <section className='banner px-5'>
       <div className="row">
         <div className="title col-6">
           <div className="cloud">
@@ -38,6 +38,6 @@ export default function Banner() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

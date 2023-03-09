@@ -31,6 +31,10 @@
         width: 278px;
         height: 355px;
         box-shadow: 0 0 10px 4px rgb(0 0 0 / 20%);
+        transition: all 0.3s;
+        &:hover{
+          transform: translateY(-4px);
+        }
         .card_header {
           position: relative;
           height: 185px;
@@ -42,7 +46,7 @@
           span {
             color: white;
             position: absolute;
-            bottom: -6%;
+            bottom: -7%;
             left: 0;
             background-color: rgb(65, 178, 148);
             padding: 0px 10px;

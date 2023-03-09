@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { EduState } from '../../../../../store/reducers/eduReducer';
 
 interface Props {
@@ -11,7 +12,7 @@ export default function Reference(props: Props) {
             return <React.Fragment key={ele.maKhoaHoc}>
                 {
                     (4 < idx && idx <= 8) && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">
-                        <a href="#">
+                        <Link to={`/course-detail/${ele.maKhoaHoc}`}>
                             <div className="card_header">
                                 <img src="https://ectimes.files.wordpress.com/2019/03/cac-ngon-ngu-lap-trinh-pho-bien-2.jpg" alt={ele.biDanh} />
                                 <span>{ele.biDanh}</span>
@@ -38,7 +39,7 @@ export default function Reference(props: Props) {
                                     <span>(9999)</span>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                 }
             </React.Fragment>

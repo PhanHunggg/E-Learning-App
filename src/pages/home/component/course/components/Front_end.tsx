@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { EduState } from '../../../../../store/reducers/eduReducer';
 interface Props {
     courseState: EduState;
@@ -10,7 +11,7 @@ export default function Front_end(props: Props) {
             return <React.Fragment key={ele.maKhoaHoc}>
                 {
                     ele.danhMucKhoaHoc.tenDanhMucKhoaHoc === "Thiết kế Web" && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">
-                        <a href="#">
+                        <Link to={`/course-detail/${ele.maKhoaHoc}`}>
                             <div className="card_header">
                                 <img src="https://ectimes.files.wordpress.com/2019/03/cac-ngon-ngu-lap-trinh-pho-bien-2.jpg" alt={ele.biDanh} />
                                 <span>{ele.biDanh}</span>
@@ -37,7 +38,7 @@ export default function Front_end(props: Props) {
                                     <span>(9999)</span>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                 }
             </React.Fragment>
@@ -46,7 +47,7 @@ export default function Front_end(props: Props) {
     }
     return (
         <div className=" course_list front_end">
-            <h6>Khóa học phổ biến</h6>
+            <h6>Khóa học Front End React Js</h6>
             <div className="row mt-4">
                 {renderCourseFrontEnd()}
             </div>

@@ -7,6 +7,7 @@ import AddLearningManagement from "../pages/addLearningManagement/AddLearningMan
 import HomePage from "../pages/home/HomePage";
 import LearningManagement from "../pages/learningManagement/LearningManagement";
 import UserManagement from "../pages/userManagement/UserManagement";
+import CourseDetail from "../pages/course_detail/CourseDetail";
 
 export default function Router() {
   const routing = useRoutes([
@@ -21,6 +22,10 @@ export default function Router() {
         {
           path: "/login",
           element: <Login />,
+        },
+        {
+          path: "/course-detail/:course",
+          element: <CourseDetail />,
         },
       ],
     },

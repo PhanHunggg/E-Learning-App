@@ -1,7 +1,7 @@
 import { Empty } from "antd";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CourseCatalogDto } from "../../interfaces/course";
 import { RootDispatch, RootState } from "../../store/config";
 import {
@@ -10,6 +10,9 @@ import {
 } from "../../store/reducers/eduReducer";
 import "./header.scss";
 export default function Header(): JSX.Element {
+  const [isSearch, setIsSearch] = useState<boolean>(false);
+  const [keyword, setKeyword] = useState<string>("");
+
   const dispatch = useDispatch<RootDispatch>();
   const courseState = useSelector((state: RootState) => state.eduReducer);
   const navigate = useNavigate();
@@ -28,12 +31,23 @@ export default function Header(): JSX.Element {
       );
     });
   };
+  const onSearch = (): void => {
+    setIsSearch(!isSearch);
+  };
+  const handleClearSearch = (): void => {
+    setKeyword("");
+  }
+  const handleChange = (event: any) => {
+    setKeyword(event.target.value);
+    console.log(keyword);
+
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light header">
-      <a className="navbar-brand" href="#">
+      <Link className="navbar-brand" to="/">
         <img src="https://demo2.cybersoft.edu.vn/logo.png" alt="" />
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -51,45 +65,38 @@ export default function Header(): JSX.Element {
         id="navbarScroll"
       >
         <form className="d-flex">
-          <input
-            className="form-control mr-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button className="btn btn-outline-success" type="submit">
-            Search
-          </button>
+          <div className={`search ${isSearch && "active"}`}>
+            <div onClick={onSearch} className="icon">
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div className="input">
+              <input value={keyword} name='search' onChange={handleChange} id='mySearch' type="text" placeholder='Tìm kiếm khóa học' />
+            </div>
+            <div onClick={handleClearSearch} className="clear">
+              <i className="fa-solid fa-xmark"></i>
+            </div>
+          </div>
         </form>
-        <ul
-          className="navbar-nav  my-2 my-lg-0 navbar-nav-scroll"
-          style={{ maxHeight: 100 }}
-        >
+        <ul className="navbar-nav  my-2 my-lg-0 navbar-nav-scroll" style={{ maxHeight: 100 }}>
           <li className="nav-item active">
-            <a className="nav-link" href="#">
-              Home <span className="sr-only">(current)</span>
-            </a>
+            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
           </li>
           <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-toggle="dropdown"
-              aria-expanded="false"
-            >
+            <a className="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
               Danh mục
             </a>
-            <ul className="dropdown-menu">{renderCourseCatalog()}</ul>
+            <ul className="dropdown-menu courseCatalog">
+              {renderCourseCatalog()}
+            </ul>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Khóa học
-            </a>
+            <a className="nav-link" href="#">Khóa học</a>
           </li>
+
           <li className="nav-item">
             <a className="nav-link disabled">Blog</a>
           </li>
+
           <li className="nav-item">
             <a className="nav-link disabled">Thông tin</a>
           </li>

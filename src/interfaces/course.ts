@@ -29,3 +29,17 @@ export interface ManageDto {
   maLoaiNguoiDung?: string;
   tenLoaiNguoiDung?: string;
 }
+
+export interface CourseDetailDto<N, D> {
+  maKhoaHoc: string;
+  biDanh: string;
+  tenKhoaHoc: string;
+  moTa: string;
+  luotXem: number;
+  hinhAnh: string;
+  maNhom: string;
+  ngayTao: string;
+  soLuongHocVien: number;
+  nguoiTao: N;
+  danhMucKhoaHoc: D;
+}

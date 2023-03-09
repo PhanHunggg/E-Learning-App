@@ -5,7 +5,7 @@ import "./footer.scss"
 
 export default function Footer(): JSX.Element {
     return (
-        <div className='footer'>
+        <section className='footer'>
             <FooterTop />
             <div className="footer_bottom">
                 <div className="title">
@@ -17,6 +17,6 @@ export default function Footer(): JSX.Element {
                     <i className="fa-brands fa-twitter"></i>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

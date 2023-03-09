@@ -1,6 +1,7 @@
 import {
   CatalogDto,
   CourseCatalogDto,
+  CourseDetailDto,
   CourseListDto,
   ManageDto,
 } from "./../interfaces/course";
@@ -41,5 +42,14 @@ export const addCourseApi = (
     url: `/QuanLyKhoaHoc/ThemKhoaHoc`,
     method: "POST",
     data: data,
+  });
+};
+
+export const fetchCourseDetailApi = (
+  course: string
+): AxiosPromise<CourseDetailDto<ManageDto, CatalogDto>> => {
+  return axiosRequest({
+    url: `/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${course}`,
+    method: "GET",
   });
 };
