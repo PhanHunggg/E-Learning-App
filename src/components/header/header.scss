@@ -1,4 +1,5 @@
 .header {
+  padding: 0.5rem 2.5rem !important;
   img {
     width: 247px;
     height: 76px;
@@ -79,6 +80,36 @@
           }
         }
       }
+    }
+  }
+  .userInfo {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    &:hover button{
+      transform: translateX(51px);
+      z-index: 0;
+      opacity: 1;
+    }
+    img {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    button{
+      position: absolute;
+      top: 7px;
+      left: 0;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 40px;
+      transition: all 1.1s;
+      transform: translateX(0);
+      opacity: 0;
+      z-index: -1;
     }
   }
 }

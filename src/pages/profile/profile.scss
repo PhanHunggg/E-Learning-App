@@ -1,0 +1,231 @@
+.profile {
+  p {
+    margin: 0;
+  }
+  .title {
+    padding: 50px;
+    color: #fff;
+    background-color: #ffd60a;
+    text-transform: uppercase;
+  }
+  .infoPageContent {
+    padding: 50px;
+    .left {
+      .info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        min-height: 500px;
+        img {
+          width: 130px;
+          height: 130px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-bottom: 10px;
+        }
+        p {
+          font-size: 18px;
+        }
+      }
+    }
+    .right {
+      .button {
+        border: none;
+        background-color: #ffc6c7;
+        color: #33272a;
+        font-weight: 500;
+        font-size: 18px;
+        &.active {
+          background-color: #41b294;
+          color: #fff;
+        }
+        &:focus {
+          outline: none;
+        }
+        &:first-child {
+          margin-right: 15px;
+        }
+      }
+      .userInfo {
+        .top {
+          p {
+            padding: 10px 0;
+            font-size: 16px;
+            font-weight: 500;
+            span {
+              font-size: 15px;
+              font-weight: 400;
+              margin-left: 8px;
+            }
+          }
+          button {
+            padding: 8px 18px;
+            background-color: #41b294;
+            border: none;
+            transition: all 0.5s;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: 500;
+          }
+        }
+        .bottom {
+          padding: 30px 0;
+          h4 {
+            text-transform: uppercase;
+            margin-bottom: 15px;
+          }
+          .skillAll {
+            background-color: #eff0f3;
+            box-shadow: 5px 5px 10px rgb(0 0 0 / 20%);
+            padding: 25px 30px;
+            border-radius: 10px 0 0 10px;
+            .mySkill {
+              margin: 20px 0;
+              &:first-child {
+                margin-top: 0;
+              }
+              .info {
+                margin-bottom: 5px;
+                span {
+                  font-size: 17px;
+                  font-weight: 500;
+                  opacity: 0;
+                  animation: showText 0.5s 1s linear forwards;
+                }
+              }
+              .progress_line {
+                position: relative;
+                height: 10px;
+                width: 100%;
+                border-radius: 10px;
+                background-color: rgb(189 189 189);
+                box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.05),
+                  0px 1px rgba(255, 255, 255, 0.8);
+                transform: scaleX(0);
+                transform-origin: left;
+                animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+
+                span {
+                  position: absolute;
+                  height: 100%;
+                  width: 80%;
+                  background-color: #6665ee;
+                  border-radius: 10px;
+                  transform: scaleX(0);
+                  transform-origin: left;
+                  animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
+                  &.html {
+                    width: 90%;
+                  }
+                  &.css {
+                    width: 80%;
+                  }
+                  &.bootstrap {
+                    width: 70%;
+                  }
+                  &.js {
+                    width: 85%;
+                  }
+                  &.react {
+                    width: 75%;
+                  }
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    top: -10px;
+                    height: 0;
+                    width: 0;
+                    border: 7px solid transparent;
+                    border-bottom-width: 0px;
+                    border-right-width: 0px;
+                    border-top-color: #000;
+                    opacity: 0;
+                    animation: showText2 0.5s 1.5s linear forwards;
+                  }
+                  &::after {
+                    position: absolute;
+                    right: 0;
+                    top: -28px;
+                    background-color: #000;
+                    color: #fff;
+                    font-size: 12px;
+                    font-weight: 500;
+                    padding: 1px 8px;
+                    border-radius: 3px;
+                    opacity: 0;
+                    animation: showText2 0.5s 1.5s linear forwards;
+                  }
+                }
+
+                &.html span::after {
+                  content: "90%";
+                }
+                &.css span::after {
+                  content: "75%";
+                }
+                &.bootstrap span::after {
+                  content: "70%";
+                }
+                &.js span::after {
+                  content: "85%";
+                }
+                &.react span::after {
+                  content: "75%";
+                }
+              }
+            }
+          }
+          .btnTime {
+            background-color: #eff0f3;
+            box-shadow: 8px 5px 10px rgb(0 0 0 / 20%);
+            border-radius: 0 10px 10px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .timeStudy {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              grid-gap: 20px;
+              gap: 20px;
+              .item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                border-radius: 20px;
+                background: #41b294;
+                color: #fff;
+                h6 {
+                  margin: 0;
+                }
+                i {
+                  margin-right: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes animate {
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes showText {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes showText2 {
+  100% {
+    opacity: 1;
+  }
+}

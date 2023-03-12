@@ -7,13 +7,14 @@ interface Props {
 
 export default function Popular(props: Props): JSX.Element {
   const renderCoursePopalar = () => {
+    console.log(props.courseState?.courseList)
     return props.courseState?.courseList?.map((ele, idx) => {
       return <React.Fragment key={ele.maKhoaHoc}>
         {
-          idx <= 5 && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">
+          idx <= 4 && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">
             <Link to={`/course-detail/${ele.maKhoaHoc}`}>
               <div className="card_header">
-                <img src="https://ectimes.files.wordpress.com/2019/03/cac-ngon-ngu-lap-trinh-pho-bien-2.jpg" alt={ele.biDanh} />
+                <img src={ele.hinhAnh} alt={ele.biDanh} />
                 <span>{ele.biDanh}</span>
               </div>
               <div className="card_body">

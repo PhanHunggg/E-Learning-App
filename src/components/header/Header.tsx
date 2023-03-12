@@ -2,6 +2,9 @@ import { Empty } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { DESKTOP, IPHONE6, IPHONE6PLUS, MOBILE, TABLET } from "../../constants";
+import { withViewport } from "../../HOCs/withViewport";
+import { useViewPort } from "../../hooks/useViewPort";
 import { CourseCatalogDto } from "../../interfaces/course";
 import { RootDispatch, RootState } from "../../store/config";
 import {
@@ -9,7 +12,12 @@ import {
   fetchCourseCatalogAction,
 } from "../../store/reducers/eduReducer";
 import "./header.scss";
-export default function Header(): JSX.Element {
+
+interface Props {
+  device: any;
+}
+
+function Header(props: Props): JSX.Element {
   const [isSearch, setIsSearch] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>("");
 
@@ -44,7 +52,7 @@ export default function Header(): JSX.Element {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light header">
+    <nav className={`navbar navbar-expand-lg navbar-light bg-light header ${props.device === MOBILE && "mobile"} ${props.device === TABLET && "table"} ${props.device === IPHONE6 && "iphone6"} ${props.device === DESKTOP && "desktop"} ${props.device === IPHONE6PLUS && "iphone6_plus"}`}>
       <Link className="navbar-brand" to="/">
         <img src="https://demo2.cybersoft.edu.vn/logo.png" alt="" />
       </Link>
@@ -101,13 +109,19 @@ export default function Header(): JSX.Element {
             <a className="nav-link disabled">Thông tin</a>
           </li>
         </ul>
-        {Object.keys(courseState?.userInfo).length ? (
-          <button
-            onClick={() => dispatch(eduAction.handleLogOut())}
-            className="btn btn-warning"
-          >
-            Đăng xuất
-          </button>
+        {courseState?.userInfo ? (
+          <div className="userInfo">
+            <button
+              onClick={() => dispatch(eduAction.handleLogOut())}
+              className="btn btn-warning"
+            >
+              <i className="fa-solid fa-power-off"></i>
+            </button>
+            <img onClick={() => {
+              navigate("/profile")
+            }} src="../images/avatar.jpg" alt="avatar" />
+
+          </div>
         ) : (
           <button
             onClick={() => {
@@ -122,3 +136,6 @@ export default function Header(): JSX.Element {
     </nav>
   );
 }
+
+
+export default withViewport(Header)

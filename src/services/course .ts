@@ -4,6 +4,7 @@ import {
   CourseDetailDto,
   CourseListDto,
   ManageDto,
+  SignUpCourseDto,
 } from "./../interfaces/course";
 import { AxiosPromise } from "axios";
 import { axiosRequest } from "../configs/axios.config";
@@ -51,5 +52,21 @@ export const fetchCourseDetailApi = (
   return axiosRequest({
     url: `/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${course}`,
     method: "GET",
+  });
+};
+
+export const signUpCourseApi = (data: SignUpCourseDto): AxiosPromise => {
+  return axiosRequest({
+    url: "/QuanLyKhoaHoc/DangKyKhoaHoc",
+    method: "POST",
+    data,
+  });
+};
+
+export const cancelCourseApi = (data: SignUpCourseDto): AxiosPromise => {
+  return axiosRequest({
+    url: "/QuanLyKhoaHoc/HuyGhiDanh",
+    method: "POST",
+    data,
   });
 };

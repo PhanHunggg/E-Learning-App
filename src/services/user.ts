@@ -1,6 +1,11 @@
-import { userLoginDto, userSignUpDto } from "./../interfaces/user";
+import {
+  userLoginDto,
+  userProfileDto,
+  userSignUpDto,
+} from "./../interfaces/user";
 import { AxiosPromise } from "axios";
 import { axiosRequest } from "../configs/axios.config";
+import { RegistrationCourseDetailDto } from "../interfaces/course";
 
 export const login = (data: userLoginDto): AxiosPromise<userLoginDto> => {
   return axiosRequest({
@@ -15,5 +20,14 @@ export const signUpApi = (data: userSignUpDto): AxiosPromise<userSignUpDto> => {
     url: "/QuanLyNguoiDung/DangKy",
     method: "POST",
     data,
+  });
+};
+
+export const fetchUserProfileApi = (): AxiosPromise<
+  userProfileDto<RegistrationCourseDetailDto>
+> => {
+  return axiosRequest({
+    url: "/QuanLyNguoiDung/ThongTinTaiKhoan",
+    method: "POST",
   });
 };
