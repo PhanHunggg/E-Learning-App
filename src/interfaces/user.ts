@@ -39,4 +39,12 @@ export interface userProfileDto<D> {
   email: string;
 }
 
-
+export interface userUpdateDto {
+  taiKhoan: string;
+  matKhau: string;
+  hoTen: string;
+  soDT: string;
+  maLoaiNguoiDung: string;
+  maNhom: string;
+  email: string;
+}

@@ -156,10 +156,20 @@
             color: white;
             background-color: #41b294;
           }
-          &:focus{
+          &:focus {
             outline: none;
           }
+          &.cancel {
+            margin-top: 10px;
+            border: 2px solid rgb(225 16 16);
+            color: rgb(225 16 16);
+            &:hover{
+              color: white;
+              background-color: rgb(225 16 16);
+            }
+          }
         }
+
         .sideBarDetailContent {
           ul {
             list-style: none;

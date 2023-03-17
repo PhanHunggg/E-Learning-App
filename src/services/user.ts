@@ -2,6 +2,7 @@ import {
   userLoginDto,
   userProfileDto,
   userSignUpDto,
+  userUpdateDto,
 } from "./../interfaces/user";
 import { AxiosPromise } from "axios";
 import { axiosRequest } from "../configs/axios.config";
@@ -27,7 +28,15 @@ export const fetchUserProfileApi = (): AxiosPromise<
   userProfileDto<RegistrationCourseDetailDto>
 > => {
   return axiosRequest({
-    url: "/QuanLyNguoiDung/ThongTinTaiKhoan",
+    url: "/QuanLyNguoiDung/ThongTinNguoiDung",
     method: "POST",
+  });
+};
+
+export const updateUserApi = (data: userUpdateDto): AxiosPromise => {
+  return axiosRequest({
+    url: "/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+    method: "PUT",
+    data,
   });
 };

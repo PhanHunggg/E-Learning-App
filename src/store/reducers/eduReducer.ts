@@ -27,7 +27,6 @@ export interface EduState {
   courseList: CourseListDto<ManageDto, CatalogDto>[];
   userInfo: userInfoDto | null;
   UserList: Array<UserList<MaLoaiNguoiDung>>;
-  userProfile: userProfileDto<RegistrationCourseDetailDto> | null;
 }
 
 const DEFAULT_STATE = {
@@ -35,7 +34,7 @@ const DEFAULT_STATE = {
   courseCatalog: [],
   courseList: [],
   UserList: [],
-  userProfile: null,
+  
 } as EduState;
 
 export const fetchCourseCatalogAction = createAsyncThunk(
@@ -82,13 +81,7 @@ export const fetchUserListAction = createAsyncThunk(
   }
 );
 
-export const fetchUserProfileAction = createAsyncThunk(
-  "eduReducer/fetchUserProfileAction",
-  async () => {
-    const result = await fetchUserProfileApi();
-    return result.data;
-  }
-);
+
 
 const eduSlice = createSlice({
   name: "eduReducer",
@@ -132,15 +125,7 @@ const eduSlice = createSlice({
         state.UserList = action.payload;
       }
     );
-    builder.addCase(
-      fetchUserProfileAction.fulfilled,
-      (
-        state: EduState,
-        action: PayloadAction<userProfileDto<RegistrationCourseDetailDto>>
-      ) => {
-        state.userProfile = action.payload;
-      }
-    );
+
   },
 });
 

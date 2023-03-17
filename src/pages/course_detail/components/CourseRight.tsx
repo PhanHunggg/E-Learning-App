@@ -1,17 +1,15 @@
-import { notification } from 'antd';
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
-import { Params } from 'react-router-dom';
-import { CatalogDto, CourseDetailDto, ManageDto, SignUpCourseDto } from '../../../interfaces/course';
-import { cancelCourseApi, signUpCourseApi } from '../../../services/course ';
-import { RootState } from '../../../store/config';
 
+import React from 'react'
+
+
+import { CatalogDto, CourseDetailDto, ManageDto } from '../../../interfaces/course';
 
 interface Props {
   course: CourseDetailDto<ManageDto, CatalogDto> | any;
-  params: Readonly<Params<string>>
-  checkCourse: boolean
-  handleSignUp: (course: boolean) => {}
+
+
+  handleSignUp: () => {}
+  handleCancel: () => {}
 
 }
 export default function CourseRight(props: Props) {
@@ -25,9 +23,8 @@ export default function CourseRight(props: Props) {
             <i className="fa-solid fa-bolt"></i> 400.000<sup>đ</sup>
           </p>
         </div>
-        {
-          props.checkCourse ? <button onClick={() => props.handleSignUp(true)} className="btnGlobal btnPreview">Hủy đăng ký</button> : <button onClick={() => props.handleSignUp(false)} className="btnGlobal btnPreview">Đăng ký</button>
-        }
+        <button onClick={() => props.handleSignUp()} className="btnGlobal btnPreview signUp">Đăng ký</button>
+        <button onClick={() => props.handleCancel()} className="btnGlobal btnPreview cancel">Hủy đăng ký</button>
         <div className="sideBarDetailContent">
           <ul>
             <li>

@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { RegistrationCourseDetailDto } from '../../../../../interfaces/course'
+import { userProfileDto } from '../../../../../interfaces/user'
 import { RootState } from '../../../../../store/config'
 
+import { fetchUserProfileApi } from "../../../../../services/user"
+
 export default function UserInfo() {
-    const userProfile = useSelector((state: RootState) => state.eduReducer.userProfile)
+    // const userProfile = useSelector((state: RootState) => state.eduReducer.userInfo)
+    const [userProfile, setUserProfile] = useState<userProfileDto<RegistrationCourseDetailDto>>()
+
+    const getUserProfile = async () => {
+        const result = await fetchUserProfileApi()
+        setUserProfile(result.data)
+    }
+
+    useEffect(() => {
+        getUserProfile()
+    }, [])
+
+
     return (
         <div className="userInfo">
             <div className="top">

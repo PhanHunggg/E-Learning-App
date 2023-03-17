@@ -54,7 +54,7 @@ function Header(props: Props): JSX.Element {
   return (
     <nav className={`navbar navbar-expand-lg navbar-light bg-light header ${props.device === MOBILE && "mobile"} ${props.device === TABLET && "table"} ${props.device === IPHONE6 && "iphone6"} ${props.device === DESKTOP && "desktop"} ${props.device === IPHONE6PLUS && "iphone6_plus"}`}>
       <Link className="navbar-brand" to="/">
-        <img src="https://demo2.cybersoft.edu.vn/logo.png" alt="" />
+        <img src="https://demo2.cybersoft.edu.vn/logo.png" alt="logo" />
       </Link>
       <button
         className="navbar-toggler"

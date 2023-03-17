@@ -7,81 +7,82 @@ import {
   ManageDto,
   CatalogDto,
   SignUpCourseDto,
+
 } from "./../.././interfaces/course";
 import CourseLeft from "./components/CourseLeft";
 import CourseRight from "./components/CourseRight";
-import { useDispatch, useSelector } from "react-redux";
-import { RootDispatch, RootState } from "../../store/config";
-import { fetchUserProfileAction } from "../../store/reducers/eduReducer";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/config";
 import { notification } from "antd";
 
+
 export default function CourseDetail() {
-  const dispatch = useDispatch<RootDispatch>()
   const [course, setCourse] = useState<CourseDetailDto<ManageDto, CatalogDto>>();
+
   const params = useParams();
   const eduState = useSelector((state: RootState) => state.eduReducer)
-  const [checkCourse, setCheckCourse] = useState<boolean>(false)
 
-  useEffect(() => {
-    getCourseDetail();
-    dispatch(fetchUserProfileAction())
-    handleCheckCourse()
-  }, []);
 
   const getCourseDetail = async () => {
 
     const result = await fetchCourseDetailApi(params.course || "");
 
+
+
     setCourse(result.data);
   };
 
-  const handleCheckCourse = (): void => {
-    const idx = eduState.userProfile?.chiTietKhoaHocGhiDanh.findIndex((ele) => ele.maKhoaHoc === params.course)
+  useEffect(() => {
+    getCourseDetail();
+  }, []);
 
-    if (idx === -1) {
-      setCheckCourse(false)
-    } else {
-      setCheckCourse(true)
-    }
-  }
- 
-  const handleSignUp = async (course: boolean) => {
+  const handleSignUp = async () => {
     const data: SignUpCourseDto = {
       maKhoaHoc: params?.course || "",
       taiKhoan: eduState.userInfo?.taiKhoan || "",
     }
 
-    if (course) {
+    try {
+      await signUpCourseApi(data)
+      notification.success({
+        message: "Đăng ký khóa học thành công",
+        duration: 1,
+      })
 
-      try {
-        await cancelCourseApi(data)
-        notification.success({
-          message: "Hủy khóa học thành công"
-        })
-        setCheckCourse(false);
-      } catch (error: any) {
-        notification.error({
-          message: error.response.data
-        })
-      }
-
-    } else {
-
-      try {
-        await signUpCourseApi(data)
-        notification.success({
-          message: "Đăng ký khóa học thành công"
-        })
-        setCheckCourse(true);
-      } catch (error: any) {
-        notification.error({
-          message: error.response.data
-        })
-      }
+    } catch (error: any) {
+      notification.error({
+        message: error.response.data,
+        duration: 2,
+      })
     }
+
 
   }
 
+  const handleCancel = async () => {
+    const data: SignUpCourseDto = {
+      maKhoaHoc: params?.course || "",
+      taiKhoan: eduState.userInfo?.taiKhoan || "",
+    }
+
+
+    try {
+      await cancelCourseApi(data)
+      notification.success({
+        message: "Hủy khóa học thành công",
+        duration: 1,
+      })
+
+    } catch (error: any) {
+      notification.error({
+        message: error.response.data,
+        duration: 2,
+      })
+    }
+
+
+
+  }
 
 
   return (
@@ -93,7 +94,7 @@ export default function CourseDetail() {
       <div className="detailCourseContent">
         <div className="row">
           <CourseLeft course={course} />
-          <CourseRight handleSignUp={handleSignUp} checkCourse={checkCourse} params={params} course={course} />
+          <CourseRight handleCancel={handleCancel} handleSignUp={handleSignUp} course={course} />
         </div>
       </div>
     </section>
