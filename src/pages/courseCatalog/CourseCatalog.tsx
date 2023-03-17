@@ -8,6 +8,10 @@ export default function CourseCatalog(): JSX.Element {
     const params = useParams()
     const [course, setCourse] = useState<CourseListDto<ManageDto,CatalogDto>[]>()
 
+
+
+
+
     useEffect(() => {
         getCourseByCatalog()
     },[])
@@ -17,6 +21,8 @@ export default function CourseCatalog(): JSX.Element {
         console.log(result)
         setCourse(result.data)
     }
+
+    console.log(course)
 
     const renderCourseByCatalog = () => {
         return course?.map((ele) => {
@@ -57,6 +63,9 @@ export default function CourseCatalog(): JSX.Element {
     })
 }
 
+    
+
+    
 return (
     <div className="course_list">
         <h6>
@@ -64,6 +73,7 @@ return (
             Danh sách khóa học</h6>
         <div className="row ">
             {renderCourseByCatalog()}
+           
         </div>
     </div>
 )
