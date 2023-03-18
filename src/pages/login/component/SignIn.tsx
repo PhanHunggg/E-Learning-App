@@ -17,12 +17,14 @@ export default function SignIn() {
             dispatch(fetchUserInfoAction(values));
 
             notification.success({
-                message: "Đăng nhập thành công!"
+                message: "Đăng nhập thành công!",
+                duration: 1,
             })
             navigate("/")
         } catch (error: any) {
             notification.error({
-                message: error.response.data
+                message: error.response.data,
+                duration: 2,
             })
         }
     };

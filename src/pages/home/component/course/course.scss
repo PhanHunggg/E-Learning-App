@@ -1,5 +1,13 @@
 .course {
   padding-right: 32px;
+  &.active {
+    .course_list {
+      .cardGlobalRes {
+        padding: 16px 0px 0px 30px;
+        align-items: center;
+      }
+    }
+  }
   p {
     margin: 0;
   }
@@ -20,6 +28,7 @@
       color: #f6ba35;
       font-weight: 500;
       font-size: 18px;
+      margin-left: 50px;
     }
     .cardGlobalRes {
       padding: 0;
@@ -32,7 +41,7 @@
         height: 370px;
         box-shadow: 0 0 10px 4px rgb(0 0 0 / 20%);
         transition: all 0.3s;
-        &:hover{
+        &:hover {
           transform: translateY(-4px);
         }
         .card_header {
@@ -116,3 +125,32 @@
     }
   }
 }
+
+.course.mobile {
+  .course_list {
+    .cardGlobalRes {
+      padding: 16px 0px 0px 15px;
+      align-items: center;
+    }
+  }
+}
+
+.course.iphone6_plus {
+  .course_list {
+    .cardGlobalRes {
+      padding: 16px 0px 0px 30px;
+      align-items: center;
+    }
+  }
+}
+
+.course.iphone6 {
+  .course_list {
+    .cardGlobalRes {
+      padding: 16px 0px 0px 30px;
+      align-items: center;
+    }
+  }
+}
+
+

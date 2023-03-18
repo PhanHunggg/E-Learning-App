@@ -15,7 +15,7 @@ export default function FooterTop() {
                             <span>0797720574</span>
                         </li>
                         <li><i className="fa-solid fa-envelope-open-text"></i>
-                            <span>phanquochung280702@gmail.com</span>
+                            <span>phanhung@gmail.com</span>
                         </li>
                         <li><i className="fa-solid fa-location-dot"></i>
                             <span>Tp.Hồ Chí Minh</span>

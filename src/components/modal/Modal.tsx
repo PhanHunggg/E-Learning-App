@@ -12,7 +12,11 @@ interface Props {
 export default function Modal(props: Props) {
     const patternVietnamese = "^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôôốồồốộộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùùúúụụủủũưừứựửữỳýỵỷỹđ]*)*$"
 
+    const patternPassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
 
+    const patternEmail = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+
+    const patternPhone = "(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})"
 
     const [form, setForm] = useState(
         {
@@ -156,7 +160,7 @@ export default function Modal(props: Props) {
                                     placeholder=" "
                                     minLength={8}
                                     maxLength={12}
-                                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+                                    pattern={patternPassword}
                                     required
                                     title="Mật khẩu"
                                     onBlur={handleBlur}
@@ -170,7 +174,7 @@ export default function Modal(props: Props) {
                             <div className="form-group">
                                 <input
                                     placeholder=" "
-                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                    pattern={patternEmail}
                                     required
                                     title="Email"
                                     onBlur={handleBlur}
@@ -185,7 +189,7 @@ export default function Modal(props: Props) {
                             <div className="form-group last">
                                 <input
                                     placeholder=" "
-                                    pattern="(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})"
+                                    pattern={patternPhone}
                                     required
                                     title="Số điện thoại"
                                     onBlur={handleBlur}

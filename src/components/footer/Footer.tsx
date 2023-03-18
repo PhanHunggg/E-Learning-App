@@ -1,11 +1,16 @@
 import React from 'react'
+import { IPHONE6, IPHONE6PLUS, MOBILE, TABLET } from '../../constants';
+import { withViewport } from '../../HOCs/withViewport';
 import FooterTop from './components/FooterTop'
 import "./footer.scss"
 
+interface Props {
+    device: any;
+  }
 
-export default function Footer(): JSX.Element {
+function Footer(props: Props): JSX.Element {
     return (
-        <section className='footer'>
+        <section className={`footer ${props.device === MOBILE && "mobile"} ${props.device === TABLET && "tablet"} ${props.device === IPHONE6 && "iphone6"} ${props.device === IPHONE6PLUS && "iphone6_plus"}`}>
             <FooterTop />
             <div className="footer_bottom">
                 <div className="title">
@@ -20,3 +25,5 @@ export default function Footer(): JSX.Element {
         </section>
     )
 }
+
+export default withViewport(Footer)
