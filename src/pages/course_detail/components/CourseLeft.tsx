@@ -10,7 +10,7 @@ export default function CourseLeft(props: Props) {
     <div className="col-lg-8 col-md-7 left">
       <h4 className="title_course">{props.course?.tenKhoaHoc}</h4>
       <div className="row headDetailCourse">
-        <div className="col-4">
+        <div className="col-lg-4 col-6 info">
           <div className="detailCourseIntro">
             <div className="img">
               <img src="../images/teacher1.png" alt="students" />
@@ -21,7 +21,7 @@ export default function CourseLeft(props: Props) {
             </div>
           </div>
         </div>
-        <div className="col-4">
+        <div className="col-lg-4 col-6 major">
           <div className="detailCourseIntro">
             <div className="icon">
               <i className="fa-solid fa-graduation-cap"></i>
@@ -32,7 +32,7 @@ export default function CourseLeft(props: Props) {
             </div>
           </div>
         </div>
-        <div className="col-4">
+        <div className="col-lg-4 col-12">
           <div className="detailCourseIntro">
             <div className="reviewDetail">
               <p>

@@ -121,6 +121,24 @@
       }
     }
   }
+
+  &.active {
+    .modal-dialog {
+      margin: 2.5rem auto;
+      margin-left: 2.3rem;
+      .box {
+        width: 315px;
+        height: 520px;
+
+        .modal-body {
+          padding: 27px 28px;
+          h3 {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
 }
 
 @keyframes swivel {

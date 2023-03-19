@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Modal from '../../components/modal/Modal'
+import { DESKTOP, IPHONE6, IPHONE6PLUS, LAPTOP } from '../../constants'
+import { withViewport } from '../../HOCs/withViewport'
 import { RegistrationCourseDetailDto } from '../../interfaces/course'
 import { userProfileDto } from '../../interfaces/user'
 import { fetchUserProfileApi } from '../../services/user'
@@ -8,7 +10,11 @@ import RightProfile from './components/right-profile/RightProfile'
 
 import "./profile.scss"
 
-export default function Profile() {
+interface Props {
+    device: any;
+}
+
+function Profile(props: Props): JSX.Element {
 
     const [userProfile, setUserProfile] = useState<userProfileDto<RegistrationCourseDetailDto> | any>()
 
@@ -21,7 +27,7 @@ export default function Profile() {
         setUserProfile(userProfile.data);
     }
     return (
-        <div className='profile'>
+        <div className={`profile ${(props.device !== DESKTOP && "active") && (props.device !== LAPTOP && "active")} ${(props.device === IPHONE6 && "find") || (props.device === IPHONE6PLUS && "find")}`}>
             <div className="title">
                 <h3>THÔNG TIN CÁ NHÂN</h3>
                 <p>THÔNG TIN HỌC VIÊN</p>
@@ -36,3 +42,5 @@ export default function Profile() {
         </div>
     )
 }
+
+export default withViewport(Profile)

@@ -199,4 +199,16 @@
       }
     }
   }
+  &.active{
+    .detailCourseContent{
+      .left{
+        .headDetailCourse{
+          .info,
+          .major{
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
 }

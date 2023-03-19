@@ -14,9 +14,14 @@ import CourseRight from "./components/CourseRight";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/config";
 import { notification } from "antd";
+import { withViewport } from "../../HOCs/withViewport";
+import { IPHONE6, IPHONE6PLUS } from "../../constants";
 
+interface Props {
+  device: any;
+}
 
-export default function CourseDetail() {
+function CourseDetail(props: Props): JSX.Element {
   const [course, setCourse] = useState<CourseDetailDto<ManageDto, CatalogDto>>();
 
   const params = useParams();
@@ -86,7 +91,7 @@ export default function CourseDetail() {
 
 
   return (
-    <section className="course_detail">
+    <section className={`course_detail ${(props.device === IPHONE6 && "active") || (props.device === IPHONE6PLUS && "active")}`}>
       <div className="title">
         <h3>Thông tin khóa học</h3>
         <p>Tiến lên và không chần chừ</p>
@@ -100,3 +105,5 @@ export default function CourseDetail() {
     </section>
   );
 }
+
+export default withViewport(CourseDetail)

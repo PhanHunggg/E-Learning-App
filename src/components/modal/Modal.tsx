@@ -1,5 +1,7 @@
 import { notification } from 'antd';
 import React, { useEffect, useState } from 'react'
+import { IPHONE6, IPHONE6PLUS } from '../../constants';
+import { withViewport } from '../../HOCs/withViewport';
 import { RegistrationCourseDetailDto } from '../../interfaces/course';
 import { userProfileDto } from '../../interfaces/user';
 import { updateUserApi } from '../../services/user';
@@ -7,9 +9,10 @@ import "./modal.scss"
 
 interface Props {
     userProfile: userProfileDto<RegistrationCourseDetailDto>
+    device: any
 }
 
-export default function Modal(props: Props) {
+function Modal(props: Props) {
     const patternVietnamese = "^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôôốồồốộộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùùúúụụủủũưừứựửữỳýỵỷỹđ]*)*$"
 
     const patternPassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
@@ -132,7 +135,7 @@ export default function Modal(props: Props) {
     }, [props.userProfile])
     return (
 
-        <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className={`modal fade ${(props.device === IPHONE6 && "active") || (props.device === IPHONE6PLUS && "active")}`} id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content box">
                     <div className="modal-body">
@@ -213,3 +216,5 @@ export default function Modal(props: Props) {
 
     )
 }
+
+export default withViewport(Modal)
