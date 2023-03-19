@@ -1,7 +1,13 @@
+import { notification } from 'antd';
 import React from 'react'
-import { RegistrationCourseDetailDto } from "./../../../../../interfaces/course"
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { cancelCourseApi } from '../../../../../services/course ';
+import { RootState } from '../../../../../store/config';
+import { RegistrationCourseDetailDto, SignUpCourseDto } from "./../../../../../interfaces/course"
 interface Props {
     ele: RegistrationCourseDetailDto
+    handleCancel: (id: string) => {}
 }
 
 export default function RightItem(props: Props) {
@@ -9,12 +15,12 @@ export default function RightItem(props: Props) {
         <div className="item">
             <div className="row">
                 <div className="col-xl-3 col-lg-4">
-                    <img id='course' src={props.ele.hinhAnh} alt={props.ele.biDanh}  />
+                    <img id='course' src={props.ele.hinhAnh} alt={props.ele.biDanh} />
                 </div>
                 <div className="col-xl-7 col-lg-6 cardNetContent">
                     <h6>{props.ele.tenKhoaHoc} </h6>
                     <p className="content">
-                    {props.ele.moTa} 
+                        {props.ele.moTa}
                     </p>
                     <div className="iconNetCard">
                         <span><i className="fa-regular fa-clock"></i> 8 giờ</span>
@@ -34,7 +40,7 @@ export default function RightItem(props: Props) {
                     </div>
                 </div>
                 <div className="col-xl-2 col-lg-2 cancelNet">
-                    <button className='btn btn-warning'>Hủy khóa học</button>
+                    <button onClick={() => props.handleCancel(props.ele.maKhoaHoc)} className='btn btn-warning'>Hủy khóa học</button>
                 </div>
             </div>
         </div>
