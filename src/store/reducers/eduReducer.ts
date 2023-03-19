@@ -1,11 +1,16 @@
-import { userLoginDto } from "./../../interfaces/user";
-import { login } from "./../../services/user";
+import {
+  userInfoDto,
+  userLoginDto,
+  userProfileDto,
+} from "./../../interfaces/user";
+import { fetchUserProfileApi, login } from "./../../services/user";
 // import { RootState } from "./../config";
 import {
   CatalogDto,
   CourseCatalogDto,
   CourseListDto,
   ManageDto,
+  RegistrationCourseDetailDto,
 } from "./../../interfaces/course";
 import { UserList, MaLoaiNguoiDung } from "./../../interfaces/userList";
 import { RootState } from "./../config";
@@ -20,15 +25,16 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface EduState {
   courseCatalog: CourseCatalogDto[];
   courseList: CourseListDto<ManageDto, CatalogDto>[];
-  userInfo: {};
+  userInfo: userInfoDto | null;
   UserList: Array<UserList<MaLoaiNguoiDung>>;
 }
 
 const DEFAULT_STATE = {
-  userInfo: {},
+  userInfo: null,
   courseCatalog: [],
   courseList: [],
   UserList: [],
+  
 } as EduState;
 
 export const fetchCourseCatalogAction = createAsyncThunk(
@@ -75,13 +81,15 @@ export const fetchUserListAction = createAsyncThunk(
   }
 );
 
+
+
 const eduSlice = createSlice({
   name: "eduReducer",
   initialState: DEFAULT_STATE,
   reducers: {
     handleLogOut(state: EduState) {
       localStorage.removeItem("USER_INFO_KEY");
-      state.userInfo = {};
+      state.userInfo = null;
     },
   },
   extraReducers(builder) {
@@ -117,6 +125,7 @@ const eduSlice = createSlice({
         state.UserList = action.payload;
       }
     );
+
   },
 });
 

@@ -1,11 +1,17 @@
 import React from 'react'
+import { DESKTOP, IPHONE6, IPHONE6PLUS, MOBILE, TABLET } from '../../../../constants';
+import { withViewport } from '../../../../HOCs/withViewport';
 import "./banner.scss"
 
-export default function Banner() {
+interface Props {
+  device: any;
+}
+
+function Banner(props: Props): JSX.Element {
   return (
-    <section className='banner px-5'>
+    <section className={`banner px-5 ${props.device === MOBILE && "mobile"} ${props.device === TABLET && "tablet"} ${props.device === IPHONE6 && "iphone6"} ${props.device === DESKTOP && "desktop"} ${props.device === IPHONE6PLUS && "iphone6_plus"}`}>
       <div className="row">
-        <div className="title col-6">
+        <div className="title col-12 col-lg-6">
           <div className="cloud">
             <img src="./images/clouds.png" alt="clouds" />
           </div>
@@ -20,7 +26,7 @@ export default function Banner() {
             <img src="./images/rocket.png" alt="rocket" />
           </div>
         </div>
-        <div className="image col-6">
+        <div className="image col-12 col-lg-6">
           <div className="banner_img">
             <img src="./images/banner.png" alt="banner" />
           </div>
@@ -41,3 +47,5 @@ export default function Banner() {
     </section>
   )
 }
+
+export default withViewport(Banner)

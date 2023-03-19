@@ -1,6 +1,5 @@
 .banner {
   width: 100%;
-  height: 700px;
   .row {
     width: 100%;
     height: 100%;
@@ -57,10 +56,10 @@
           width: 20%;
           height: 20%;
         }
-        button{
-            font-size: 20px;
-            font-weight: 500;
-            color: white;
+        button {
+          font-size: 20px;
+          font-weight: 500;
+          color: white;
         }
       }
     }
@@ -107,6 +106,209 @@
   }
 }
 
+.banner.tablet {
+  .row {
+    .title {
+      margin-top: 58px;
+      .cloud {
+        left: 12%;
+        top: -24%;
+      }
+      .rocket {
+        left: 6%;
+        bottom: -6%;
+      }
+      .slogan {
+        img {
+          right: 14%;
+          top: 50%;
+          width: 22%;
+          height: 43%;
+        }
+      }
+    }
+  }
+}
+
+.banner.mobile {
+  .row {
+    .title {
+      margin-top: 60px;
+      .cloud {
+        left: 12%;
+        top: -21%;
+      }
+      .rocket {
+        left: -3%;
+        bottom: -8%;
+      }
+      .slogan {
+        margin-left: 40px;
+        img {
+          right: 3%;
+          top: 26%;
+          width: 29%;
+          height: 39%;
+        }
+      }
+    }
+    .image {
+      .message {
+        top: 37%;
+        right: 43%;
+      }
+    }
+  }
+}
+
+.banner.iphone6_plus {
+  .row {
+    .title {
+      margin-top: 60px;
+      margin-left: 21px;
+      .cloud {
+        left: -15%;
+        top: -23%;
+        img {
+          width: 65px;
+          height: 60px;
+        }
+      }
+      .rocket {
+        left: -13%;
+        bottom: -7%;
+        img {
+          width: 60px;
+          height: 60px;
+        }
+      }
+      .slogan {
+        h1 {
+          font-weight: 600;
+          font-size: 40px;
+          &:last-of-type {
+            font-size: 55px;
+
+            span {
+              font-size: 40px;
+            }
+          }
+        }
+        img {
+          right: -1%;
+          top: 27%;
+          width: 29%;
+          height: 39%;
+        }
+        button {
+          font-size: 13px;
+        }
+      }
+    }
+    .image {
+      .message {
+        top: 40%;
+        right: 44%;
+        animation: message2 2.5s linear infinite alternate;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+      .cloud {
+        left: 4%;
+        top: 2%;
+        img {
+          width: 46px;
+          height: 45px;
+        }
+        &.mid {
+          left: 10%;
+          top: 12%;
+        }
+        &.bottom {
+          left: 14%;
+          top: 25%;
+        }
+      }
+    }
+  }
+}
+
+.banner.iphone6 {
+  .row {
+    .title {
+      margin-top: 60px;
+      margin-left: 21px;
+      .cloud {
+        left: -15%;
+        top: -23%;
+        img {
+          width: 65px;
+          height: 60px;
+        }
+      }
+      .rocket {
+        left: -13%;
+        bottom: -7%;
+        img {
+          width: 46px;
+          height: 46px;
+        }
+      }
+      .slogan {
+        h1 {
+          font-weight: 600;
+          font-size: 40px;
+          &:last-of-type {
+            font-size: 55px;
+
+            span {
+              font-size: 40px;
+            }
+          }
+        }
+        img {
+          right: -1%;
+          top: 35%;
+          width: 35%;
+          height: 39%;
+        }
+        button {
+          font-size: 13px;
+        }
+      }
+    }
+    .image {
+      .message {
+        top: 39%;
+        right: 44%;
+        animation: message2 2.5s linear infinite alternate;
+        img {
+          width: 44px;
+          height: 44px;
+        }
+      }
+      .cloud {
+        left: 4%;
+        top: 2%;
+        img {
+          width: 46px;
+          height: 45px;
+        }
+        &.mid {
+          left: 10%;
+          top: 12%;
+        }
+        &.bottom {
+          left: 14%;
+          top: 25%;
+        }
+      }
+    }
+  }
+}
+
 @keyframes rocket {
   0% {
     transform: rotate(-43deg) translate(0px, 0px);
@@ -121,7 +323,7 @@
     transform: translateX(0px);
   }
   100% {
-    transform: translateX(350px);
+    transform: translateX(310px);
   }
 }
 
@@ -142,6 +344,15 @@
   }
   100% {
     transform: rotate(19deg) translate(24px, -9px);
+  }
+}
+
+@keyframes message2 {
+  0% {
+    transform: rotate(-19deg) translateX(-11px);
+  }
+  100% {
+    transform: rotate(22deg) translate(8px, -3px);
   }
 }
 @keyframes slogan {

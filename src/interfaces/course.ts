@@ -43,3 +43,19 @@ export interface CourseDetailDto<N, D> {
   nguoiTao: N;
   danhMucKhoaHoc: D;
 }
+
+export interface SignUpCourseDto {
+  maKhoaHoc: string;
+  taiKhoan: string;
+}
+
+export interface RegistrationCourseDetailDto {
+  maKhoaHoc: string;
+  tenKhoaHoc: string;
+  biDanh: string;
+  moTa: string;
+  luotXem: number;
+  hinhAnh: string;
+  ngayTao: string;
+  danhGia: number;
+}

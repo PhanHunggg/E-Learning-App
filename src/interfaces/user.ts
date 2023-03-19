@@ -1,6 +1,12 @@
 export interface userLoginDto {
   taiKhoan: string;
   matKhau: string;
+  accessToken: string;
+  email: string;
+  hoTen: string;
+  maLoaiNguoiDung: string;
+  maNhom: string;
+  soDT: string;
 }
 
 export interface userInfoDto {
@@ -18,6 +24,27 @@ export interface userSignUpDto {
   matKhau: string;
   hoTen: string;
   soDT: string;
+  maNhom: string;
+  email: string;
+}
+
+export interface userProfileDto<D> {
+  chiTietKhoaHocGhiDanh: D[];
+  taiKhoan: string;
+  matKhau: string;
+  hoTen: string;
+  soDT: string;
+  maLoaiNguoiDung: string;
+  maNhom: string;
+  email: string;
+}
+
+export interface userUpdateDto {
+  taiKhoan: string;
+  matKhau: string;
+  hoTen: string;
+  soDT: string;
+  maLoaiNguoiDung: string;
   maNhom: string;
   email: string;
 }

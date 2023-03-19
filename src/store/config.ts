@@ -13,6 +13,7 @@ export const store = configureStore({
     {
       key: "root",
       storage: storage,
+    
     },
     rootReducer
   ),

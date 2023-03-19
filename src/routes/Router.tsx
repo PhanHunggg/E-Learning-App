@@ -8,6 +8,7 @@ import HomePage from "../pages/home/HomePage";
 import LearningManagement from "../pages/learningManagement/LearningManagement";
 import UserManagement from "../pages/userManagement/UserManagement";
 import CourseDetail from "../pages/course_detail/CourseDetail";
+import Profile from "../pages/profile/Profile";
 
 export default function Router() {
   const routing = useRoutes([
@@ -27,6 +28,10 @@ export default function Router() {
           path: "/course-detail/:course",
           element: <CourseDetail />,
         },
+        {
+          path: "/profile",
+          element: <Profile />
+        }
       ],
     },
 
