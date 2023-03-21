@@ -15,7 +15,7 @@ export default function CourseList(): JSX.Element {
   const [courses, setCourses] = useState<CourseListDto<ManageDto, CatalogDto>[]>([]);
   const [page, setPage] = useState(0);
   // 1 page = 10 perPage  <==> 1 page has 10 courses
-  const [perPage, setPerPage] = useState(8);
+  const [perPage, setPerPage] = useState(12);
 
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function CourseList(): JSX.Element {
 
   return (
     <div className="courseList ">
-      <AllCoursList courseState={courses.slice((page*perPage), (page*perPage) + 8)} />
+      <AllCoursList courseState={courses.slice((page*perPage), (page*perPage) + 12)} />
       <Pagination currentPage={page + 1} totalPages={(Math.round(courses.length/perPage))} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} />
     </div>
   );

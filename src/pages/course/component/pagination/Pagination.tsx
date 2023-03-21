@@ -1,5 +1,6 @@
 import React, {  } from "react";
 import PropTypes from "prop-types";
+import "./pagination.scss"
 
  interface Props {
     currentPage: number;
@@ -15,7 +16,7 @@ import PropTypes from "prop-types";
     handleNextPage,
   }) => {
     return (
-      <div className="pagination-button-wrapper">
+      <div className="pagoination-content pagination-button-wrapper">
         <button
           className="pagination-button"
           onClick={() => handlePrevPage(currentPage)}

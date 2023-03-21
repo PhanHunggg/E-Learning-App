@@ -6,7 +6,7 @@ import {
   CourseListDto,
   ManageDto,
 } from "../../../../../interfaces/course";
-
+import "./allCourseList.scss"
 interface Props {
   courseState: CourseListDto<ManageDto, CatalogDto>[];
 }
@@ -18,7 +18,7 @@ export default function AllCoursList(props: Props) {
       return (
         <React.Fragment key={ele.maKhoaHoc}>
           {
-            <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">
+            <div className="col-xl-3 col-md-6 col-lg-4 cardEffect cardGlobalRes mt-4">
               <a href={`/course-detail/${ele.maKhoaHoc}`}>
                 <div className="card_header">
                   <img src={ele.hinhAnh} alt={ele.biDanh} />
