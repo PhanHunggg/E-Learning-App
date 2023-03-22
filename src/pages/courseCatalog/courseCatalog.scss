@@ -1,0 +1,17 @@
+.courseCatalogBtn {
+    display: inline-block;
+    border-radius: 25px;
+    padding: 12px 10px;
+    cursor: default;
+    border: 2px solid #e4e4e4;
+    outline: none;
+    transition: 0.5s linear;
+    font-weight: 500;
+    background-color: #ffff;
+    i {
+        color: #f6ba35;
+    }
+}
+.courseCatalogBtn:hover {
+    border: 2px solid  #e4e4e453;
+}
