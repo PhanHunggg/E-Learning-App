@@ -32,7 +32,7 @@ function Header(props: Props): JSX.Element {
     return courseState.courseCatalog.map((ele: CourseCatalogDto) => {
       return (
         <li key={ele.maDanhMuc}>
-          <a className="dropdown-item" href="#">
+          <a className="dropdown-item" href={`/courseCatalog/${ele.maDanhMuc}`} >
             {ele.tenDanhMuc}
           </a>
         </li>
@@ -128,7 +128,7 @@ function Header(props: Props): JSX.Element {
             </ul>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Khóa học</a>
+            <a className="nav-link" href="/course">Khóa học</a>
           </li>
 
           <li className="nav-item">
