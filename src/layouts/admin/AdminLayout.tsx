@@ -1,16 +1,12 @@
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { UserOutlined, CalendarOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
-const { Header, Content, Footer, Sider } = Layout;
+import "./AdminLayout.scss";
+
+const { Content, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -29,17 +25,22 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("Danh Sách Người Dùng", "/admin/user-management", <UserOutlined />),
-  getItem("Danh Sách Khóa Học", "/admin/learning-management", <UserOutlined />),
+  getItem("Người Dùng", "/admin/user-management", <UserOutlined />),
+  getItem("Khóa Học", "/admin/learning-management", <CalendarOutlined />),
 ];
 
 export default function AdminLayout(): JSX.Element {
   const navigate = useNavigate();
 
   const [collapsed, setCollapsed] = useState(false);
+
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <Sider>
+    <Layout className="layoutMain" style={{ minHeight: "100vh" }}>
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={(value) => setCollapsed(value)}
+      >
         <div className="logo" />
         <Menu
           onClick={(items) => navigate(items.key)}

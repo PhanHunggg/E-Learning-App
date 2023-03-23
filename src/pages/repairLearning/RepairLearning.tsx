@@ -4,27 +4,60 @@ import {
   Form,
   Input,
   InputNumber,
-  notification,
   Select,
   Image,
+  notification,
 } from "antd";
-import React, { useState } from "react";
-import { addCourseApi, updateImgApi } from "../../services/course ";
+import React, { useEffect, useState } from "react";
+import {
+  fetchCourseInformationApi,
+  updateCourseApi,
+  updateImgApi,
+} from "../../services/course ";
 
-import { CatalogDto, CourseListDto, ManageDto } from "../../interfaces/course";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/config";
 import { useNavigate } from "react-router-dom";
 import "../addLearningManagement/addLearningManagement.scss";
 import TextArea from "antd/es/input/TextArea";
+import { CatalogDto, CourseListDto, ManageDto } from "../../interfaces/course";
 
 type SizeType = Parameters<typeof Form>[0]["size"];
 
-export default function AddLearningManagement() {
+interface Props {
+  id: string;
+}
+
+export default function RepairLearning(props: Props): JSX.Element {
+  const [profile, setProfile] = useState<any>();
   const [file, setFile] = useState<any>();
   const [imgPreview, setImgPreview] = useState<string>();
   const navigate = useNavigate();
   const stateEdu = useSelector((state: RootState) => state.eduReducer);
+  const [form] = Form.useForm();
+
+  const getProfile = async () => {
+    const result: any = await fetchCourseInformationApi(props.id);
+    setProfile(result.data);
+    form.setFieldsValue({
+      maKhoaHoc: result.data.maKhoaHoc,
+      biDanh: result.data.biDanh,
+      tenKhoaHoc: result.data.tenKhoaHoc,
+      moTa: result.data.moTa,
+      luotXem: result.data.luotXem,
+      danhGia: result.data.danhGia,
+      maNhom: result.data.maNhom,
+      ngayTao: result.data.ngayTao,
+      maDanhMucKhoaHoc: result.data.danhMucKhoaHoc?.tenDanhMucKhoaHoc,
+      nguoiTao: result.data.nguoiTao?.maLoaiNguoiDung,
+    });
+  };
+
+  useEffect(() => {
+    if (props.id) {
+      getProfile();
+    }
+  }, [props.id]);
 
   const handleFile = (event: any) => {
     setFile(event.target.files[0]);
@@ -34,7 +67,6 @@ export default function AddLearningManagement() {
     reader.readAsDataURL(event.target.files[0]);
 
     reader.onload = (event: any) => {
-      console.log(event);
       setImgPreview(event.target?.result);
     };
   };
@@ -42,7 +74,7 @@ export default function AddLearningManagement() {
   const renderCatalogList = () => {
     return stateEdu.courseCatalog?.map((ele) => {
       return (
-        <Select.Option value={`${ele.maDanhMuc}`} key={`${ele.maDanhMuc}`}>
+        <Select.Option value={`${ele.tenDanhMuc}`} key={`${ele.maDanhMuc}`}>
           {ele.tenDanhMuc}
         </Select.Option>
       );
@@ -57,7 +89,7 @@ export default function AddLearningManagement() {
     setComponentSize(size);
   };
 
-  const handleFinish = async (values: CourseListDto<ManageDto, CatalogDto>) => {
+  const handleFinish = async (values: any) => {
     // values.ngayTao = values.ngayTao.format("DD/MM/YYYY");
 
     const data: any = {
@@ -67,32 +99,19 @@ export default function AddLearningManagement() {
       moTa: values.moTa,
       luotXem: values.luotXem,
       danhGia: values.danhGia,
-      hinhAnh: file.name,
+      hinhAnh: file ? file.name : profile?.hinhAnh,
       maNhom: values.maNhom,
-      ngayTao: "30/06/2003",
-      maDanhMucKhoaHoc: values.danhMucKhoaHoc,
+      ngayTao: values.ngayTao,
+      maDanhMucKhoaHoc: profile?.danhMucKhoaHoc.maDanhMucKhoahoc,
       taiKhoanNguoiTao: stateEdu.userInfo?.taiKhoan,
     };
 
-    const data1 = { ...stateEdu };
-    const idx = data1.courseList.findIndex(
-      (ele) => ele.maKhoaHoc === values.maKhoaHoc
-    );
-
-    if (stateEdu.courseList[idx]?.maKhoaHoc === values?.maKhoaHoc) {
-      notification.error({
-        message: "Mã khóa học đã tồn tại",
-      });
-      return;
-    }
-
     try {
       handleImg(values);
-      await addCourseApi(data);
+      await updateCourseApi(data);
       notification.success({
-        message: "Thêm khóa học thành công",
+        message: "Cập nhật thành công",
       });
-      navigate("/admin/learning-management");
     } catch (error: any) {
       notification.error({
         message: error.response.data,
@@ -108,26 +127,28 @@ export default function AddLearningManagement() {
 
     await updateImgApi(formData);
   };
+
   return (
     <Form
-      layout="horizontal"
+      onFinish={handleFinish}
       initialValues={{
         size: componentSize,
         maKhoaHoc: "",
         biDanh: "",
         tenKhoaHoc: "",
         moTa: "",
-        luotXem: "",
-        danhGia: "",
+        luotXem: 0,
+        danhGia: 0,
         hinhAnh: "",
         maNhom: "",
         ngayTao: "",
         maDanhMucKhoaHoc: "",
         taiKhoanNguoiTao: "",
       }}
+      form={form}
+      layout="horizontal"
       onValuesChange={onFormLayoutChange}
       size={componentSize as SizeType}
-      onFinish={handleFinish}
     >
       <div className="all__item">
         <div className="item__left">
@@ -151,14 +172,6 @@ export default function AddLearningManagement() {
             <span className="icon__form">
               <i className="fa fa-key"></i>
             </span>
-            <Form.Item name="danhGia">
-              <InputNumber placeholder="Đánh giá" className="danhGia" />
-            </Form.Item>
-          </div>
-          <div className="item__learning">
-            <span className="icon__form">
-              <i className="fa fa-key"></i>
-            </span>
             <Form.Item name="tenKhoaHoc">
               <Input placeholder="Tên khóa học" />
             </Form.Item>
@@ -173,6 +186,14 @@ export default function AddLearningManagement() {
                 placeholder="Lượt xem"
                 className="luotXem"
               />
+            </Form.Item>
+          </div>
+          <div className="item__learning">
+            <span className="icon__form">
+              <i className="fa fa-key"></i>
+            </span>
+            <Form.Item name="danhGia">
+              <InputNumber placeholder="Đánh giá" className="danhGia" />
             </Form.Item>
           </div>
         </div>
@@ -192,7 +213,7 @@ export default function AddLearningManagement() {
             <span className="icon__form">
               <i className="fa fa-key"></i>
             </span>
-            <Form.Item name="danhMucKhoaHoc">
+            <Form.Item name="maDanhMucKhoaHoc">
               <Select className="same_option" placeholder="Danh mục khóa học">
                 {renderCatalogList()}
               </Select>
@@ -214,8 +235,9 @@ export default function AddLearningManagement() {
             <span className="icon__form">
               <i className="fa fa-key"></i>
             </span>
+
             <Form.Item className="date" name="ngayTao">
-              <DatePicker />
+              <Input />
             </Form.Item>
           </div>
           <div className="item__image">
@@ -231,10 +253,7 @@ export default function AddLearningManagement() {
       </div>
       <div className="item__describe">
         <div className="icon__form">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
-            alt="REACTJS"
-          />
+          <img src={`${profile?.hinhAnh}`} alt="REACTJS" />
         </div>
         <Form.Item className="moTa" name="moTa">
           <TextArea placeholder="Mô tả" rows={4} />
@@ -242,7 +261,7 @@ export default function AddLearningManagement() {
       </div>
       <Form.Item className="button">
         <Button type="primary" htmlType="submit">
-          Thêm khóa học
+          Cập nhật
         </Button>
       </Form.Item>
     </Form>

@@ -12,13 +12,14 @@ import "./header.scss";
 export default function Header(): JSX.Element {
   const dispatch = useDispatch<RootDispatch>();
   const courseState = useSelector((state: RootState) => state.eduReducer);
+  console.log(courseState);
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetchCourseCatalogAction());
   }, []);
 
   const renderCourseCatalog = (): JSX.Element[] => {
-    return courseState.courseCatalog.map((ele: CourseCatalogDto) => {
+    return courseState.courseCatalog?.map((ele: CourseCatalogDto) => {
       return (
         <li key={ele.maDanhMuc}>
           <a className="dropdown-item" href="#">
@@ -94,7 +95,7 @@ export default function Header(): JSX.Element {
             <a className="nav-link disabled">Thông tin</a>
           </li>
         </ul>
-        {Object.keys(courseState?.userInfo).length ? (
+        {courseState.userInfo ? (
           <button
             onClick={() => dispatch(eduAction.handleLogOut())}
             className="btn btn-warning"

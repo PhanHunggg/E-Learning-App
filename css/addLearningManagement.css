@@ -1,0 +1,111 @@
+.ant-modal {
+  width: 50% !important;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item {
+  display: flex;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__left {
+  width: 50%;
+  margin-right: 10px;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__right {
+  width: 50%;
+  margin-left: 10px;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning {
+  display: flex;
+  width: 100%;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .ant-input {
+  padding: 7px 0;
+  border-radius: 0 6px 6px 0;
+  padding-left: 10px;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .icon__form {
+  padding: 10px 10px;
+  background-color: #e9ecef;
+  text-align: center;
+  border-radius: 6px 0 0 6px;
+  height: 38px;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .icon__form i {
+  font-size: 21px !important;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .ant-form-item {
+  width: 90%;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .same_option .ant-select-selector {
+  border-radius: 0 6px 6px 0;
+  height: 38px;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .same_option .ant-select-selector .ant-select-selection-placeholder {
+  line-height: 35px;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .danhGia {
+  padding: 3px 0;
+  padding-left: 10px;
+  border-radius: 0 6px 6px 0;
+  width: 100%;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .danhGia .ant-input-number-input {
+  padding: 0;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .luotXem {
+  padding: 3px 0;
+  padding-left: 10px;
+  border-radius: 0 6px 6px 0;
+  width: 100%;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .luotXem .ant-input-number-input {
+  padding: 0;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .date .ant-picker {
+  width: 100%;
+  height: 38px;
+  border-radius: 0 6px 6px 0;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .hinhAnh .ant-input {
+  padding: 4px 0;
+  padding-left: 10px;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__image {
+  margin-bottom: 20px;
+}
+.ant-modal .ant-modal-content .ant-modal-body .text__moTa {
+  height: 50px;
+  background-color: #f7f7f7;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+.ant-modal .ant-modal-content .ant-modal-body .text__moTa h5 {
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+.ant-modal .ant-modal-content .ant-modal-body .item__describe {
+  display: flex;
+  width: 100%;
+}
+.ant-modal .ant-modal-content .ant-modal-body .item__describe .icon__form {
+  width: 25%;
+}
+.ant-modal .ant-modal-content .ant-modal-body .item__describe .icon__form img {
+  width: 100%;
+}
+.ant-modal .ant-modal-content .ant-modal-body .item__describe .moTa {
+  width: 100%;
+}
+.ant-modal .ant-modal-content .ant-modal-body .item__describe .moTa .ant-input {
+  margin-left: 10px;
+  height: 125px;
+  max-width: 98%;
+}
+.ant-modal .ant-modal-content .ant-modal-body .button {
+  display: flex;
+  justify-content: end;
+}
+.ant-modal .ant-modal-content .ant-modal-body .button .ant-btn {
+  font-size: 15px;
+  font-weight: 500;
+}/*# sourceMappingURL=addLearningManagement.css.map */

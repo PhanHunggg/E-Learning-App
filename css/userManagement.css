@@ -1,50 +1,64 @@
-.userList thead tr th {
-  font-size: 18px;
-  font-weight: 700;
-  text-align: center !important;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+.header__admin .ant-input-affix-wrapper {
+  width: 25%;
+  height: 35px;
+  margin-left: 20%;
 }
-.userList tbody tr :nth-child(2) {
-  width: 12%;
+
+.ant-table-wrapper .ant-table-thead tr {
+  height: 80px;
+  max-height: 80px;
+  min-height: 80px;
 }
-.userList tbody tr :nth-child(3) {
-  width: 12%;
-}
-.userList tbody tr :nth-child(4) {
-  width: 12%;
-}
-.userList tbody tr :nth-child(5) {
-  width: 14%;
-}
-.userList tbody tr :nth-child(7) {
-  padding: 16px 0;
-  width: 50%;
-}
-.userList tbody tr td {
-  padding: 16px 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+.ant-table-wrapper .ant-table-thead tr th {
   text-align: center;
-  font-size: 18px;
+  border: 1px solid #dee2e6;
+  font-size: 15px;
+  font-weight: 700;
+}
+.ant-table-wrapper .ant-table-tbody tr {
+  width: 100%;
   font-weight: 600;
+  font-size: 16px;
 }
-.userList tbody tr td img {
-  position: absolute;
-  background-size: cover;
-  width: 120%;
-  top: 0;
-  left: 0;
-  overflow: hidden;
+.ant-table-wrapper .ant-table-tbody tr td {
+  border: 1px solid #dee2e6;
+  text-align: center;
 }
-.userList tbody tr td .add-user {
-  width: 27% !important;
-  background-color: #41b294;
+.ant-table-wrapper .ant-table-tbody tr .Stt {
+  width: 7%;
+}
+.ant-table-wrapper .ant-table-tbody tr .taiKhoan {
+  width: 17%;
+}
+.ant-table-wrapper .ant-table-tbody tr .maLoaiNguoiDung {
+  width: 10%;
+}
+.ant-table-wrapper .ant-table-tbody tr .hoTen {
+  width: 15%;
+}
+.ant-table-wrapper .ant-table-tbody tr .email {
+  width: 20%;
+}
+.ant-table-wrapper .ant-table-tbody tr .soDt {
+  width: 10%;
+}
+.ant-table-wrapper .ant-table-tbody tr .chucNang {
+  width: 21%;
+}
+.ant-table-wrapper .ant-table-tbody tr .chucNang .repair {
   transition: all 0.3s;
-}
-.userList tbody tr td .add-user:hover {
-  background-color: #30826c;
-}
-.userList tbody tr td button {
-  width: 18% !important;
   margin-right: 5px;
+  font-weight: 600;
+  background-color: green;
   color: white;
+}
+.ant-table-wrapper .ant-table-tbody tr .chucNang .repair:hover {
+  background-color: rgb(3, 103, 3) !important;
+  color: white;
+}
+.ant-table-wrapper .ant-table-tbody tr .chucNang .delete {
+  color: white;
+  transition: all 0.3s;
+  margin-right: 5px;
+  font-weight: 600;
 }/*# sourceMappingURL=userManagement.css.map */

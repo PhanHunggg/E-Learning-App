@@ -1,0 +1,142 @@
+@import "../../scss/mixins";
+
+.ant-modal {
+    width: 50% !important;
+
+    .ant-modal-content {
+        .ant-modal-body {
+            .all__item {
+                display: flex;
+
+                .item__left {
+                    width: 50%;
+                    margin-right: 10px;
+                }
+
+                .item__right {
+                    width: 50%;
+                    margin-left: 10px;
+                }
+
+                .item__learning {
+                    display: flex;
+                    width: 100%;
+
+                    .ant-input {
+                        @include input;
+                        padding-left: 10px;
+                    }
+
+
+                    .icon__form {
+                        @include span
+                    }
+
+                    .ant-form-item {
+                        width: 90%;
+                    }
+
+                    .same_option {
+                        .ant-select-selector {
+                            border-radius: 0 6px 6px 0;
+                            height: 38px;
+
+                            .ant-select-selection-placeholder {
+                                line-height: 35px;
+                            }
+                        }
+                    }
+
+                    .danhGia {
+                        padding: 3px 0;
+                        padding-left: 10px;
+                        border-radius: 0 6px 6px 0;
+                        width: 100%;
+
+                        .ant-input-number-input {
+                            padding: 0
+                        }
+                    }
+
+                    .luotXem {
+                        padding: 3px 0;
+                        padding-left: 10px;
+                        border-radius: 0 6px 6px 0;
+                        width: 100%;
+
+                        .ant-input-number-input {
+                            padding: 0
+                        }
+                    }
+
+                    .date {
+                        .ant-picker {
+                            width: 100%;
+                            height: 38px;
+                            border-radius: 0 6px 6px 0;
+                        }
+                    }
+
+                    .hinhAnh {
+                        .ant-input {
+                            padding: 4px 0;
+                            padding-left: 10px;
+                        }
+                    }
+                }
+
+                .item__image {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .text__moTa {
+                height: 50px;
+                background-color: #f7f7f7;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+
+                h5 {
+                    text-align: center;
+                    width: 100%;
+                    margin: 0;
+                }
+            }
+
+            .item__describe {
+                display: flex;
+                width: 100%;
+
+                .icon__form {
+                    width: 25%;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .moTa {
+                    width: 100%;
+
+                    .ant-input {
+                        margin-left: 10px;
+                        height: 125px;
+                        max-width: 98%;
+                    }
+                }
+            }
+
+            .button {
+                display: flex;
+                justify-content: end;
+
+                .ant-btn {
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+            }
+
+        }
+    }
+}

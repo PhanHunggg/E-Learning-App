@@ -1,3 +1,4 @@
+import { GROUP_ID } from "./../constants/index";
 import {
   CatalogDto,
   CourseCatalogDto,
@@ -6,8 +7,6 @@ import {
 } from "./../interfaces/course";
 import { AxiosPromise } from "axios";
 import { axiosRequest } from "../configs/axios.config";
-import { GROUP_ID } from "../constants";
-import { MaLoaiNguoiDung, UserList } from "../interfaces/userList";
 
 export const fetchCourseCatalogApi = (): AxiosPromise<CourseCatalogDto[]> => {
   return axiosRequest({
@@ -25,11 +24,11 @@ export const fetchCourseListApi = (): AxiosPromise<
   });
 };
 
-export const fetchUserListApi = (): AxiosPromise<
-  Array<UserList<MaLoaiNguoiDung>>
-> => {
+export const fetchCourseInformationApi = (
+  id: string
+): AxiosPromise<CourseListDto<ManageDto, CatalogDto>> => {
   return axiosRequest({
-    url: `/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP_ID}`,
+    url: `/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${id}`,
     method: "GET",
   });
 };
@@ -41,5 +40,37 @@ export const addCourseApi = (
     url: `/QuanLyKhoaHoc/ThemKhoaHoc`,
     method: "POST",
     data: data,
+  });
+};
+
+export const updateImgApi = (img: any): AxiosPromise => {
+  return axiosRequest({
+    url: `/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc`,
+    method: "POST",
+    data: img,
+  });
+};
+
+export const deleteCourseApi = (course: any): AxiosPromise => {
+  return axiosRequest({
+    url: `/QuanLyKhoaHoc/XoaKhoaHoc?maKhoaHoc=${course}`,
+    method: "DELETE",
+  });
+};
+
+export const updateCourseApi = (data: any): AxiosPromise => {
+  return axiosRequest({
+    url: "/QuanLyKhoaHoc/CapNhatKhoaHoc",
+    method: "PUT",
+    data: data,
+  });
+};
+
+export const findCourseApi = (
+  data: string
+): AxiosPromise<CourseListDto<ManageDto, CatalogDto>> => {
+  return axiosRequest({
+    url: `/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${data}&MaNhom=${GROUP_ID}`,
+    method: "GET",
   });
 };

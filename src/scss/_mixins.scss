@@ -1,0 +1,16 @@
+@mixin span() {
+    padding: 10px 10px;
+    background-color: #e9ecef;
+    text-align: center;
+    border-radius: 6px 0 0 6px;
+    height: 38px;
+
+    i {
+        font-size: 21px !important;
+    }
+}
+
+@mixin input() {
+    padding: 7px 0;
+    border-radius: 0 6px 6px 0;
+}

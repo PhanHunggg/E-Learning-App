@@ -1,0 +1,144 @@
+.infoCoureBox {
+  width: 100%;
+  height: 475px;
+}
+.infoCoureBox .row {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.infoCoureBox .row .left {
+  padding-right: 0;
+}
+.infoCoureBox .row .left .infoLargeItem {
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(65, 178, 148);
+  width: 100%;
+  height: 100%;
+}
+.infoCoureBox .row .left .infoLargeItem::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: -160%;
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  transition: all 0.5;
+  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 0, hsla(0, 0%, 100%, 0.3));
+  transform: skewX(-17deg);
+}
+.infoCoureBox .row .left .infoLargeItem:hover::before {
+  animation: shine 1.5s;
+}
+.infoCoureBox .row .left .infoLargeItem .content {
+  position: relative;
+  padding: 35px;
+  color: #fff;
+  z-index: 1;
+}
+.infoCoureBox .row .left .infoLargeItem .content h3 {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.infoCoureBox .row .left .infoLargeItem .content p {
+  font-weight: 300;
+  line-height: 27px;
+  font-size: 16px;
+}
+.infoCoureBox .row .left .infoLargeItem .content p span {
+  font-weight: 500;
+}
+.infoCoureBox .row .left .infoLargeItem .content ul {
+  list-style: none;
+  line-height: 25px;
+}
+.infoCoureBox .row .left .infoLargeItem .content ul i {
+  padding-right: 7px;
+}
+.infoCoureBox .row .left .infoLargeItem .astronaut {
+  position: absolute;
+  bottom: 48px;
+  right: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.infoCoureBox .row .left .infoLargeItem .astronaut img {
+  width: 182px;
+  height: 182px;
+}
+.infoCoureBox .row .right {
+  padding-left: 0;
+}
+.infoCoureBox .row .right .row {
+  justify-content: space-around;
+}
+.infoCoureBox .row .right .row .item {
+  padding: 0;
+}
+.infoCoureBox .row .right .row .item.itemA {
+  margin-bottom: 15px;
+}
+.infoCoureBox .row .right .row .item.itemB {
+  margin-bottom: 15px;
+}
+.infoCoureBox .row .right .row .item .infoSmallItemA {
+  background-color: rgb(65, 178, 148);
+  width: 100%;
+  height: 100%;
+  background-color: rgb(246, 186, 53);
+  width: 430px;
+}
+.infoCoureBox .row .right .row .item .infoLargeItemB {
+  background-color: rgb(65, 178, 148);
+  width: 100%;
+  height: 100%;
+  background-color: rgb(92, 130, 149);
+  width: 430px;
+}
+.infoCoureBox .row .right .row .item .items {
+  position: relative;
+  overflow: hidden;
+}
+.infoCoureBox .row .right .row .item .items::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: -160%;
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  transition: all 0.5;
+  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 0, hsla(0, 0%, 100%, 0.3));
+  transform: skewX(-17deg);
+}
+.infoCoureBox .row .right .row .item .items:hover::before {
+  animation: shine 1.5s;
+}
+.infoCoureBox .row .right .row .item .items .content {
+  color: #fff;
+  padding: 20px;
+}
+.infoCoureBox .row .right .row .item .items .content h3 {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.infoCoureBox .row .right .row .item .items .content ul {
+  list-style: none;
+}
+.infoCoureBox .row .right .row .item .items .content ul i {
+  padding-right: 5px;
+  font-size: 18px;
+}
+
+@keyframes shine {
+  0% {
+    left: -160%;
+  }
+  100% {
+    left: 120%;
+  }
+}/*# sourceMappingURL=infoCoureBox.css.map */

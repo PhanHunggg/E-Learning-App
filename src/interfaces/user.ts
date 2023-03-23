@@ -1,6 +1,12 @@
 export interface userLoginDto {
   taiKhoan: string;
   matKhau: string;
+  accessToken: string;
+  email: string;
+  hoTen: string;
+  maLoaiNguoiDung: string;
+  maNhom: string;
+  soDT: string;
 }
 
 export interface userInfoDto {

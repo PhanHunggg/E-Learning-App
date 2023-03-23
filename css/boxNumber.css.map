@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/pages/home/component/boxNumber/boxNumber.scss","boxNumber.css"],"names":[],"mappings":"AACE;EACE,aAAA;EACA,yBAAA;EACA,UAAA;ACAJ;ADCI;EACE,kBAAA;ACCN;ADAM;EACE,WAAA;EACA,YAAA;ACER;ADAM;EACE,SAAA;EACA,gBAAA;ACER;ADAM;EACE,cAAA;EACA,eAAA;ACER;ADDQ;EACE,gBAAA;ACGV","file":"boxNumber.css"}

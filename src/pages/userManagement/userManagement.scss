@@ -1,73 +1,86 @@
-.userList {
-    thead {
+.header__admin {
+    .ant-input-affix-wrapper {
+        width: 25%;
+        height: 35px;
+        margin-left: 20%;
+    }
+}
+
+.ant-table-wrapper {
+    .ant-table-thead {
         tr {
+            height: 80px;
+            max-height: 80px;
+            min-height: 80px;
+
             th {
-                font-size: 18px;
+                text-align: center;
+                border: 1px solid #dee2e6;
+                font-size: 15px;
                 font-weight: 700;
-                text-align: center !important;
-                border: 1px solid rgba(0, 0, 0, 0.1);
             }
         }
     }
 
-    tbody {
+    .ant-table-tbody {
         tr {
-
-            :nth-child(2) {
-                width: 12%;
-            }
-
-            :nth-child(3) {
-                width: 12%;
-            }
-
-            :nth-child(4) {
-                width: 12%;
-            }
-
-            :nth-child(5) {
-                width: 14%;
-            }
-
-            // :nth-child(6) {
-            //     width: 14%;
-            // }
-
-            :nth-child(7) {
-                padding: 16px 0;
-                width: 50%;
-            }
+            width: 100%;
+            font-weight: 600;
+            font-size: 16px;
 
             td {
-                padding: 16px 0;
-                border: 1px solid rgba(0, 0, 0, 0.1);
+                border: 1px solid #dee2e6;
                 text-align: center;
-                font-size: 18px;
-                font-weight: 600;
+            }
 
-                img {
-                    position: absolute;
-                    background-size: cover;
-                    width: 120%;
-                    top: 0;
-                    left: 0;
-                    overflow: hidden;
-                }
+            .Stt {
+                width: 7%;
+            }
 
-                .add-user {
-                    width: 27% !important;
-                    background-color: #41b294;
+            .taiKhoan {
+                width: 17%;
+            }
+
+            .maLoaiNguoiDung {
+                width: 10%;
+            }
+
+            .hoTen {
+                width: 15%;
+            }
+
+            .email {
+                width: 20%;
+            }
+
+            .soDt {
+                width: 10%;
+            }
+
+            .chucNang {
+                width: 21%;
+
+                .repair {
                     transition: all .3s;
+                    margin-right: 5px;
+                    font-weight: 600;
+                    background-color: green;
+                    color: white;
+
 
                     &:hover {
-                        background-color: #30826c;
+                        background-color: rgb(3, 103, 3) !important;
+                        color: white;
                     }
+
+
                 }
 
-                button {
-                    width: 18% !important;
-                    margin-right: 5px;
+                .delete {
                     color: white;
+                    transition: all .3s;
+                    margin-right: 5px;
+                    font-weight: 600;
                 }
             }
         }
