@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Left() {
     return (
-        <div className="col-4 left">
+        <div className="col-12 col-lg-4 left">
             <div className='infoLargeItem'>
 
                 <div className="content">

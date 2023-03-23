@@ -1,10 +1,21 @@
+<<<<<<< HEAD
 import { userLoginDto } from "./../../interfaces/user";
 import { fetchUserListApi, findUserApi, login } from "./../../services/user";
+=======
+import {
+  userInfoDto,
+  userLoginDto,
+  userProfileDto,
+} from "./../../interfaces/user";
+import { fetchUserProfileApi, login } from "./../../services/user";
+// import { RootState } from "./../config";
+>>>>>>> 27b8dc0577c1f7999059d37f70d80c6ecb95f86a
 import {
   CatalogDto,
   CourseCatalogDto,
   CourseListDto,
   ManageDto,
+  RegistrationCourseDetailDto,
 } from "./../../interfaces/course";
 import { UserList, MaLoaiNguoiDung } from "./../../interfaces/userList";
 import { RootState } from "./../config";
@@ -20,7 +31,11 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface EduState {
   courseCatalog: CourseCatalogDto[];
   courseList: CourseListDto<ManageDto, CatalogDto>[];
+<<<<<<< HEAD
   userInfo: userLoginDto | null;
+=======
+  userInfo: userInfoDto | null;
+>>>>>>> 27b8dc0577c1f7999059d37f70d80c6ecb95f86a
   UserList: Array<UserList<MaLoaiNguoiDung>>;
   findUserList: Array<userLoginDto>;
   findCourseList: CourseListDto<ManageDto, CatalogDto>[];
@@ -31,8 +46,12 @@ const DEFAULT_STATE = {
   courseCatalog: [],
   courseList: [],
   UserList: [],
+<<<<<<< HEAD
   findUserList: [],
   findCourseList: [],
+=======
+  
+>>>>>>> 27b8dc0577c1f7999059d37f70d80c6ecb95f86a
 } as EduState;
 
 export const fetchCourseCatalogAction = createAsyncThunk(
@@ -71,6 +90,7 @@ export const fetchUserListAction = createAsyncThunk(
   }
 );
 
+<<<<<<< HEAD
 export const findUserAction = createAsyncThunk(
   "eduReducer/findUserApi",
   async (data: string) => {
@@ -94,12 +114,19 @@ export const fetchCourseInformationAction = createAsyncThunk(
     return result.data;
   }
 );
+=======
+
+>>>>>>> 27b8dc0577c1f7999059d37f70d80c6ecb95f86a
 
 const eduSlice = createSlice({
   name: "eduReducer",
   initialState: DEFAULT_STATE,
   reducers: {
     handleLogOut(state: EduState) {
+<<<<<<< HEAD
+=======
+      localStorage.removeItem("USER_INFO_KEY");
+>>>>>>> 27b8dc0577c1f7999059d37f70d80c6ecb95f86a
       state.userInfo = null;
     },
   },
@@ -137,6 +164,7 @@ const eduSlice = createSlice({
       }
     );
 
+<<<<<<< HEAD
     builder.addCase(
       findUserAction.fulfilled,
       (state: EduState, action: PayloadAction<any>) => {
@@ -150,6 +178,8 @@ const eduSlice = createSlice({
         state.findCourseList = action.payload;
       }
     );
+=======
+>>>>>>> 27b8dc0577c1f7999059d37f70d80c6ecb95f86a
   },
 });
 

@@ -2,8 +2,10 @@ import { GROUP_ID } from "./../constants/index";
 import {
   CatalogDto,
   CourseCatalogDto,
+  CourseDetailDto,
   CourseListDto,
   ManageDto,
+  SignUpCourseDto,
 } from "./../interfaces/course";
 import { AxiosPromise } from "axios";
 import { axiosRequest } from "../configs/axios.config";
@@ -43,6 +45,7 @@ export const addCourseApi = (
   });
 };
 
+<<<<<<< HEAD
 export const updateImgApi = (img: any): AxiosPromise => {
   return axiosRequest({
     url: `/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc`,
@@ -74,3 +77,29 @@ export const findCourseApi = (
     method: "GET",
   });
 };
+=======
+export const fetchCourseDetailApi = (
+  course: string
+): AxiosPromise<CourseDetailDto<ManageDto, CatalogDto>> => {
+  return axiosRequest({
+    url: `/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${course}`,
+    method: "GET",
+  });
+};
+
+export const signUpCourseApi = (data: SignUpCourseDto): AxiosPromise => {
+  return axiosRequest({
+    url: "/QuanLyKhoaHoc/DangKyKhoaHoc",
+    method: "POST",
+    data,
+  });
+};
+
+export const cancelCourseApi = (data: SignUpCourseDto): AxiosPromise => {
+  return axiosRequest({
+    url: "/QuanLyKhoaHoc/HuyGhiDanh",
+    method: "POST",
+    data,
+  });
+};
+>>>>>>> 27b8dc0577c1f7999059d37f70d80c6ecb95f86a
