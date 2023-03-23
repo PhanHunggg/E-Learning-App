@@ -45,7 +45,6 @@ export const addCourseApi = (
   });
 };
 
-<<<<<<< HEAD
 export const updateImgApi = (img: any): AxiosPromise => {
   return axiosRequest({
     url: `/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc`,
@@ -77,7 +76,6 @@ export const findCourseApi = (
     method: "GET",
   });
 };
-=======
 export const fetchCourseDetailApi = (
   course: string
 ): AxiosPromise<CourseDetailDto<ManageDto, CatalogDto>> => {
@@ -102,4 +100,3 @@ export const cancelCourseApi = (data: SignUpCourseDto): AxiosPromise => {
     data,
   });
 };
->>>>>>> 27b8dc0577c1f7999059d37f70d80c6ecb95f86a
