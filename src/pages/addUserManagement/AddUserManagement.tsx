@@ -8,10 +8,8 @@ const { Option } = Select;
 
 type SizeType = Parameters<typeof Form>[0]["size"];
 
-export default function AddUserManagement() {
+export default function AddUserManagement(): JSX.Element {
   const [form] = Form.useForm();
-
-  console.log(form);
 
   const [componentSize, setComponentSize] = useState<SizeType | "default">(
     "default"
@@ -37,7 +35,6 @@ export default function AddUserManagement() {
       notification.success({
         message: "Thêm người dùng thành công",
       });
-      console.log(data);
     } catch (error: any) {
       notification.error({
         message: error.response.data,

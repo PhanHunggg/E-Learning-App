@@ -79,6 +79,14 @@ export const findUserAction = createAsyncThunk(
   }
 );
 
+export const findUserRepairAction = createAsyncThunk(
+  "eduReducer/findUserRepairApi",
+  async (data: string) => {
+    const result = await findUserApi(data);
+    return result.data;
+  }
+);
+
 export const findCourseAction = createAsyncThunk(
   "eduReducer/findCourseApi",
   async (data: string) => {

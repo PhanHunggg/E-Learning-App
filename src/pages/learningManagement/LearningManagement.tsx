@@ -12,8 +12,9 @@ import "./learningManagement.scss";
 import AddLearningManagement from "../addLearningManagement/AddLearningManagement";
 import { CatalogDto, CourseListDto, ManageDto } from "../../interfaces/course";
 import { deleteCourseApi } from "../../services/course ";
-import RepairLearning from "../repairLearning/RepairLearning";
+
 import Search from "antd/es/transfer/search";
+import RepairLearning from "../repairLearningmanagement/RepairLearning";
 
 export default function LearningManagement(): JSX.Element {
   const [id, setId] = useState<any>();

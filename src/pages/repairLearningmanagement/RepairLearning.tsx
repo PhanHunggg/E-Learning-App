@@ -1,6 +1,5 @@
 import {
   Button,
-  DatePicker,
   Form,
   Input,
   InputNumber,
@@ -14,10 +13,8 @@ import {
   updateCourseApi,
   updateImgApi,
 } from "../../services/course ";
-
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/config";
-import { useNavigate } from "react-router-dom";
 import "../addLearningManagement/addLearningManagement.scss";
 import TextArea from "antd/es/input/TextArea";
 import { CatalogDto, CourseListDto, ManageDto } from "../../interfaces/course";
@@ -32,7 +29,6 @@ export default function RepairLearning(props: Props): JSX.Element {
   const [profile, setProfile] = useState<any>();
   const [file, setFile] = useState<any>();
   const [imgPreview, setImgPreview] = useState<string>();
-  const navigate = useNavigate();
   const stateEdu = useSelector((state: RootState) => state.eduReducer);
   const [form] = Form.useForm();
 

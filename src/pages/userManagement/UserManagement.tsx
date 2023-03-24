@@ -6,15 +6,18 @@ import type { ColumnsType } from "antd/es/table";
 import {
   fetchUserListAction,
   findUserAction,
+  findUserRepairAction,
 } from "../../store/reducers/eduReducer";
 import { MaLoaiNguoiDung, UserList } from "../../interfaces/userList";
-
 import "./userManagement.scss";
-import AddUserManagement from "../addUserManagement copy/AddUserManagement";
+import AddUserManagement from "../addUserManagement/AddUserManagement";
 import { deleteUserApi } from "../../services/user";
 import Search from "antd/es/transfer/search";
+import RepairUserManagement from "../repairUserManagement/RepairUserManagement";
 
 export default function UserManagement(): JSX.Element {
+  const [id, setId] = useState<any>();
+
   const [keyWord, setKeyWord] = useState<any>();
 
   const dispatch = useDispatch<RootDispatch>();
@@ -22,6 +25,10 @@ export default function UserManagement(): JSX.Element {
   useEffect(() => {
     dispatch(fetchUserListAction());
   }, []);
+
+  useEffect(() => {
+    dispatch(findUserRepairAction(id?.taiKhoan));
+  }, [id]);
 
   useEffect(() => {
     dispatch(findUserAction(keyWord));
@@ -124,7 +131,9 @@ export default function UserManagement(): JSX.Element {
       className: "chucNang",
       render: (text) => (
         <>
-          <button className="btn repair">Sửa</button>
+          <button onClick={() => showModalRepair(text)} className="btn repair">
+            Sửa
+          </button>
           <button
             onClick={() => handleDeleteUser(text)}
             className="btn btn-danger delete"
@@ -160,6 +169,17 @@ export default function UserManagement(): JSX.Element {
     setKeyWord(event.target.value);
   };
 
+  const [open, setOpen] = useState(false);
+
+  const showModalRepair = (text: any) => {
+    setOpen(true);
+    setId(text);
+  };
+
+  const hideModal = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <div className="header__admin d-flex">
@@ -189,6 +209,14 @@ export default function UserManagement(): JSX.Element {
         onCancel={handleCancel}
       >
         <AddUserManagement />
+      </Modal>
+      <Modal
+        title="Sửa khóa học"
+        open={open}
+        onOk={hideModal}
+        onCancel={hideModal}
+      >
+        <RepairUserManagement id={id} />
       </Modal>
     </>
   );
