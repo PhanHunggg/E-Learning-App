@@ -1,5 +1,6 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLoading } from "../../../../contexts/loading/LoadingHook";
 import { CatalogDto, CourseListDto, ManageDto } from "../../../../interfaces/course";
 import { fetchCourseListApi } from "../../../../services/course ";
 import { RootDispatch, RootState } from "../../../../store/config";
@@ -18,13 +19,15 @@ export default function CourseList(): JSX.Element {
   const [perPage, setPerPage] = useState(12);
 
 
+  const { isLoading, setLoading } = useLoading();
   useEffect(() => {
-    // dispatch(fetchCourseListAction());
+    setLoading(true)
     renderCourses()
-  }, []);
+    setLoading(false)
+  }, [isLoading]);
 
   const renderCourses = async () => {
-    const {data} =  await fetchCourseListApi();
+    const { data } = await fetchCourseListApi();
     setCourses(data);
   }
 
@@ -40,8 +43,8 @@ export default function CourseList(): JSX.Element {
 
   return (
     <div className="courseList ">
-      <AllCoursList courseState={courses.slice((page*perPage), (page*perPage) + 12)} />
-      <Pagination currentPage={page + 1} totalPages={(Math.round(courses.length/perPage))} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} />
+      <AllCoursList courseState={courses.slice((page * perPage), (page * perPage) + 12)} />
+      <Pagination currentPage={page + 1} totalPages={(Math.round(courses.length / perPage))} handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} />
     </div>
   );
 }

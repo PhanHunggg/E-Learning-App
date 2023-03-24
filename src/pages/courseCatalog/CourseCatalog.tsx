@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useLoading } from "../../contexts/loading/LoadingHook";
 import {
   CatalogDto,
   CourseCatalogDto,
@@ -14,17 +15,18 @@ export default function CourseCatalog(): JSX.Element {
   const [course, setCourse] =
     useState<CourseListDto<ManageDto, CatalogDto>[]>();
 
+  const { isLoading, setLoading } = useLoading();
   useEffect(() => {
+    setLoading(true)
     getCourseByCatalog();
-  }, []);
+    setLoading(false)
+  }, [isLoading]);
 
   const getCourseByCatalog = async () => {
     const result = await fetchCourseByCatalogApi(params.course || "");
-    console.log(result);
     setCourse(result.data);
   };
 
-  console.log(course);
 
   const renderCourseByCatalog = () => {
     return course?.map((ele) => {
@@ -84,10 +86,10 @@ export default function CourseCatalog(): JSX.Element {
 
   return (
     <div className="course_list">
-          <div className="courseCateName">
-          {renderCourseName()}
+      <div className="courseCateName">
+        {renderCourseName()}
       </div>
-     
+
       <div className="row ">{renderCourseByCatalog()}</div>
     </div>
   );
