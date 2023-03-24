@@ -11,6 +11,8 @@ import CourseDetail from "../pages/course_detail/CourseDetail";
 import Profile from "../pages/profile/Profile";
 import Course from "../pages/course/Course";
 import CourseCatalog from "../pages/courseCatalog/CourseCatalog"
+import NoAuthGuard from "../guards/NoAuthGuard";
+import AuthGuard from "../guards/AuthGuard";
 
 export default function Router() {
   const routing = useRoutes([
@@ -23,12 +25,24 @@ export default function Router() {
           element: <HomePage />,
         },
         {
-          path: "/login",
-          element: <Login />,
+          path: "/",
+          element: <NoAuthGuard />,
+          children: [
+            {
+              path: "/login",
+              element: <Login />,
+            },
+          ]
         },
         {
-          path: "/course-detail/:course",
-          element: <CourseDetail />,
+          path: "/",
+          element: <AuthGuard />,
+          children: [
+            {
+              path: "/course-detail/:course",
+              element: <CourseDetail />,
+            },
+          ]
         },
         {
           path: "/profile",
@@ -40,7 +54,7 @@ export default function Router() {
         },
         {
           path: "courseCatalog/:course",
-         element: <CourseCatalog/>
+          element: <CourseCatalog />
         },
       ],
     },

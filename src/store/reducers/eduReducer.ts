@@ -1,15 +1,14 @@
 import { fetchUserListApi, findUserApi, login } from "./../../services/user";
+
 import {
   userInfoDto,
   userLoginDto,
-  userProfileDto,
 } from "./../../interfaces/user";
 import {
   CatalogDto,
   CourseCatalogDto,
   CourseListDto,
   ManageDto,
-  RegistrationCourseDetailDto,
 } from "./../../interfaces/course";
 import { UserList, MaLoaiNguoiDung } from "./../../interfaces/userList";
 import { RootState } from "./../config";
@@ -21,18 +20,19 @@ import {
 } from "./../../services/course ";
 
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { notification } from "antd";
 
 export interface EduState {
   courseCatalog: CourseCatalogDto[];
   courseList: CourseListDto<ManageDto, CatalogDto>[];
-  userInfo: userInfoDto | null;
+  userInfo: userInfoDto | undefined;
   UserList: Array<UserList<MaLoaiNguoiDung>>;
   findUserList: Array<userLoginDto>;
   findCourseList: CourseListDto<ManageDto, CatalogDto>[];
 }
 
 const DEFAULT_STATE = {
-  userInfo: null,
+  userInfo: undefined,
   courseCatalog: [],
   courseList: [],
   UserList: [],
@@ -62,9 +62,21 @@ export const fetchCourseListAction = createAsyncThunk(
 export const fetchUserInfoAction = createAsyncThunk(
   "eduReducer/fetchUserInfoAction",
   async (data: userLoginDto) => {
-    const result = await login(data);
-    localStorage.setItem("USER_INFO_KEY", JSON.stringify(result.data));
-    return result.data;
+    try {
+      const result = await login(data);
+      localStorage.setItem("USER_INFO_KEY", JSON.stringify(result.data));
+      notification.success({
+        message: "Đăng nhập thành công",
+        duration: 2,
+      });
+
+      return result.data;
+    } catch (error: any) {
+      notification.error({
+        message: error.response.data,
+        duration: 2,
+      });
+    }
   }
 );
 
@@ -106,7 +118,7 @@ const eduSlice = createSlice({
   reducers: {
     handleLogOut(state: EduState) {
       localStorage.removeItem("USER_INFO_KEY");
-      state.userInfo = null;
+      state.userInfo = undefined;
     },
   },
   extraReducers(builder) {
@@ -118,7 +130,7 @@ const eduSlice = createSlice({
     );
     builder.addCase(
       fetchUserInfoAction.fulfilled,
-      (state: EduState, action: PayloadAction<userLoginDto>) => {
+      (state: EduState, action: PayloadAction<userLoginDto | undefined>) => {
         state.userInfo = action.payload;
       }
     );

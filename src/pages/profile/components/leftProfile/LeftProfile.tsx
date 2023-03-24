@@ -13,7 +13,7 @@ export default function LeftProfile(props: Props) {
     return (
         <div className="col-lg-3 col-md-4 left">
             <div className="info">
-                <img src="./images/avatar.jpg" alt="" />
+                <img src="../images/avatar.jpg" alt="" />
                 <h5>{props.userProfile?.hoTen}</h5>
                 <p>Lập trình viên Front-end</p>
             </div>
