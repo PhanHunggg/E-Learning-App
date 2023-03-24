@@ -11,7 +11,7 @@ export default function Reference(props: Props) {
         return props.courseState?.courseList?.map((ele, idx) => {
             return <React.Fragment key={ele.maKhoaHoc}>
                 {
-                    (4 < idx && idx <= 9) && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">
+                    (5 < idx && idx <= 9) && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-4">
                         <Link to={`/course-detail/${ele.maKhoaHoc}`}>
                             <div className="card_header">
                                 <img src={ele.hinhAnh} alt={ele.biDanh} />

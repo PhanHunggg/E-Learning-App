@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
   userInfoDto,
   userLoginDto,
@@ -21,20 +23,21 @@ import {
 } from "./../../services/course ";
 
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { notification } from "antd";
 
 export interface EduState {
   courseCatalog: CourseCatalogDto[];
   courseList: CourseListDto<ManageDto, CatalogDto>[];
-  userInfo: userInfoDto | null;
+  userInfo: userInfoDto | undefined;
   UserList: Array<UserList<MaLoaiNguoiDung>>;
+ 
 }
 
 const DEFAULT_STATE = {
-  userInfo: null,
+  userInfo: undefined,
   courseCatalog: [],
   courseList: [],
   UserList: [],
-  
 } as EduState;
 
 export const fetchCourseCatalogAction = createAsyncThunk(
@@ -62,9 +65,21 @@ export const fetchCourseListAction = createAsyncThunk(
 export const fetchUserInfoAction = createAsyncThunk(
   "eduReducer/fetchUserInfoAction",
   async (data: userLoginDto) => {
-    const result = await login(data);
-    localStorage.setItem("USER_INFO_KEY", JSON.stringify(result.data));
-    return result.data;
+    try {
+      const result = await login(data);
+      localStorage.setItem("USER_INFO_KEY", JSON.stringify(result.data));
+      notification.success({
+        message: "Đăng nhập thành công",
+        duration: 2,
+      });
+
+      return result.data;
+    } catch (error: any) {
+      notification.error({
+        message: error.response.data,
+        duration: 2,
+      });
+    }
   }
 );
 export const fetchUserListAction = createAsyncThunk(
@@ -81,15 +96,13 @@ export const fetchUserListAction = createAsyncThunk(
   }
 );
 
-
-
 const eduSlice = createSlice({
   name: "eduReducer",
   initialState: DEFAULT_STATE,
   reducers: {
     handleLogOut(state: EduState) {
       localStorage.removeItem("USER_INFO_KEY");
-      state.userInfo = null;
+      state.userInfo = undefined;
     },
   },
   extraReducers(builder) {
@@ -101,7 +114,7 @@ const eduSlice = createSlice({
     );
     builder.addCase(
       fetchUserInfoAction.fulfilled,
-      (state: EduState, action: PayloadAction<userLoginDto>) => {
+      (state: EduState, action: PayloadAction<userLoginDto | undefined>) => {
         state.userInfo = action.payload;
       }
     );
@@ -125,7 +138,6 @@ const eduSlice = createSlice({
         state.UserList = action.payload;
       }
     );
-
   },
 });
 

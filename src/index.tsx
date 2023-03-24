@@ -9,6 +9,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import persistStore from 'redux-persist/es/persistStore';
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.js"
+import { LoadingProvider } from './contexts/loading/LoadingHook';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,7 +17,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <PersistGate persistor={persistStore(store)}>
-      <App />
+      <LoadingProvider>
+        <App />
+      </LoadingProvider>
     </PersistGate>
   </Provider>
 );

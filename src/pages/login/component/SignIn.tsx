@@ -1,32 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { Button, Form, Input, notification } from 'antd';
 
 import { userLoginDto } from '../../../interfaces/user';
-import { useDispatch } from 'react-redux';
-import { RootDispatch } from '../../../store/config';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootDispatch, RootState } from '../../../store/config';
 import { fetchUserInfoAction } from '../../../store/reducers/eduReducer';
 import { useNavigate } from 'react-router-dom';
 
 export default function SignIn() {
     const dispatch = useDispatch<RootDispatch>();
     const navigate = useNavigate()
+    const userInfo = useSelector((state: RootState) => state.eduReducer)
+
+    useEffect(() => {
+        if (userInfo.userInfo) navigate("/")
+    }, [userInfo.userInfo])
+
     const onFinish = async (values: userLoginDto) => {
+        dispatch(fetchUserInfoAction(values));
 
-        try {
-            dispatch(fetchUserInfoAction(values));
-
-            notification.success({
-                message: "Đăng nhập thành công!",
-                duration: 1,
-            })
-            navigate("/")
-        } catch (error: any) {
-            notification.error({
-                message: error.response.data,
-                duration: 2,
-            })
-        }
     };
     return (
         <Form

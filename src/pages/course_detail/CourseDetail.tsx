@@ -16,6 +16,8 @@ import { RootState } from "../../store/config";
 import { notification } from "antd";
 import { withViewport } from "../../HOCs/withViewport";
 import { IPHONE6, IPHONE6PLUS } from "../../constants";
+import { useLoading } from "../../contexts/loading/LoadingHook";
+
 
 interface Props {
   device: any;
@@ -27,19 +29,19 @@ function CourseDetail(props: Props): JSX.Element {
   const params = useParams();
   const eduState = useSelector((state: RootState) => state.eduReducer)
 
-
   const getCourseDetail = async () => {
 
     const result = await fetchCourseDetailApi(params.course || "");
-
-
-
     setCourse(result.data);
   };
 
+  const { isLoading, setLoading } = useLoading();
   useEffect(() => {
+    setLoading(true)
     getCourseDetail();
-  }, []);
+    setLoading(false)
+  }, [isLoading]);
+
 
   const handleSignUp = async () => {
     const data: SignUpCourseDto = {
