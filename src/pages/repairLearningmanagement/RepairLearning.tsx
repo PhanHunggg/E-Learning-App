@@ -18,6 +18,7 @@ import { RootState } from "../../store/config";
 import "../addLearningManagement/addLearningManagement.scss";
 import TextArea from "antd/es/input/TextArea";
 import { CatalogDto, CourseListDto, ManageDto } from "../../interfaces/course";
+import { promises } from "stream";
 
 type SizeType = Parameters<typeof Form>[0]["size"];
 
@@ -65,6 +66,8 @@ export default function RepairLearning(props: Props): JSX.Element {
     reader.onload = (event: any) => {
       setImgPreview(event.target?.result);
     };
+
+    console.log(imgPreview);
   };
 
   const renderCatalogList = () => {
@@ -86,8 +89,6 @@ export default function RepairLearning(props: Props): JSX.Element {
   };
 
   const handleFinish = async (values: any) => {
-    // values.ngayTao = values.ngayTao.format("DD/MM/YYYY");
-
     const data: any = {
       maKhoaHoc: values.maKhoaHoc,
       biDanh: values.biDanh,
@@ -103,8 +104,15 @@ export default function RepairLearning(props: Props): JSX.Element {
     };
 
     try {
-      handleImg(values);
-      await updateCourseApi(data);
+      await updateCourseApi(data).then(async () => {
+        const formData = new FormData();
+
+        formData.append("hinhAnh", file);
+        formData.append("tenKhoaHoc", values.tenKhoaHoc);
+
+        await updateImgApi(formData);
+      });
+
       notification.success({
         message: "Cập nhật thành công",
       });
@@ -113,15 +121,6 @@ export default function RepairLearning(props: Props): JSX.Element {
         message: error.response.data,
       });
     }
-  };
-
-  const handleImg = async (values: CourseListDto<ManageDto, CatalogDto>) => {
-    const formData = new FormData();
-
-    formData.append("hinhAnh", file);
-    formData.append("tenKhoaHoc", values.tenKhoaHoc);
-
-    await updateImgApi(formData);
   };
 
   return (
@@ -134,7 +133,7 @@ export default function RepairLearning(props: Props): JSX.Element {
         tenKhoaHoc: "",
         moTa: "",
         luotXem: 0,
-        danhGia: 0,
+        danhGia: 5,
         hinhAnh: "",
         maNhom: "",
         ngayTao: "",
@@ -182,14 +181,6 @@ export default function RepairLearning(props: Props): JSX.Element {
                 placeholder="Lượt xem"
                 className="luotXem"
               />
-            </Form.Item>
-          </div>
-          <div className="item__learning">
-            <span className="icon__form">
-              <i className="fa fa-key"></i>
-            </span>
-            <Form.Item name="danhGia">
-              <InputNumber placeholder="Đánh giá" className="danhGia" />
             </Form.Item>
           </div>
         </div>

@@ -1,10 +1,10 @@
 import { Button, Form, Input, notification, Select } from "antd";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { GROUP_ID } from "../../constants";
 import { userLoginDto } from "../../interfaces/user";
-import { addUserApi } from "../../services/user";
+import { updateUserApi } from "../../services/user";
 import { RootState } from "../../store/config";
-import { findUserAction } from "../../store/reducers/eduReducer";
 import "../addUserManagement/addUserManagement.scss";
 
 const { Option } = Select;
@@ -15,7 +15,6 @@ interface Props {
 }
 
 export default function RepairUserManagement(props: Props): JSX.Element {
-  const [profile, setProfile] = useState<any>();
   const [form] = Form.useForm();
   const [componentSize, setComponentSize] = useState<SizeType | "default">(
     "default"
@@ -24,20 +23,17 @@ export default function RepairUserManagement(props: Props): JSX.Element {
     setComponentSize(size);
   };
 
-  const stateUser = useSelector(
-    (state: RootState) => state.eduReducer.findUserList
-  );
-
-  console.log(stateUser);
+  const stateEdu = useSelector((state: RootState) => state.eduReducer);
 
   const getProfile = () => {
-    const result: any = stateUser;
-    setProfile(result.data);
+    const data = [...stateEdu.findUserRepairList];
+    const idx = data.findIndex((ele) => ele.taiKhoan === props.id.taiKhoan);
+    const result: any = data[idx];
     form.setFieldsValue({
       taiKhoan: result.taiKhoan,
       hoTen: result.hoTen,
       email: result.email,
-      soDT: result.soDT,
+      soDT: result.soDt,
       maLoaiNguoiDung: result.maLoaiNguoiDung,
       matKhau: result.matKhau,
       maNhom: result.tenLoaiNguoiDung,
@@ -57,21 +53,19 @@ export default function RepairUserManagement(props: Props): JSX.Element {
       soDT: values.soDT,
       maLoaiNguoiDung: values.maLoaiNguoiDung,
       matKhau: values.matKhau,
-      maNhom: "GP01",
+      maNhom: GROUP_ID,
     };
 
     try {
-      await addUserApi(data);
+      await updateUserApi(data);
       notification.success({
-        message: "Thêm người dùng thành công",
+        message: "Cập nhật thành công",
       });
-      console.log(data);
     } catch (error: any) {
       notification.error({
         message: error.response.data,
       });
     }
-    form.resetFields();
   };
 
   return (
@@ -176,7 +170,7 @@ export default function RepairUserManagement(props: Props): JSX.Element {
         </div>
         <Form.Item className="button">
           <Button type="primary" htmlType="submit">
-            Đăng ký
+            Cập nhật
           </Button>
         </Form.Item>
       </Form>

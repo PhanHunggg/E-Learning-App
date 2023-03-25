@@ -36,18 +36,26 @@
 
             .SttLearning {
                 width: 6%;
+                max-width: 6%;
+                min-width: 6%;
             }
 
             .maKhoaHoc {
                 width: 10%;
+                max-width: 10%;
+                min-width: 10%;
             }
 
             .tenKhoaHoc {
                 width: 16%;
+                max-width: 16%;
+                min-width: 16%;
             }
 
             .hinhAnh {
                 width: 21%;
+                max-width: 21%;
+                min-width: 21%;
                 overflow: hidden;
 
                 img {
@@ -62,10 +70,14 @@
 
             .hoTenLearning {
                 width: 15%;
+                max-width: 15%;
+                min-width: 15%;
             }
 
             .chucNangLearning {
                 width: 26%;
+                max-width: 26%;
+                min-width: 26%;
 
                 .repair {
                     transition: all .3s;

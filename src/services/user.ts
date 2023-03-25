@@ -51,3 +51,18 @@ export const findUserApi = (data: string): AxiosPromise<userLoginDto> => {
     method: "GET",
   });
 };
+
+export const findUserRepairApi = (): AxiosPromise<userLoginDto> => {
+  return axiosRequest({
+    url: `/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${GROUP_ID}`,
+    method: "GET",
+  });
+};
+
+export const updateUserApi = (data: any): AxiosPromise => {
+  return axiosRequest({
+    url: `/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+    method: "PUT",
+    data: data,
+  });
+};

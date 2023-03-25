@@ -27,11 +27,16 @@ export default function LearningManagement(): JSX.Element {
     Array<CourseListDto<ManageDto, CatalogDto>>
   >(stateEdu?.courseList);
 
-  const columns: ColumnsType<CourseListDto<ManageDto, CatalogDto>> = [
+  const columns: ColumnsType<any> = [
     {
       title: "STT",
       className: "SttLearning",
       key: "Stt",
+      render: (text, _, idx: number) => (
+        <>
+          <span>{idx + 1}</span>
+        </>
+      ),
     },
     {
       title: "Mã khóa học",
@@ -49,11 +54,7 @@ export default function LearningManagement(): JSX.Element {
       title: "Hình ảnh",
       className: "hinhAnh",
       key: "hinhAnh",
-      render: (text) => (
-        <>
-          <img src={`${text.hinhAnh}`} alt="#" />
-        </>
-      ),
+      render: (text) => <>{text.hinhAnh ? <img src={text.hinhAnh} /> : ""}</>,
     },
     {
       title: "Người tạo",
@@ -96,9 +97,7 @@ export default function LearningManagement(): JSX.Element {
     } else {
       try {
         await deleteCourseApi(course.maKhoaHoc);
-        data.splice(idx, 1);
         setCourseList(data);
-
         notification.success({
           message: "Xóa khóa học thành công",
         });
@@ -187,7 +186,7 @@ export default function LearningManagement(): JSX.Element {
         </Button>
         <Search
           onChange={handleChange}
-          placeholder="Nhập tài khóa học cần tìm"
+          placeholder="Nhập tên khóa học cần tìm"
         />
       </div>
       <Table

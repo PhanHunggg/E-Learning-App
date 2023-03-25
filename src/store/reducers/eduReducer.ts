@@ -1,5 +1,10 @@
 import { userLoginDto } from "./../../interfaces/user";
-import { fetchUserListApi, findUserApi, login } from "./../../services/user";
+import {
+  fetchUserListApi,
+  findUserApi,
+  findUserRepairApi,
+  login,
+} from "./../../services/user";
 import {
   CatalogDto,
   CourseCatalogDto,
@@ -23,6 +28,7 @@ export interface EduState {
   userInfo: userLoginDto | null;
   UserList: Array<UserList<MaLoaiNguoiDung>>;
   findUserList: Array<userLoginDto>;
+  findUserRepairList: Array<userLoginDto>;
   findCourseList: CourseListDto<ManageDto, CatalogDto>[];
 }
 
@@ -32,6 +38,7 @@ const DEFAULT_STATE = {
   courseList: [],
   UserList: [],
   findUserList: [],
+  findUserRepairList: [],
   findCourseList: [],
 } as EduState;
 
@@ -81,12 +88,11 @@ export const findUserAction = createAsyncThunk(
 
 export const findUserRepairAction = createAsyncThunk(
   "eduReducer/findUserRepairApi",
-  async (data: string) => {
-    const result = await findUserApi(data);
+  async () => {
+    const result = await findUserRepairApi();
     return result.data;
   }
 );
-
 export const findCourseAction = createAsyncThunk(
   "eduReducer/findCourseApi",
   async (data: string) => {
@@ -154,8 +160,18 @@ const eduSlice = createSlice({
 
     builder.addCase(
       findCourseAction.fulfilled,
-      (state: EduState, action: PayloadAction<any>) => {
+      (
+        state: EduState,
+        action: PayloadAction<Array<CourseListDto<ManageDto, CatalogDto>>>
+      ) => {
         state.findCourseList = action.payload;
+      }
+    );
+
+    builder.addCase(
+      findUserRepairAction.fulfilled,
+      (state: EduState, action: PayloadAction<any>) => {
+        state.findUserRepairList = action.payload;
       }
     );
   },

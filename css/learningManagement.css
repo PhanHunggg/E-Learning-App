@@ -25,15 +25,23 @@
 }
 .leaningList tbody tr .SttLearning {
   width: 6%;
+  max-width: 6%;
+  min-width: 6%;
 }
 .leaningList tbody tr .maKhoaHoc {
   width: 10%;
+  max-width: 10%;
+  min-width: 10%;
 }
 .leaningList tbody tr .tenKhoaHoc {
   width: 16%;
+  max-width: 16%;
+  min-width: 16%;
 }
 .leaningList tbody tr .hinhAnh {
   width: 21%;
+  max-width: 21%;
+  min-width: 21%;
   overflow: hidden;
 }
 .leaningList tbody tr .hinhAnh img {
@@ -45,9 +53,13 @@
 }
 .leaningList tbody tr .hoTenLearning {
   width: 15%;
+  max-width: 15%;
+  min-width: 15%;
 }
 .leaningList tbody tr .chucNangLearning {
   width: 26%;
+  max-width: 26%;
+  min-width: 26%;
 }
 .leaningList tbody tr .chucNangLearning .repair {
   transition: all 0.3s;

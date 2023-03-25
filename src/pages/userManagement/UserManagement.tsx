@@ -16,6 +16,8 @@ import Search from "antd/es/transfer/search";
 import RepairUserManagement from "../repairUserManagement/RepairUserManagement";
 
 export default function UserManagement(): JSX.Element {
+  const stateEdu = useSelector((state: RootState) => state.eduReducer);
+
   const [id, setId] = useState<any>();
 
   const [keyWord, setKeyWord] = useState<any>();
@@ -27,14 +29,12 @@ export default function UserManagement(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    dispatch(findUserRepairAction(id?.taiKhoan));
-  }, [id]);
+    dispatch(findUserRepairAction());
+  }, []);
 
   useEffect(() => {
     dispatch(findUserAction(keyWord));
   }, [keyWord]);
-
-  const stateEdu = useSelector((state: RootState) => state.eduReducer);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -78,11 +78,11 @@ export default function UserManagement(): JSX.Element {
       title: "STT",
       key: "Stt",
       className: "Stt",
-      // render: (_, idx: number) => (
-      //   <>
-      //     <p>{idx}</p>
-      //   </>
-      // ),
+      render: (text, _, idx: number) => (
+        <>
+          <span>{idx + 1}</span>
+        </>
+      ),
     },
     {
       title: "Tài khoản",
@@ -110,13 +110,7 @@ export default function UserManagement(): JSX.Element {
       title: "Email",
       key: "email",
       className: "email ",
-      render: (text) => (
-        <>
-          <div>
-            <span>{text.email}</span>
-          </div>
-        </>
-      ),
+      render: (text) => <>{text.email}</>,
     },
 
     {
@@ -211,7 +205,7 @@ export default function UserManagement(): JSX.Element {
         <AddUserManagement />
       </Modal>
       <Modal
-        title="Sửa khóa học"
+        title="Cập nhật khóa học"
         open={open}
         onOk={hideModal}
         onCancel={hideModal}

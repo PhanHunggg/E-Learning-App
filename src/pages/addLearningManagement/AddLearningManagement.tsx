@@ -74,40 +74,34 @@ export default function AddLearningManagement() {
       taiKhoanNguoiTao: stateEdu.userInfo?.taiKhoan,
     };
 
-    const data1 = { ...stateEdu };
-    const idx = data1.courseList.findIndex(
-      (ele) => ele.maKhoaHoc === values.maKhoaHoc
-    );
-
-    if (stateEdu.courseList[idx]?.maKhoaHoc === values?.maKhoaHoc) {
-      notification.error({
-        message: "Mã khóa học đã tồn tại",
-      });
-      return;
-    }
-
     try {
-      handleImg(values);
-      await addCourseApi(data);
+      await addCourseApi(data).then(async () => {
+        const formData = new FormData();
+
+        formData.append("hinhAnh", file);
+        formData.append("tenKhoaHoc", values.tenKhoaHoc);
+
+        try {
+          await updateImgApi(formData);
+        } catch (error: any) {
+          console.log(error.response.data);
+          notification.error({
+            message: error.response.data,
+          });
+        }
+      });
       notification.success({
         message: "Thêm khóa học thành công",
       });
       navigate("/admin/learning-management");
     } catch (error: any) {
+      console.log(error.response.data);
       notification.error({
         message: error.response.data,
       });
     }
   };
 
-  const handleImg = async (values: CourseListDto<ManageDto, CatalogDto>) => {
-    const formData = new FormData();
-
-    formData.append("hinhAnh", file);
-    formData.append("tenKhoaHoc", values.tenKhoaHoc);
-
-    await updateImgApi(formData);
-  };
   return (
     <Form
       layout="horizontal"
@@ -205,7 +199,8 @@ export default function AddLearningManagement() {
             </span>
             <Form.Item name="nguoiTao">
               <Select className="same_option" placeholder="Người tạo">
-                <Select.Option value="GV">{`${stateEdu.userInfo?.maLoaiNguoiDung}`}</Select.Option>
+                <Select.Option value="GV">Giáo viên</Select.Option>
+                <Select.Option value="HV">Học viên</Select.Option>
               </Select>
             </Form.Item>
           </div>

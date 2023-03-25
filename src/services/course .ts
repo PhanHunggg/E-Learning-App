@@ -67,8 +67,8 @@ export const updateCourseApi = (data: any): AxiosPromise => {
 };
 
 export const findCourseApi = (
-  data: string
-): AxiosPromise<CourseListDto<ManageDto, CatalogDto>> => {
+  data: any
+): AxiosPromise<CourseListDto<ManageDto, CatalogDto>[]> => {
   return axiosRequest({
     url: `/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${data}&MaNhom=${GROUP_ID}`,
     method: "GET",
