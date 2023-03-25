@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useLoading } from "../../contexts/loading/LoadingHook";
 import {
   CatalogDto,
   CourseCatalogDto,
@@ -8,28 +7,40 @@ import {
   ManageDto,
 } from "../../interfaces/course";
 import { fetchCourseByCatalogApi } from "../../services/courseCatalog";
-import "./courseCatalog.scss"
+import "./courseCatalog.scss";
 
 export default function CourseCatalog(): JSX.Element {
+  const [keyword, setKeyword] = useState<string>("");
+
   const params = useParams();
   const [course, setCourse] =
     useState<CourseListDto<ManageDto, CatalogDto>[]>();
 
-  const { isLoading, setLoading } = useLoading();
   useEffect(() => {
-    setLoading(true)
     getCourseByCatalog();
-    setLoading(false)
-  }, [isLoading]);
+  }, []);
 
   const getCourseByCatalog = async () => {
     const result = await fetchCourseByCatalogApi(params.course || "");
     setCourse(result.data);
   };
 
-
   const renderCourseByCatalog = () => {
-    return course?.map((ele) => {
+    const filterCourse = course?.filter((ele) => {
+      if (keyword.length !== 0) {
+        return (
+          ele.tenKhoaHoc
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/đ/g, "d")
+            .replace(/Đ/g, "D")
+            .toLowerCase()
+            .indexOf(keyword?.toLowerCase()) !== -1
+        );
+      }
+      return true;
+    });
+    return filterCourse?.map((ele) => {
       return (
         <React.Fragment key={ele.maKhoaHoc}>
           {
@@ -72,6 +83,10 @@ export default function CourseCatalog(): JSX.Element {
     });
   };
 
+  const handleChange = (event: any): void => {
+    setKeyword(event.target.value);
+  };
+
   const renderCourseName = () => {
     return course?.map((ele: CourseListDto<ManageDto, CatalogDto>, index) => {
       if (index !== 0) return "";
@@ -88,12 +103,16 @@ export default function CourseCatalog(): JSX.Element {
     <div className="course_list">
       <div className="courseCateName">
         {renderCourseName()}
+        <form className="form">
+          <input
+            onChange={handleChange}
+            type="text"
+            placeholder="Tìm khóa học..."
+          />
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </form>
       </div>
-
       <div className="row ">{renderCourseByCatalog()}</div>
     </div>
   );
 }
-
-// <a className="nav-link" href="/course">Khóa học</a>
-//   <a className="dropdown-item" href={`/courseCatalog/${ele.maDanhMuc}`} ></a>
