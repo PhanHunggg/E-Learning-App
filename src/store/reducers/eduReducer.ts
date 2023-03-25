@@ -1,15 +1,10 @@
+import { userLoginDto } from "./../../interfaces/user";
 import { fetchUserListApi, findUserApi, login } from "./../../services/user";
-import {
-  userInfoDto,
-  userLoginDto,
-  userProfileDto,
-} from "./../../interfaces/user";
 import {
   CatalogDto,
   CourseCatalogDto,
   CourseListDto,
   ManageDto,
-  RegistrationCourseDetailDto,
 } from "./../../interfaces/course";
 import { UserList, MaLoaiNguoiDung } from "./../../interfaces/userList";
 import { RootState } from "./../config";
@@ -25,7 +20,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface EduState {
   courseCatalog: CourseCatalogDto[];
   courseList: CourseListDto<ManageDto, CatalogDto>[];
-  userInfo: userInfoDto | null;
+  userInfo: userLoginDto | null;
   UserList: Array<UserList<MaLoaiNguoiDung>>;
   findUserList: Array<userLoginDto>;
   findCourseList: CourseListDto<ManageDto, CatalogDto>[];
@@ -70,7 +65,7 @@ export const fetchUserInfoAction = createAsyncThunk(
 
 export const fetchUserListAction = createAsyncThunk(
   "eduReducer/fetchUserListAction",
-  async (_, store) => {
+  async () => {
     const result = await fetchUserListApi();
     return result.data;
   }
@@ -83,6 +78,16 @@ export const findUserAction = createAsyncThunk(
     return result.data;
   }
 );
+
+// export const findUserRepairAction = createAsyncThunk(
+//   "eduReducer/findUserRepairApi",
+//   async (data: string, store) => {
+//     const rootState = store.getState() as RootState;
+//     if (rootState.eduReducer.findUserList.taiKhoan)
+//     // const result = await findUserApi(data);
+//     // return result.data;
+//   }
+// );
 
 export const findCourseAction = createAsyncThunk(
   "eduReducer/findCourseApi",
@@ -105,7 +110,6 @@ const eduSlice = createSlice({
   initialState: DEFAULT_STATE,
   reducers: {
     handleLogOut(state: EduState) {
-      localStorage.removeItem("USER_INFO_KEY");
       state.userInfo = null;
     },
   },
