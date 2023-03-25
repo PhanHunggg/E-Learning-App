@@ -46,9 +46,9 @@ function Header(props: Props): JSX.Element {
     return courseState.courseCatalog.map((ele: CourseCatalogDto) => {
       return (
         <li key={ele.maDanhMuc}>
-          <Link className="dropdown-item" to={`/courseCatalog/${ele.maDanhMuc}`} >
+          <a className="dropdown-item" href={`/courseCatalog/${ele.maDanhMuc}`} >
             {ele.tenDanhMuc}
-          </Link>
+          </a>
         </li>
       );
     });
