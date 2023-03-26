@@ -20,7 +20,6 @@ export default function AdminGuard(): JSX.Element {
       notification.warning({
         message: "Bạn không thể truy cập!",
       });
-
       navigate("/");
     }
   }, []);
