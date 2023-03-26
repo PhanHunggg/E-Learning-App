@@ -17,8 +17,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/config";
 import "../addLearningManagement/addLearningManagement.scss";
 import TextArea from "antd/es/input/TextArea";
-import { CatalogDto, CourseListDto, ManageDto } from "../../interfaces/course";
-import { promises } from "stream";
 
 type SizeType = Parameters<typeof Form>[0]["size"];
 
@@ -66,8 +64,6 @@ export default function RepairLearning(props: Props): JSX.Element {
     reader.onload = (event: any) => {
       setImgPreview(event.target?.result);
     };
-
-    console.log(imgPreview);
   };
 
   const renderCatalogList = () => {
@@ -104,14 +100,16 @@ export default function RepairLearning(props: Props): JSX.Element {
     };
 
     try {
-      await updateCourseApi(data).then(async () => {
-        const formData = new FormData();
+      file
+        ? await updateCourseApi(data).then(async () => {
+            const formData = new FormData();
 
-        formData.append("hinhAnh", file);
-        formData.append("tenKhoaHoc", values.tenKhoaHoc);
+            formData.append("hinhAnh", file);
+            formData.append("tenKhoaHoc", values.tenKhoaHoc);
 
-        await updateImgApi(formData);
-      });
+            await updateImgApi(formData);
+          })
+        : await updateCourseApi(data);
 
       notification.success({
         message: "Cập nhật thành công",
@@ -123,6 +121,8 @@ export default function RepairLearning(props: Props): JSX.Element {
     }
   };
 
+  console.log(file);
+
   return (
     <Form
       onFinish={handleFinish}
@@ -133,7 +133,7 @@ export default function RepairLearning(props: Props): JSX.Element {
         tenKhoaHoc: "",
         moTa: "",
         luotXem: 0,
-        danhGia: 5,
+        danhGia: 0,
         hinhAnh: "",
         maNhom: "",
         ngayTao: "",
@@ -149,31 +149,43 @@ export default function RepairLearning(props: Props): JSX.Element {
         <div className="item__left">
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-lock"></i>
             </span>
             <Form.Item name="maKhoaHoc">
               <Input placeholder="Mã khóa học" />
             </Form.Item>
           </div>
+
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-user-secret"></i>
             </span>
             <Form.Item name="biDanh">
               <Input placeholder="Bí danh" />
             </Form.Item>
           </div>
+
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-book"></i>
             </span>
             <Form.Item name="tenKhoaHoc">
               <Input placeholder="Tên khóa học" />
             </Form.Item>
           </div>
+
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-thumbs-up"></i>
+            </span>
+            <Form.Item name="danhGia">
+              <InputNumber placeholder="Đánh giá" className="danhGia" />
+            </Form.Item>
+          </div>
+
+          <div className="item__learning">
+            <span className="icon__form">
+              <i className="fa fa-eye"></i>
             </span>
             <Form.Item name="luotXem">
               <InputNumber
@@ -187,7 +199,7 @@ export default function RepairLearning(props: Props): JSX.Element {
         <div className="item__right">
           <div className="item__learning maNhom">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-users"></i>
             </span>
             <Form.Item className="same_option" name="maNhom">
               <Select placeholder="Mã nhóm">
@@ -196,9 +208,10 @@ export default function RepairLearning(props: Props): JSX.Element {
               </Select>
             </Form.Item>
           </div>
+
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-book-open"></i>
             </span>
             <Form.Item name="maDanhMucKhoaHoc">
               <Select className="same_option" placeholder="Danh mục khóa học">
@@ -209,7 +222,7 @@ export default function RepairLearning(props: Props): JSX.Element {
 
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-user"></i>
             </span>
             <Form.Item name="nguoiTao">
               <Select className="same_option" placeholder="Người tạo">
@@ -220,7 +233,7 @@ export default function RepairLearning(props: Props): JSX.Element {
 
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-calendar"></i>
             </span>
 
             <Form.Item className="date" name="ngayTao">

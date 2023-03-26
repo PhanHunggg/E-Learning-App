@@ -107,17 +107,6 @@ export default function AddLearningManagement() {
       layout="horizontal"
       initialValues={{
         size: componentSize,
-        maKhoaHoc: "",
-        biDanh: "",
-        tenKhoaHoc: "",
-        moTa: "",
-        luotXem: "",
-        danhGia: "",
-        hinhAnh: "",
-        maNhom: "",
-        ngayTao: "",
-        maDanhMucKhoaHoc: "",
-        taiKhoanNguoiTao: "",
       }}
       onValuesChange={onFormLayoutChange}
       size={componentSize as SizeType}
@@ -127,39 +116,43 @@ export default function AddLearningManagement() {
         <div className="item__left">
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-lock"></i>
             </span>
             <Form.Item name="maKhoaHoc">
               <Input placeholder="Mã khóa học" />
             </Form.Item>
           </div>
+
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-user-secret"></i>
             </span>
             <Form.Item name="biDanh">
               <Input placeholder="Bí danh" />
             </Form.Item>
           </div>
+
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
-            </span>
-            <Form.Item name="danhGia">
-              <InputNumber placeholder="Đánh giá" className="danhGia" />
-            </Form.Item>
-          </div>
-          <div className="item__learning">
-            <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-book"></i>
             </span>
             <Form.Item name="tenKhoaHoc">
               <Input placeholder="Tên khóa học" />
             </Form.Item>
           </div>
+
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-thumbs-up"></i>
+            </span>
+            <Form.Item name="danhGia">
+              <InputNumber placeholder="Đánh giá" className="danhGia" />
+            </Form.Item>
+          </div>
+
+          <div className="item__learning">
+            <span className="icon__form">
+              <i className="fa fa-eye"></i>
             </span>
             <Form.Item name="luotXem">
               <InputNumber
@@ -171,20 +164,21 @@ export default function AddLearningManagement() {
           </div>
         </div>
         <div className="item__right">
-          <div className="item__learning maNhom">
+          <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-users"></i>
             </span>
-            <Form.Item className="same_option" name="maNhom">
-              <Select placeholder="Mã nhóm">
+            <Form.Item name="maNhom">
+              <Select className="same_option" placeholder="Mã nhóm">
                 <Select.Option value="GP01">GP01</Select.Option>
                 <Select.Option value="GP02">GP02</Select.Option>
               </Select>
             </Form.Item>
           </div>
+
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-book-open"></i>
             </span>
             <Form.Item name="danhMucKhoaHoc">
               <Select className="same_option" placeholder="Danh mục khóa học">
@@ -195,7 +189,7 @@ export default function AddLearningManagement() {
 
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-user"></i>
             </span>
             <Form.Item name="nguoiTao">
               <Select className="same_option" placeholder="Người tạo">
@@ -207,7 +201,7 @@ export default function AddLearningManagement() {
 
           <div className="item__learning">
             <span className="icon__form">
-              <i className="fa fa-key"></i>
+              <i className="fa fa-calendar"></i>
             </span>
             <Form.Item className="date" name="ngayTao">
               <DatePicker />

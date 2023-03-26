@@ -29,7 +29,8 @@
 
 
                     .icon__form {
-                        @include span
+                        @include span;
+                        width: 38px;
                     }
 
                     .ant-form-item {

@@ -1,58 +1,58 @@
-@import "../../scss/mixins";
+    @import "../../scss/mixins";
 
-.ant-modal-header {
-    margin-bottom: 25px !important;
+    .ant-modal-header {
+        margin-bottom: 25px !important;
 
-    .ant-modal-title {
-        font-size: 35px;
-        text-align: center;
-        font-weight: 700;
-    }
-}
-
-.ant-modal-body {
-    .form__User {
-        .item {
-            display: flex;
-            width: 85%;
-
-            .icon__form {
-                @include span
-            }
-
-            .icon__code {
-                padding-right: 6px;
-            }
-
-            .icon__name {
-                padding-right: 14px;
-            }
-
-            .ant-form-item {
-                width: 100%;
-
-                .ant-input {
-                    @include input;
-                    padding-left: 10px;
-                }
-
-                .ant-input-password {
-                    padding: 0;
-                    border-radius: 0 6px 6px 0;
-                }
-
-                .ant-select-selector {
-                    height: 38px;
-                    padding: 4px 11px;
-                    border-radius: 0 6px 6px 0;
-                }
-
-            }
+        .ant-modal-title {
+            font-size: 35px;
+            text-align: center;
+            font-weight: 700;
         }
     }
 
-}
+    .ant-modal-body {
+        .form__User {
+            .item {
+                display: flex;
+                width: 85%;
 
-.ant-modal-footer {
-    display: none;
-}
+                .icon__form {
+                    @include span
+                }
+
+                .icon__code {
+                    padding-right: 6px;
+                }
+
+                .icon__name {
+                    padding-right: 14px;
+                }
+
+                .ant-form-item {
+                    width: 100%;
+
+                    .ant-input {
+                        @include input;
+                        padding-left: 10px;
+                    }
+
+                    .ant-input-password {
+                        padding: 0;
+                        border-radius: 0 6px 6px 0;
+                    }
+
+                    .ant-select-selector {
+                        height: 38px;
+                        padding: 4px 11px;
+                        border-radius: 0 6px 6px 0;
+                    }
+
+                }
+            }
+        }
+
+    }
+
+    .ant-modal-footer {
+        display: none;
+    }

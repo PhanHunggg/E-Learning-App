@@ -192,7 +192,7 @@ export default function UserManagement(): JSX.Element {
         </Button>
         <Search
           onChange={handleChange}
-          placeholder="Nhập tài khoản người dùng"
+          placeholder="Nhập tên hoặc tài khoản người dùng"
         />
       </div>
       <Table columns={columns} dataSource={handleFilterUser(filter) as any} />
