@@ -7,6 +7,7 @@ import AddLearningManagement from "../pages/addLearningManagement/AddLearningMan
 import HomePage from "../pages/home/HomePage";
 import LearningManagement from "../pages/learningManagement/LearningManagement";
 import UserManagement from "../pages/userManagement/UserManagement";
+import AdminGuard from "../guards/AdminGuard";
 
 export default function Router() {
   const routing = useRoutes([
@@ -30,16 +31,22 @@ export default function Router() {
       element: <AdminLayout />,
       children: [
         {
-          path: "/admin/learning-management",
-          element: <LearningManagement />,
-        },
-        {
-          path: "/admin/user-management",
-          element: <UserManagement />,
-        },
-        {
-          path: "/admin/learning-management/add-learning",
-          element: <AddLearningManagement />,
+          path: "/admin",
+          element: <AdminGuard />,
+          children: [
+            {
+              path: "/admin/learning-management",
+              element: <LearningManagement />,
+            },
+            {
+              path: "/admin/user-management",
+              element: <UserManagement />,
+            },
+            {
+              path: "/admin/learning-management/add-learning",
+              element: <AddLearningManagement />,
+            },
+          ],
         },
       ],
     },
