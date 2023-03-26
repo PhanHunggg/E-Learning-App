@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { DESKTOP, LAPTOP, TABLET } from '../../../../constants';
+import { DESKTOP, IPAD_PRO, TABLET } from '../../../../constants';
 import { withViewport } from '../../../../HOCs/withViewport';
 import { RootDispatch, RootState } from '../../../../store/config';
 import { fetchCourseListAction } from '../../../../store/reducers/eduReducer';
@@ -22,7 +22,7 @@ function Course(props: Props): JSX.Element {
 
 
     return (
-        <section className={`course py-5 ${(props.device !== DESKTOP && "active") && (props.device !== LAPTOP && "active") && (props.device !== TABLET && "active")} `}>
+        <section className={`course py-5 ${props.device === IPAD_PRO && "iPad_pro"} ${(props.device !== DESKTOP && "active") && (props.device !== IPAD_PRO && "active") && (props.device !== TABLET && "active")} `}>
             <Popular courseState={courseState} />
             <Reference courseState={courseState} />
             <Front_end courseState={courseState} />

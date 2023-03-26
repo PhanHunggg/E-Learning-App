@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { useLoading } from "../../contexts/loading/LoadingHook";
 import {
   CatalogDto,
-  CourseCatalogDto,
   CourseListDto,
   ManageDto,
 } from "../../interfaces/course";
