@@ -72,7 +72,7 @@ export const fetchUserInfoAction = createAsyncThunk(
 
 export const fetchUserListAction = createAsyncThunk(
   "eduReducer/fetchUserListAction",
-  async (_, store) => {
+  async () => {
     const result = await fetchUserListApi();
     return result.data;
   }

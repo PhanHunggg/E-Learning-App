@@ -27,3 +27,24 @@ export interface userSignUpDto {
   maNhom: string;
   email: string;
 }
+
+export interface userProfileDto<D> {
+  chiTietKhoaHocGhiDanh: D[];
+  taiKhoan: string;
+  matKhau: string;
+  hoTen: string;
+  soDT: string;
+  maLoaiNguoiDung: string;
+  maNhom: string;
+  email: string;
+}
+
+export interface userUpdateDto {
+  taiKhoan: string;
+  matKhau: string;
+  hoTen: string;
+  soDT: string;
+  maLoaiNguoiDung: string;
+  maNhom: string;
+  email: string;
+}

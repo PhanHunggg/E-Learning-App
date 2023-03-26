@@ -1,8 +1,14 @@
 import { GROUP_ID } from "./../constants/index";
 import { UserList, MaLoaiNguoiDung } from "./../interfaces/userList";
-import { userLoginDto, userSignUpDto } from "./../interfaces/user";
+import {
+  userLoginDto,
+  userProfileDto,
+  userSignUpDto,
+  userUpdateDto,
+} from "./../interfaces/user";
 import { AxiosPromise } from "axios";
 import { axiosRequest } from "../configs/axios.config";
+import { RegistrationCourseDetailDto } from "../interfaces/course";
 
 export const login = (data: userLoginDto): AxiosPromise<userLoginDto> => {
   return axiosRequest({
@@ -51,6 +57,7 @@ export const findUserApi = (data: string): AxiosPromise<userLoginDto> => {
     method: "GET",
   });
 };
+<<<<<<< HEAD
 
 export const findUserRepairApi = (): AxiosPromise<userLoginDto> => {
   return axiosRequest({
@@ -64,5 +71,21 @@ export const updateUserApi = (data: any): AxiosPromise => {
     url: `/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
     method: "PUT",
     data: data,
+=======
+export const fetchUserProfileApi = (): AxiosPromise<
+  userProfileDto<RegistrationCourseDetailDto>
+> => {
+  return axiosRequest({
+    url: "/QuanLyNguoiDung/ThongTinNguoiDung",
+    method: "POST",
+  });
+};
+
+export const updateUserApi = (data: userUpdateDto): AxiosPromise => {
+  return axiosRequest({
+    url: "/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+    method: "PUT",
+    data,
+>>>>>>> master
   });
 };

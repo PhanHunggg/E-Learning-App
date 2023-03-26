@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function Right() {
     return (
-        <div className="col-8 right">
+        <div className="col-12 col-lg-8 right">
             <div className="row">
-                <div className=" item itemA col-5">
+                <div className=" item itemA col-12 col-lg-6">
                     <div className='items infoSmallItemA'>
                         <div className="content">
                             <h3>LỘ TRÌNH PHÙ HỢP</h3>
@@ -26,7 +26,7 @@ export default function Right() {
                     </div>
 
                 </div>
-                <div className="item itemB col-5">
+                <div className="item itemB col-12 col-lg-6">
                     <div className=' items infoLargeItemB'>
 
                         <div className="content">
@@ -49,7 +49,7 @@ export default function Right() {
                     </div>
 
                 </div>
-                <div className="item col-5">
+                <div className="item item3 col-12 col-lg-6">
                     <div className='items infoSmallItemA'>
 
                         <div className="content">
@@ -72,7 +72,7 @@ export default function Right() {
                     </div>
 
                 </div>
-                <div className="item col-5">
+                <div className="item col-12 col-lg-6">
                     <div className='items infoLargeItemB'>
                         <div className="content">
                             <h3>CHỨNG NHẬN</h3>

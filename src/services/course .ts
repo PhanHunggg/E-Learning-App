@@ -2,8 +2,10 @@ import { GROUP_ID } from "./../constants/index";
 import {
   CatalogDto,
   CourseCatalogDto,
+  CourseDetailDto,
   CourseListDto,
   ManageDto,
+  SignUpCourseDto,
 } from "./../interfaces/course";
 import { AxiosPromise } from "axios";
 import { axiosRequest } from "../configs/axios.config";
@@ -72,5 +74,29 @@ export const findCourseApi = (
   return axiosRequest({
     url: `/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${data}&MaNhom=${GROUP_ID}`,
     method: "GET",
+  });
+};
+export const fetchCourseDetailApi = (
+  course: string
+): AxiosPromise<CourseDetailDto<ManageDto, CatalogDto>> => {
+  return axiosRequest({
+    url: `/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${course}`,
+    method: "GET",
+  });
+};
+
+export const signUpCourseApi = (data: SignUpCourseDto): AxiosPromise => {
+  return axiosRequest({
+    url: "/QuanLyKhoaHoc/DangKyKhoaHoc",
+    method: "POST",
+    data,
+  });
+};
+
+export const cancelCourseApi = (data: SignUpCourseDto): AxiosPromise => {
+  return axiosRequest({
+    url: "/QuanLyKhoaHoc/HuyGhiDanh",
+    method: "POST",
+    data,
   });
 };

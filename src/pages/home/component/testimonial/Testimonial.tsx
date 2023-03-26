@@ -12,7 +12,7 @@ import { Navigation } from "swiper";
 
 export default function Testimonial() {
     return (
-        <div className="testimonial">
+        <section className="testimonial">
             <Swiper navigation={true} modules={[Navigation]} className='feedback mx-auto mySwiper'>
                 <SwiperSlide className="content">
                     <div className="slide">
@@ -48,6 +48,6 @@ export default function Testimonial() {
                     </div>
                 </SwiperSlide>
             </Swiper>
-        </div>
+        </section>
     )
 }

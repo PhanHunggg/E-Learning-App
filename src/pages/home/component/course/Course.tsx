@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { DESKTOP, LAPTOP, TABLET } from '../../../../constants';
+import { withViewport } from '../../../../HOCs/withViewport';
 import { RootDispatch, RootState } from '../../../../store/config';
 import { fetchCourseListAction } from '../../../../store/reducers/eduReducer';
 import Front_end from './components/Front_end';
 import Popular from './components/Popular';
 import Reference from './components/Reference';
 import "./course.scss"
+interface Props {
+    device: any;
+}
 
-export default function Course(): JSX.Element {
+function Course(props: Props): JSX.Element {
     const dispatch = useDispatch<RootDispatch>();
     const courseState = useSelector((state: RootState) => state.eduReducer)
 
@@ -16,13 +21,13 @@ export default function Course(): JSX.Element {
     }, [])
 
 
-
-
     return (
-        <div className='course py-5 px-5'>
+        <section className={`course py-5 ${(props.device !== DESKTOP && "active") && (props.device !== LAPTOP && "active") && (props.device !== TABLET && "active")} `}>
             <Popular courseState={courseState} />
             <Reference courseState={courseState} />
             <Front_end courseState={courseState} />
-        </div>
+        </section>
     )
 }
+
+export default withViewport(Course)

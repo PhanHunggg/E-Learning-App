@@ -75,9 +75,7 @@
       }
     }
     .form {
-      input {
-        width: 270px;
-      }
+      width: 270px;
       button {
         color: white;
         font-weight: 500;
@@ -107,5 +105,47 @@
         }
       }
     }
+  }
+}
+
+.footer.tablet {
+  .footer_top {
+    h3 {
+      font-size: 1.3rem;
+    }
+    .menuFooter {
+      &.arrow {
+        li {
+          i {
+            width: 25px;
+          }
+        }
+      }
+    }
+    form {
+      width: 205px;
+    }
+  }
+}
+
+.footer.mobile {
+  .footer_top {
+    h3 {
+      font-size: 1.3rem;
+    }
+  }
+  .footer_bottom {
+    flex-direction: column;
+  }
+}
+
+.footer.iphone6,
+.footer.iphone6_plus {
+  .footer_bottom {
+    p {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    flex-direction: column;
   }
 }
