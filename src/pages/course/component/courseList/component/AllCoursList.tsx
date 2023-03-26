@@ -6,15 +6,30 @@ import {
   CourseListDto,
   ManageDto,
 } from "../../../../../interfaces/course";
-import "./allCourseList.scss"
+import "./allCourseList.scss";
 interface Props {
   courseState: CourseListDto<ManageDto, CatalogDto>[];
 }
 
 export default function AllCoursList(props: Props) {
+  const [keyword, setKeyword] = useState<string>("");
 
-  const renderAllCourse = () => {
-    return props.courseState?.map((ele, idx) => {
+  const renderItemCourse = (): JSX.Element[] => {
+    const filterCourse = props.courseState?.filter((ele) => {
+      if (keyword.length !== 0) {
+        return (
+          ele.tenKhoaHoc
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/đ/g, "d")
+            .replace(/Đ/g, "D")
+            .toLowerCase()
+            .indexOf(keyword?.toLowerCase()) !== -1
+        );
+      }
+      return true;
+    });
+    return filterCourse?.map((ele) => {
       return (
         <React.Fragment key={ele.maKhoaHoc}>
           {
@@ -57,13 +72,28 @@ export default function AllCoursList(props: Props) {
     });
   };
 
+  const handleChange = (event: any): void => {
+    setKeyword(event.target.value);
+  };
+
   return (
     <div className="course_list">
-      <h6>
-        <i className="fas fa-bookmark"></i>
-        Danh sách khóa học
-      </h6>
-      <div className="row ">{renderAllCourse()}</div>
+      <div className="courseTitel">
+        <h6>
+          <i className="fas fa-bookmark"></i>
+          Danh sách khóa học
+        </h6>
+        <form className="form">
+          <input
+            onChange={handleChange}
+            type="text"
+            placeholder="Tìm khóa học..."
+          />
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </form>
+      </div>
+
+      <div className="row ">{renderItemCourse()}</div>
     </div>
   );
 }

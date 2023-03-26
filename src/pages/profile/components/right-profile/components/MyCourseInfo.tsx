@@ -11,6 +11,7 @@ import { notification } from 'antd'
 export default function MyCourseInfo() {
     const [userProfile, setUserProfile] = useState<userProfileDto<RegistrationCourseDetailDto> | any>()
     const eduState = useSelector((state: RootState) => state.eduReducer)
+    const [keyword, setKeyword] = useState<string>("")
 
     const [courseList, setCourseList] = useState<RegistrationCourseDetailDto[]>([])
 
@@ -57,12 +58,29 @@ export default function MyCourseInfo() {
     }
 
 
-    const renderItem = () => {
-        return courseList?.map((ele: RegistrationCourseDetailDto) => {
+    const renderItem = (): JSX.Element[] => {
+        const filterCourse = courseList.filter((ele: RegistrationCourseDetailDto) => {
+            if (keyword.length !== 0) {
+                return (
+                    ele.tenKhoaHoc
+                        .normalize("NFD")
+                        .replace(/[\u0300-\u036f]/g, "")
+                        .replace(/đ/g, "d")
+                        .replace(/Đ/g, "D")
+                        .toLowerCase()
+                        .indexOf(keyword?.toLowerCase()) !== -1
+                );
+            }
+            return true;
+        })
+        return filterCourse?.map((ele: RegistrationCourseDetailDto) => {
             return <RightItem handleCancel={handleCancel} key={ele.maKhoaHoc} ele={ele} />
         })
     }
 
+    const handleChange = (event: any): void => {
+        setKeyword(event.target.value)
+    }
 
     return (
 
@@ -70,7 +88,7 @@ export default function MyCourseInfo() {
             <div className="myCourse">
                 <h4>Khóa học của tôi</h4>
                 <form className='form' >
-                    <input type="text" placeholder='Tìm khóa học...' />
+                    <input onChange={handleChange} type="text" placeholder='Tìm khóa học...' />
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </form>
             </div>
