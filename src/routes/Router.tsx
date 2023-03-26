@@ -7,14 +7,11 @@ import AddLearningManagement from "../pages/addLearningManagement/AddLearningMan
 import HomePage from "../pages/home/HomePage";
 import LearningManagement from "../pages/learningManagement/LearningManagement";
 import UserManagement from "../pages/userManagement/UserManagement";
-<<<<<<< HEAD
 import AdminGuard from "../guards/AdminGuard";
-=======
 import CourseDetail from "../pages/course_detail/CourseDetail";
 import Profile from "../pages/profile/Profile";
 import Course from "../pages/course/Course";
 import CourseCatalog from "../pages/courseCatalog/CourseCatalog"
->>>>>>> master
 
 export default function Router() {
   const routing = useRoutes([
