@@ -57,7 +57,6 @@ export const findUserApi = (data: string): AxiosPromise<userLoginDto> => {
     method: "GET",
   });
 };
-<<<<<<< HEAD
 
 export const findUserRepairApi = (): AxiosPromise<userLoginDto> => {
   return axiosRequest({
@@ -66,12 +65,6 @@ export const findUserRepairApi = (): AxiosPromise<userLoginDto> => {
   });
 };
 
-export const updateUserApi = (data: any): AxiosPromise => {
-  return axiosRequest({
-    url: `/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
-    method: "PUT",
-    data: data,
-=======
 export const fetchUserProfileApi = (): AxiosPromise<
   userProfileDto<RegistrationCourseDetailDto>
 > => {
@@ -86,6 +79,5 @@ export const updateUserApi = (data: userUpdateDto): AxiosPromise => {
     url: "/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
     method: "PUT",
     data,
->>>>>>> master
   });
 };
