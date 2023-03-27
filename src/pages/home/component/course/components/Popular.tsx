@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { EduState } from '../../../../../store/reducers/eduReducer'
 interface Props {
   courseState: EduState;
 }
 
 export default function Popular(props: Props): JSX.Element {
+  const navigate = useNavigate()
   const renderCoursePopalar = () => {
     return props.courseState?.courseList?.map((ele, idx) => {
       return <React.Fragment key={ele.maKhoaHoc}>
@@ -38,7 +39,39 @@ export default function Popular(props: Props): JSX.Element {
                   <span>(9999)</span>
                 </div>
               </div>
+              <div className="subCard">
+                <div className="subCard_header">
+                  <img src="./images/GV.png" alt="Giáo viên" />
+                  <span>{ele.nguoiTao.hoTen}</span>
+                </div>
+                <div className="body">
+                  <h5>{ele.tenKhoaHoc}</h5>
+                  <p className='cardTitle'>Đã có hơn 6200 bạn đăng kí học và có việc làm thông qua chương trình đào tạo Bootcamp Lập trình Front End chuyên nghiệp. Khóa học 100% thực hành cường độ cao theo dự án thực tế và kết nối doanh nghiệp hỗ trợ tìm việc ngay sau khi học...</p>
+                  <div className="cardIcon">
+                    <span>
+                      <i className='far fa-clock iconOclock'></i>
+                      8 giờ
+                    </span>
+                    <span>
+                      <i className='far fa-calendar-alt iconCalendar'></i>
+                      4 giờ
+                    </span>
+                    <span>
+                      <i className='fas fa-signal iconLevel'></i>
+                      Tất cả
+                    </span>
+                  </div>
+                </div>
+                <div className="subCard_footer">
+                  <button onClick={() => {
+                    navigate(`/course-detail/${ele.maKhoaHoc}`)
+                  }} className='btn btn-primary'>
+                    Xem chi tiết
+                  </button>
+                </div>
+              </div>
             </Link>
+
           </div>
         }
       </React.Fragment>

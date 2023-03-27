@@ -17,6 +17,7 @@ import { notification } from "antd";
 import { withViewport } from "../../HOCs/withViewport";
 import { IPHONE6, IPHONE6PLUS } from "../../constants";
 import { useLoading } from "../../contexts/loading/LoadingHook";
+import Reference from "../home/component/course/components/Reference";
 
 
 interface Props {
@@ -98,10 +99,11 @@ function CourseDetail(props: Props): JSX.Element {
         <h3>Thông tin khóa học</h3>
         <p>Tiến lên và không chần chừ</p>
       </div>
-      <div className="detailCourseContent">
+      <div className="detailCourseContent course">
         <div className="row">
           <CourseLeft course={course} />
           <CourseRight handleCancel={handleCancel} handleSignUp={handleSignUp} course={course} />
+          <Reference courseState={eduState} />
         </div>
       </div>
     </section>
