@@ -66,10 +66,10 @@
             text-transform: uppercase;
             font-size: 15px;
             font-weight: 500;
-            &:focus{
+            &:focus {
               box-shadow: none;
             }
-            &:hover{
+            &:hover {
               background-color: #ffc6c7;
               color: #000;
             }
@@ -319,6 +319,14 @@
               align-items: flex-end;
             }
           }
+          .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 480px;
+            width: 100%;
+          }
         }
       }
     }
@@ -368,7 +376,6 @@
     }
   }
 }
-
 @keyframes animate {
   100% {
     transform: scaleX(1);
