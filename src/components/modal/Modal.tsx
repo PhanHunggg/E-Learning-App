@@ -53,8 +53,6 @@ function Modal(props: Props) {
 
         const isValid = even.target.checkValidity()
 
-        console.log(isValid)
-
         if (!isValid) return
 
         const data = {
