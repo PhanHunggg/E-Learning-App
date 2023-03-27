@@ -62,7 +62,21 @@
   }
 }
 
+.header.iPad_pro {
+  .navbar-brand {
+    width: 275px;
+    img {
+      width: 235px;
+      height: 76px;
+    }
+  }
+}
+
 .header.tablet {
+  .btn_login {
+    position: absolute;
+    right: 16%;
+  }
   .userInfo {
     position: absolute;
     top: 25px;
@@ -110,6 +124,10 @@
       height: 68px;
     }
   }
+  .btn_login {
+    position: absolute;
+    right: 19%;
+  }
   .userInfo {
     position: absolute;
     top: 21px;
@@ -138,11 +156,17 @@
 .header.iphone6_plus {
   padding: 1rem !important;
   .navbar-brand {
-      width: 145px;
-      img {
+    width: 145px;
+    img {
       width: 100%;
       height: 44px;
     }
+  }
+  .btn_login {
+    position: absolute;
+    right: 20%;
+    padding: 5px 10px;
+    font-size: 14px;
   }
   .userInfo {
     position: absolute;
@@ -188,11 +212,17 @@
 .header.iphone6 {
   padding: 1rem !important;
   .navbar-brand {
-      width: 145px;
-      img {
+    width: 145px;
+    img {
       width: 100%;
       height: 44px;
     }
+  }
+  .btn_login {
+    position: absolute;
+    right: 21%;
+    padding: 6px 9px;
+    font-size: 14px;
   }
   .userInfo {
     position: absolute;

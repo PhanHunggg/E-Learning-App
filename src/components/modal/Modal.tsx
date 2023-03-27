@@ -38,7 +38,7 @@ function Modal(props: Props) {
         }
 
     )
-    const handleChange = (even: any) => {
+    const handleChange = (even: any): void => {
         const { name, value } = even.target
         setForm({
             ...form,

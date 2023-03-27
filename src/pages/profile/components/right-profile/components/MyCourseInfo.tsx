@@ -93,7 +93,12 @@ export default function MyCourseInfo() {
                 </form>
             </div>
             <div className="myCourseItem">
-                {renderItem()}
+                {
+                    (courseList.length !== 0) ? renderItem() : <div className='content'>
+                        <h2>Bạn chưa có khóa học nào!</h2>
+                        <h4>Hãy chọn khóa học cho mình nhé!</h4>
+                    </div>
+                }
             </div>
         </div>
     )

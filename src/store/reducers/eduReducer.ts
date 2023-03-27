@@ -1,3 +1,4 @@
+import { notification } from "antd";
 import { userLoginDto } from "./../../interfaces/user";
 import {
   fetchUserListApi,
@@ -25,7 +26,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface EduState {
   courseCatalog: CourseCatalogDto[];
   courseList: CourseListDto<ManageDto, CatalogDto>[];
-  userInfo: userLoginDto | null;
+  userInfo: userLoginDto | undefined;
   UserList: Array<UserList<MaLoaiNguoiDung>>;
   findUserList: Array<userLoginDto>;
   findUserRepairList: Array<userLoginDto>;
@@ -33,7 +34,7 @@ export interface EduState {
 }
 
 const DEFAULT_STATE = {
-  userInfo: null,
+  userInfo: undefined,
   courseCatalog: [],
   courseList: [],
   UserList: [],
@@ -64,9 +65,20 @@ export const fetchCourseListAction = createAsyncThunk(
 export const fetchUserInfoAction = createAsyncThunk(
   "eduReducer/fetchUserInfoAction",
   async (data: userLoginDto) => {
-    const result = await login(data);
-    localStorage.setItem("USER_INFO_KEY", JSON.stringify(result.data));
-    return result.data;
+    try {
+      const result = await login(data);
+      localStorage.setItem("USER_INFO_KEY", JSON.stringify(result.data));
+      notification.success({
+        message: "Đăng nhập thành công",
+        duration: 2,
+      });
+      return result.data;
+    } catch (error: any) {
+      notification.error({
+        message: error.response.data,
+        duration: 2,
+      });
+    }
   }
 );
 
@@ -114,7 +126,7 @@ const eduSlice = createSlice({
   initialState: DEFAULT_STATE,
   reducers: {
     handleLogOut(state: EduState) {
-      state.userInfo = null;
+      state.userInfo = undefined;
     },
   },
   extraReducers(builder) {
@@ -126,7 +138,7 @@ const eduSlice = createSlice({
     );
     builder.addCase(
       fetchUserInfoAction.fulfilled,
-      (state: EduState, action: PayloadAction<userLoginDto>) => {
+      (state: EduState, action: PayloadAction<userLoginDto | undefined>) => {
         state.userInfo = action.payload;
       }
     );
