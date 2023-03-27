@@ -1,5 +1,31 @@
 .login {
-  margin: 40px 0 50px;
+  display: flex;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+}
+.login.iPad_pro {
+  height: 853px;
+  width: 97%;
+}
+.login.active {
+  width: 98%;
+}
+.login.active .form {
+  width: 95%;
+  height: 450px;
+  margin: 14px;
+}
+.login.active .form .background {
+  height: 450px;
+}
+.login.active .form .formBx .signInForm {
+  padding: 0;
+  padding-right: 81px;
+}
+.login.active .form .formBx .signUpForm {
+  padding: 0;
+  top: 6%;
 }
 .login .form {
   position: relative;
@@ -79,6 +105,13 @@
   padding-right: 105px;
   text-align: center;
 }
+.login .form .formBx .signInForm a {
+  color: #232946;
+}
+.login .form .formBx .signInForm button {
+  background-color: #eebbc3;
+  color: #232946;
+}
 .login .form .formBx.active {
   transform: translateX(105%);
 }
@@ -96,7 +129,105 @@
   top: 7%;
   padding-right: 545px;
 }
+.login .form .formBx .signUpForm button {
+  background-color: #eebbc3;
+  color: #232946;
+}
 .login .form .formBx .form {
   position: absolute;
   transition: 0.5s;
+}
+
+.login.active.mobile {
+  width: 98%;
+}
+.login.active.mobile .form .background {
+  width: 99%;
+}
+.login.active.mobile .form .formBx .signInForm {
+  padding-right: 43px;
+}
+.login.active.mobile .form .formBx .signUpForm {
+  top: 1%;
+}
+
+.login.active.iphone6_plus {
+  width: 97%;
+  height: 740px;
+}
+.login.active.iphone6_plus .form {
+  height: 660px;
+  margin-top: -30px;
+}
+.login.active.iphone6_plus .form .background {
+  width: 98%;
+  height: 100%;
+}
+.login.active.iphone6_plus .form .background .box .box_2 h3 {
+  font-size: 1rem;
+}
+.login.active.iphone6_plus .form .background .box .box_2 h4 {
+  font-size: 1.2rem;
+}
+.login.active.iphone6_plus .form .background .box .box_2 button {
+  padding: 6px 13px;
+  font-size: 0.85rem;
+}
+.login.active.iphone6_plus .form .formBx {
+  height: 100%;
+}
+.login.active.iphone6_plus .form .formBx .signInForm {
+  padding-right: 43px;
+}
+.login.active.iphone6_plus .form .formBx .signUpForm {
+  width: 93%;
+  top: 7%;
+}
+.login.active.iphone6_plus .form .formBx .signUpForm form .ant-form-item {
+  margin: 0;
+}
+.login.active.iphone6_plus .form .formBx .signUpForm form .ant-form-item:last-of-type {
+  margin-top: 10px;
+}
+
+.login.active.iphone6 {
+  width: 97%;
+  height: 740px;
+}
+.login.active.iphone6 .form {
+  height: 680px;
+  margin-top: -30px;
+}
+.login.active.iphone6 .form .background {
+  width: 98%;
+  height: 100%;
+}
+.login.active.iphone6 .form .background .box .box_2 h3 {
+  font-size: 1rem;
+}
+.login.active.iphone6 .form .background .box .box_2 h4 {
+  font-size: 1rem;
+  padding-right: 5px;
+}
+.login.active.iphone6 .form .background .box .box_2 button {
+  padding: 6px 13px;
+  font-size: 0.85rem;
+}
+.login.active.iphone6 .form .formBx {
+  height: 100%;
+}
+.login.active.iphone6 .form .formBx .signInForm {
+  padding-right: 43px;
+}
+.login.active.iphone6 .form .formBx .signUpForm {
+  top: 7%;
+}
+.login.active.iphone6 .form .formBx .signUpForm form {
+  width: 93%;
+}
+.login.active.iphone6 .form .formBx .signUpForm form .ant-form-item {
+  margin: 0;
+}
+.login.active.iphone6 .form .formBx .signUpForm form .ant-form-item:last-of-type {
+  margin-top: 10px;
 }/*# sourceMappingURL=login.css.map */

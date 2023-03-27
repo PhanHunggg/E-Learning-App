@@ -104,10 +104,10 @@
         transition: 0.5s;
         padding-right: 105px;
         text-align: center;
-        a{
+        a {
           color: #232946;
         }
-        button{
+        button {
           background-color: #eebbc3;
           color: #232946;
         }
@@ -128,7 +128,7 @@
         transition-delay: 0.25s;
         top: 7%;
         padding-right: 545px;
-        button{
+        button {
           background-color: #eebbc3;
           color: #232946;
         }
@@ -168,15 +168,15 @@
     .background {
       width: 98%;
       height: 100%;
-      .box{
-        .box_2{
-          h3{
+      .box {
+        .box_2 {
+          h3 {
             font-size: 1rem;
           }
-          h4{
+          h4 {
             font-size: 1.2rem;
           }
-          button{
+          button {
             padding: 6px 13px;
             font-size: 0.85rem;
           }
@@ -189,11 +189,12 @@
         padding-right: 43px;
       }
       .signUpForm {
+        width: 93%;
         top: 7%;
         form {
           .ant-form-item {
             margin: 0;
-            &:last-of-type{
+            &:last-of-type {
               margin-top: 10px;
             }
           }
@@ -202,7 +203,6 @@
     }
   }
 }
-
 
 .login.active.iphone6 {
   width: 97%;
@@ -214,16 +214,16 @@
     .background {
       width: 98%;
       height: 100%;
-      .box{
-        .box_2{
-          h3{
+      .box {
+        .box_2 {
+          h3 {
             font-size: 1rem;
           }
-          h4{
+          h4 {
             font-size: 1rem;
             padding-right: 5px;
           }
-          button{
+          button {
             padding: 6px 13px;
             font-size: 0.85rem;
           }
@@ -238,9 +238,10 @@
       .signUpForm {
         top: 7%;
         form {
+          width: 93%;
           .ant-form-item {
             margin: 0;
-            &:last-of-type{
+            &:last-of-type {
               margin-top: 10px;
             }
           }

@@ -1,4 +1,236 @@
-.header img {
+.header {
+  padding: 0.5rem 3rem !important;
+}
+.header .navbar-brand {
+  width: 500px;
+}
+.header .navbar-brand img {
   width: 247px;
   height: 76px;
+}
+.header .collapse {
+  justify-content: space-between;
+}
+.header ul li a {
+  font-weight: 500;
+  font-size: 18px;
+}
+.header ul li .courseCatalog {
+  background-color: rgba(1, 135, 126, 0.5);
+}
+.header ul li .courseCatalog li a {
+  transition: all 0.4s;
+}
+.header ul li .courseCatalog li a:hover {
+  background-color: transparent;
+  color: #fff;
+}
+.header .userInfo {
+  position: relative;
+  width: 100px;
+  height: 50px;
+}
+.header .userInfo:hover button {
+  transform: translateX(51px);
+  z-index: 0;
+  opacity: 1;
+}
+.header .userInfo img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+}
+.header .userInfo button {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  transition: all 1.1s;
+  transform: translateX(0);
+  opacity: 0;
+  z-index: -1;
+}
+
+.header.iPad_pro .navbar-brand {
+  width: 275px;
+}
+.header.iPad_pro .navbar-brand img {
+  width: 235px;
+  height: 76px;
+}
+
+.header.tablet .btn_login {
+  position: absolute;
+  right: 16%;
+}
+.header.tablet .userInfo {
+  position: absolute;
+  top: 25px;
+  right: 14%;
+  width: 55px;
+}
+.header.tablet .userInfo:hover button {
+  transform: translateX(-48px);
+}
+.header.tablet .navbar-collapse.collapse {
+  display: flex;
+  justify-content: flex-start;
+  opacity: 0;
+  height: 0px;
+  pointer-events: none;
+}
+.header.tablet .navbar-collapse.collapse.show {
+  opacity: 1;
+  height: 220px;
+}
+.header.tablet .navbar-collapse.collapse ul {
+  max-height: 218px;
+}
+.header.tablet .navbar-collapse.collapse ul li {
+  position: relative;
+  transition: all 0.5s;
+}
+.header.tablet .navbar-collapse.collapse ul li .dropdown-menu {
+  position: absolute;
+  left: 0%;
+  top: 0px;
+}
+.header.tablet .navbar-collapse.collapse ul li .dropdown-menu.show {
+  left: 105%;
+  top: -45px;
+}
+
+.header.mobile .navbar-brand {
+  width: 215px;
+}
+.header.mobile .navbar-brand img {
+  width: 100%;
+  height: 68px;
+}
+.header.mobile .btn_login {
+  position: absolute;
+  right: 19%;
+}
+.header.mobile .userInfo {
+  position: absolute;
+  top: 21px;
+  right: 17%;
+  width: 55px;
+}
+.header.mobile .userInfo:hover button {
+  transform: translateX(-48px);
+}
+.header.mobile .navbar-collapse.collapse ul li .dropdown-menu {
+  position: absolute;
+  left: 20%;
+  top: -59%;
+}
+.header.mobile .navbar-collapse.collapse ul li .dropdown-menu a {
+  font-size: 16px;
+}
+
+.header.iphone6_plus {
+  padding: 1rem !important;
+}
+.header.iphone6_plus .navbar-brand {
+  width: 145px;
+}
+.header.iphone6_plus .navbar-brand img {
+  width: 100%;
+  height: 44px;
+}
+.header.iphone6_plus .btn_login {
+  position: absolute;
+  right: 20%;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+.header.iphone6_plus .userInfo {
+  position: absolute;
+  top: 22px;
+  right: 20%;
+  width: 39px;
+  height: 39px;
+}
+.header.iphone6_plus .userInfo img {
+  width: 100%;
+  height: 100%;
+}
+.header.iphone6_plus .userInfo:hover button {
+  transform: translateX(-39px);
+}
+.header.iphone6_plus .userInfo button {
+  top: 3px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header.iphone6_plus .navbar-collapse.collapse ul li a {
+  font-size: 16px;
+}
+.header.iphone6_plus .navbar-collapse.collapse ul li .dropdown-menu {
+  position: absolute;
+  left: 24%;
+  top: -26%;
+}
+.header.iphone6_plus .navbar-collapse.collapse ul li .dropdown-menu a {
+  font-size: 14px;
+}
+
+.header.iphone6 {
+  padding: 1rem !important;
+}
+.header.iphone6 .navbar-brand {
+  width: 145px;
+}
+.header.iphone6 .navbar-brand img {
+  width: 100%;
+  height: 44px;
+}
+.header.iphone6 .btn_login {
+  position: absolute;
+  right: 21%;
+  padding: 6px 9px;
+  font-size: 14px;
+}
+.header.iphone6 .userInfo {
+  position: absolute;
+  top: 22px;
+  right: 21%;
+  width: 39px;
+  height: 39px;
+}
+.header.iphone6 .userInfo img {
+  width: 100%;
+  height: 100%;
+}
+.header.iphone6 .userInfo:hover button {
+  transform: translateX(-39px);
+}
+.header.iphone6 .userInfo button {
+  top: 3px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header.iphone6 .navbar-collapse.collapse ul li a {
+  font-size: 16px;
+}
+.header.iphone6 .navbar-collapse.collapse ul li .dropdown-menu {
+  position: absolute;
+  left: 27%;
+  top: -5%;
+}
+.header.iphone6 .navbar-collapse.collapse ul li .dropdown-menu a {
+  font-size: 13px;
 }/*# sourceMappingURL=header.css.map */

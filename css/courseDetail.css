@@ -1,0 +1,186 @@
+.course_detail p {
+  margin: 0;
+}
+.course_detail .title {
+  padding: 50px;
+  color: #fff;
+  background-color: #ffd60a;
+  text-transform: uppercase;
+}
+.course_detail .detailCourseContent {
+  padding: 50px;
+}
+.course_detail .detailCourseContent .left .headDetailCourse {
+  padding: 30px 0;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro {
+  display: flex;
+  padding: 5px;
+  align-items: center;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .img img {
+  height: 50px;
+  width: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .icon i {
+  font-size: 35px;
+  color: #41b294;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .instructorTitle {
+  padding: 0 5px;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .instructorTitle p:first-of-type {
+  color: #8c8c8c;
+  font-size: 14px;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .reviewDetail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .reviewDetail p {
+  color: #8c8c8c;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .reviewDetail p:first-of-type {
+  font-weight: 500;
+  font-size: 18px;
+  color: #ff9933;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .reviewDetail p sub {
+  color: #8c8c8c;
+  font-size: 14px;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .reviewDetail .rating {
+  display: flex;
+  position: relative;
+  padding: 11px 14px;
+  gap: 3px;
+  border-radius: 50px;
+  flex-direction: row-reverse;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .reviewDetail .rating input {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .reviewDetail .rating input::before {
+  content: "\f005";
+  font-family: fontAwesome;
+  font-size: 16px;
+  position: absolute;
+  color: #111;
+  transition: all 0.5s;
+}
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .reviewDetail .rating input:hover ~ input::before,
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .reviewDetail .rating input:hover::before,
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .reviewDetail .rating input:checked ~ input::before,
+.course_detail .detailCourseContent .left .headDetailCourse .detailCourseIntro .reviewDetail .rating input:checked::before {
+  color: #ff9933;
+}
+.course_detail .detailCourseContent .left .textDiscripts {
+  border-bottom: 1px solid #8c8c8c;
+  color: #8c8c8c;
+  padding-bottom: 20px;
+}
+.course_detail .detailCourseContent .left .boxCourseLearn h4 {
+  padding-top: 20px;
+}
+.course_detail .detailCourseContent .left .boxCourseLearn .detail ul {
+  list-style: none;
+}
+.course_detail .detailCourseContent .left .boxCourseLearn .detail ul li {
+  padding: 10px 0;
+  text-align: justify;
+}
+.course_detail .detailCourseContent .left .boxCourseLearn .detail ul li i {
+  padding-right: 5px;
+  font-size: 18px;
+  color: #ff9933;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 15px;
+  padding: 10px 30px;
+  box-shadow: 1px 1px 10px 4px #dadada;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail img {
+  margin: 0 -20px;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .coursePrice {
+  padding: 30px 0;
+  text-align: right;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .coursePrice p {
+  font-weight: 500;
+  font-size: 25px;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .coursePrice p i {
+  margin-right: 10px;
+  color: #f6ba35;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .btnPreview {
+  padding: 5px;
+  background-color: transparent;
+  border: 1px solid #41b294;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #41b294;
+  transition: all 0.5s;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .btnPreview:hover {
+  color: white;
+  background-color: #41b294;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .btnPreview:focus {
+  outline: none;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .btnPreview.cancel {
+  margin-top: 10px;
+  border: 2px solid rgb(225, 16, 16);
+  color: rgb(225, 16, 16);
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .btnPreview.cancel:hover {
+  color: white;
+  background-color: rgb(225, 16, 16);
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .sideBarDetailContent ul {
+  list-style: none;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .sideBarDetailContent ul li {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  justify-content: space-between;
+  border-bottom: 1px solid #cecece;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .sideBarDetailContent ul li p {
+  color: #8c8c8c;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .sideBarDetailContent ul li p span {
+  color: black;
+  font-weight: 500;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .sideBarDetailContent ul li i {
+  font-size: 20px;
+  color: #f6ba35;
+}
+.course_detail .detailCourseContent .right .sideBarCourseDetail .formCoupon {
+  padding-bottom: 16px;
+}
+.course_detail.active .detailCourseContent .left .headDetailCourse .info,
+.course_detail.active .detailCourseContent .left .headDetailCourse .major {
+  padding: 0;
+}/*# sourceMappingURL=courseDetail.css.map */

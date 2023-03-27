@@ -1,0 +1,38 @@
+.course_list .cardGlobalRes {
+  display: flex;
+  justify-content: center;
+}
+
+.cardEffect {
+  transition: all 0.5s;
+}
+
+.courseTitel {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.courseTitel .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.courseTitel .form input {
+  padding: 7px 10px;
+  padding-right: 29px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  width: 200px;
+  font-size: 14px;
+}
+.courseTitel .form input:focus {
+  border: 2px solid #41b294;
+  outline: none;
+}
+.courseTitel .form i {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+}/*# sourceMappingURL=allCourseList.css.map */
