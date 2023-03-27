@@ -38,7 +38,7 @@ function Modal(props: Props) {
         }
 
     )
-    const handleChange = (even: any) => {
+    const handleChange = (even: any): void => {
         const { name, value } = even.target
         setForm({
             ...form,
@@ -52,8 +52,6 @@ function Modal(props: Props) {
         even.preventDefault();
 
         const isValid = even.target.checkValidity()
-
-        console.log(isValid)
 
         if (!isValid) return
 

@@ -106,6 +106,37 @@
   }
 }
 
+.banner.iPad_pro {
+  .row {
+    margin: 0;
+    margin-left: 15px;
+    .title {
+      .slogan {
+        h1 {
+          font-size: 48px;
+        }
+      }
+      .cloud {
+        top: 5%;
+      }
+      .rocket {
+        left: -11%;
+        bottom: 13%;
+      }
+    }
+    .image {
+      .message {
+        top: 38%;
+        right: 44%;
+        img {
+          width: 86px;
+          height: 86px;
+        }
+      }
+    }
+  }
+}
+
 .banner.tablet {
   .row {
     .title {

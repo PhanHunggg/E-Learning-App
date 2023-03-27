@@ -1,5 +1,5 @@
 import React from 'react'
-import { DESKTOP, IPHONE6, IPHONE6PLUS, MOBILE, TABLET } from '../../../../constants';
+import { DESKTOP, IPAD_PRO, IPHONE6, IPHONE6PLUS, MOBILE, TABLET } from '../../../../constants';
 import { withViewport } from '../../../../HOCs/withViewport';
 import "./banner.scss"
 
@@ -9,7 +9,7 @@ interface Props {
 
 function Banner(props: Props): JSX.Element {
   return (
-    <section className={`banner px-5 ${props.device === MOBILE && "mobile"} ${props.device === TABLET && "tablet"} ${props.device === IPHONE6 && "iphone6"} ${props.device === DESKTOP && "desktop"} ${props.device === IPHONE6PLUS && "iphone6_plus"}`}>
+    <section className={`banner px-5 ${props.device === MOBILE && "mobile"} ${props.device === TABLET && "tablet"} ${props.device === IPHONE6 && "iphone6"} ${props.device === DESKTOP && "desktop"} ${props.device === IPHONE6PLUS && "iphone6_plus"} ${props.device === IPAD_PRO && "iPad_pro"}`}>
       <div className="row">
         <div className="title col-12 col-lg-6">
           <div className="cloud">
