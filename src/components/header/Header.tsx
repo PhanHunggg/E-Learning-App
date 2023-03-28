@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";
+import React, { HtmlHTMLAttributes, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
@@ -28,12 +28,27 @@ interface Props {
 }
 
 function Header(props: Props): JSX.Element {
-
+  const [isSticky, setSticky] = useState<boolean>(false);
   const { isLoading, setLoading } = useLoading();
 
   const dispatch = useDispatch<RootDispatch>();
   const courseState = useSelector((state: RootState) => state.eduReducer);
   const navigate = useNavigate();
+  const handleScroll = () => {
+    if (window.scrollY > 70) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     setLoading(true)
@@ -45,21 +60,24 @@ function Header(props: Props): JSX.Element {
     return courseState.courseCatalog.map((ele: CourseCatalogDto) => {
       return (
         <li key={ele.maDanhMuc}>
-          <a className="dropdown-item" href={`/courseCatalog/${ele.maDanhMuc}`} >
+          <Link className="dropdown-item" to={`/courseCatalog/${ele.maDanhMuc}`} >
             {ele.tenDanhMuc}
-          </a>
+          </Link>
         </li>
       );
     });
   };
 
+
+
   return (
     <nav
-      className={`navbar navbar-expand-lg navbar-light bg-light header ${props.device === MOBILE && "mobile"
+      className={`navbar navbar-expand-lg navbar-light header ${props.device === MOBILE && "mobile"
         } ${props.device === TABLET && "tablet"} ${props.device === IPHONE6 && "iphone6"
         } ${props.device === DESKTOP && "desktop"} ${props.device === IPHONE6PLUS && "iphone6_plus"
         } ${props.device === IPAD_PRO && "iPad_pro"
-      }`}
+        } ${isSticky ? 'sticky' : ''}`}
+
     >
       <NavLink className="navbar-brand" to="/">
         <img src="https://demo2.cybersoft.edu.vn/logo.png" alt="logo" />
@@ -116,7 +134,7 @@ function Header(props: Props): JSX.Element {
           <li className="nav-item dropdown">
             <Link
               className="nav-link dropdown-toggle"
-              to="#"
+              to="/"
               role="button"
               data-toggle="dropdown"
               aria-expanded="false"
@@ -131,12 +149,12 @@ function Header(props: Props): JSX.Element {
             <Link className="nav-link" to="/course">Khóa học</Link>
           </li>
 
-          <li className="nav-item">
-            <Link to="/" className="nav-link ">Blog</Link>
+          <li className="nav-item" >
+            <Link to="/" className="nav-link disabled">Blog</Link>
           </li>
 
           <li className="nav-item">
-            <Link to="/" className="nav-link ">Thông tin</Link>
+            <Link to="/" className="nav-link disabled">Thông tin</Link>
           </li>
           {
             (courseState?.userInfo?.maLoaiNguoiDung === "GV") && <li className="nav-item">

@@ -1,5 +1,13 @@
 .header {
   padding: 0.5rem 3rem !important;
+  position: fixed !important;
+  width: 100%;
+  z-index: 999;
+  background-color: transparent;
+  transition: all 0.5s;
+  &.sticky {
+    background-color: #DFF1F0;
+  }
   .navbar-brand {
     width: 500px;
     img {

@@ -5,12 +5,12 @@ import Pagination from './component/pagination/Pagination'
 
 import TitleCourse from './component/titleCourse/TitleCourse'
 
-export default function Course(): JSX.Element{
+export default function Course(): JSX.Element {
   return (
-      <div>
-         <TitleCourse/>
-          <CourseBox/>
-        <CourseList/>
+    <div style={{ paddingTop: 100 }}>
+      <TitleCourse />
+      <CourseBox />
+      <CourseList />
       {/* <Pagination/> */}
     </div>
   )

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { EduState } from "../../../../../store/reducers/eduReducer";
+
 
 import {
   CatalogDto,
@@ -7,11 +7,13 @@ import {
   ManageDto,
 } from "../../../../../interfaces/course";
 import "./allCourseList.scss";
+import { Link, useNavigate } from "react-router-dom";
 interface Props {
   courseState: CourseListDto<ManageDto, CatalogDto>[];
 }
 
 export default function AllCoursList(props: Props) {
+  const navigate = useNavigate()
   const [keyword, setKeyword] = useState<string>("");
 
   const renderItemCourse = (): JSX.Element[] => {
@@ -33,8 +35,8 @@ export default function AllCoursList(props: Props) {
       return (
         <React.Fragment key={ele.maKhoaHoc}>
           {
-            <div className="col-xl-3 col-md-6 col-lg-4 cardEffect cardGlobalRes mt-4">
-              <a href={`/course-detail/${ele.maKhoaHoc}`}>
+            <div className="col-xl-3 col-md-6 col-lg-4 cardEffect cardGlobalRes mt-5">
+              <Link to={`/course-detail/${ele.maKhoaHoc}`}>
                 <div className="card_header">
                   <img src={ele.hinhAnh} alt={ele.biDanh} />
                   <span>{ele.biDanh}</span>
@@ -64,7 +66,38 @@ export default function AllCoursList(props: Props) {
                     <span>(9999)</span>
                   </div>
                 </div>
-              </a>
+                <div className="subCard">
+                  <div className="subCard_header">
+                    <img src="./images/GV.png" alt="Giáo viên" />
+                    <span>{ele.nguoiTao.hoTen}</span>
+                  </div>
+                  <div className="body">
+                    <h5>{ele.tenKhoaHoc}</h5>
+                    <p className='cardTitle'>Đã có hơn 6200 bạn đăng kí học và có việc làm thông qua chương trình đào tạo Bootcamp Lập trình Front End chuyên nghiệp. Khóa học 100% thực hành cường độ cao theo dự án thực tế và kết nối doanh nghiệp hỗ trợ tìm việc ngay sau khi học...</p>
+                    <div className="cardIcon">
+                      <span>
+                        <i className='far fa-clock iconOclock'></i>
+                        8 giờ
+                      </span>
+                      <span>
+                        <i className='far fa-calendar-alt iconCalendar'></i>
+                        4 giờ
+                      </span>
+                      <span>
+                        <i className='fas fa-signal iconLevel'></i>
+                        Tất cả
+                      </span>
+                    </div>
+                  </div>
+                  <div className="subCard_footer">
+                    <button onClick={() => {
+                      navigate(`/course-detail/${ele.maKhoaHoc}`)
+                    }} className='btn btn-primary'>
+                      Xem chi tiết
+                    </button>
+                  </div>
+                </div>
+              </Link>
             </div>
           }
         </React.Fragment>
