@@ -35,7 +35,7 @@ export default function AllCoursList(props: Props) {
       return (
         <React.Fragment key={ele.maKhoaHoc}>
           {
-            <div className="col-xl-3 col-md-6 col-lg-4 cardEffect cardGlobalRes mt-5">
+            <div className="col-xl-3 col-md-6 col-lg-4 cardEffect cardGlobalRes ">
               <Link to={`/course-detail/${ele.maKhoaHoc}`}>
                 <div className="card_header">
                   <img src={ele.hinhAnh} alt={ele.biDanh} />
