@@ -1,0 +1,48 @@
+.courseBox {
+  padding: 50px;
+}
+.courseBox .courseBoxItem {
+  padding: 0;
+}
+.courseBox .courseBoxItem .boxContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  text-transform: uppercase;
+  height: 100%;
+  padding: 30px 20px;
+  text-align: center;
+}
+.courseBox .courseBoxItem .boxContent h6 {
+  padding-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.courseBox .courseBoxItem .boxContent i {
+  padding-bottom: 10px;
+  font-size: 30px;
+}
+.courseBox .courseBoxItem .boxContent p {
+  font-size: 20px;
+}
+.courseBox .courseBoxItem .colorStyle1 {
+  background: #264653;
+}
+.courseBox .courseBoxItem .colorStyle2 {
+  background: #2a9d8f;
+}
+.courseBox .courseBoxItem .colorStyle3 {
+  background: #e9c46a;
+}
+.courseBox .courseBoxItem .colorStyle4 {
+  background: #f4a261;
+}
+.courseBox .courseBoxItem .colorStyle5 {
+  background: #ee8959;
+}
+.courseBox .courseBoxItem .colorStyle6 {
+  background: #e76f51;
+}/*# sourceMappingURL=courseBox.css.map */

@@ -4,7 +4,7 @@
         margin-bottom: 25px !important;
 
         .ant-modal-title {
-            font-size: 35px;
+            font-size: 30px;
             text-align: center;
             font-weight: 700;
         }
@@ -14,10 +14,10 @@
         .form__User {
             .item {
                 display: flex;
-                width: 85%;
+                width: 92%;
 
                 .icon__form {
-                    @include span
+                    @include span;
                 }
 
                 .icon__code {
@@ -49,10 +49,108 @@
 
                 }
             }
+
+            .button__user {
+                width: 92%;
+                display: flex;
+                justify-content: end;
+
+                .ant-btn {
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+            }
         }
 
     }
 
     .ant-modal-footer {
         display: none;
+    }
+
+    .iphone6plus {
+        .ant-modal-header {
+            .ant-modal-title {
+                font-size: 25px;
+            }
+        }
+
+        .ant-modal-body {
+            .ant-form-horizontal {
+                margin-left: 15px !important;
+                margin-right: 0 !important;
+
+                .item {
+                    width: 95%;
+                }
+
+                .button__user {
+                    width: 95%;
+                }   
+            }
+        }
+
+    }
+
+    .mobile {
+
+        .ant-modal-header {
+            .ant-modal-title {
+                font-size: 30px;
+            }
+        }
+
+        .ant-modal-body {
+            .ant-form-horizontal {
+                margin-left: 30px !important;
+                margin-right: 0 !important;
+
+                .item {
+                    width: 95%;
+                }
+
+                .button__user {
+                    width: 95%;
+                }
+            }
+        }
+    }
+
+    .tablet {
+
+        .ant-modal-header {
+            .ant-modal-title {
+                font-size: 25px;
+            }
+        }
+
+        .ant-modal-body {
+            .ant-form-horizontal {
+                margin-left: 15px !important;
+                margin-right: 0 !important;
+
+                .item {
+                    width: 95%;
+                }
+
+                .button__user {
+                    width: 95%;
+                }
+            }
+        }
+    }
+
+    .laptop {
+        .ant-modal-header {
+            .ant-modal-title {
+                font-size: 25px;
+            }
+        }
+
+        .ant-modal-body {
+            .ant-form-horizontal {
+                margin-left: 30px !important;
+                margin-right: 0 !important;
+            }
+        }
     }

@@ -1,10 +1,11 @@
 import { Button, Form, Input, notification, Select } from "antd";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GROUP_ID } from "../../constants";
 import { userLoginDto } from "../../interfaces/user";
 import { updateUserApi } from "../../services/user";
-import { RootState } from "../../store/config";
+import { RootDispatch, RootState } from "../../store/config";
+import { fetchUserListAction } from "../../store/reducers/eduReducer";
 import "../addUserManagement/addUserManagement.scss";
 
 const { Option } = Select;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export default function RepairUserManagement(props: Props): JSX.Element {
+  const dispatch = useDispatch<RootDispatch>();
   const [form] = Form.useForm();
   const [componentSize, setComponentSize] = useState<SizeType | "default">(
     "default"
@@ -61,6 +63,7 @@ export default function RepairUserManagement(props: Props): JSX.Element {
       notification.success({
         message: "Cập nhật thành công",
       });
+      dispatch(fetchUserListAction());
     } catch (error: any) {
       notification.error({
         message: error.response.data,
@@ -87,7 +90,7 @@ export default function RepairUserManagement(props: Props): JSX.Element {
             className="taiKhoan"
             name="taiKhoan"
             rules={[
-              { required: true, message: "Tài khoản không được để trống" },
+              { required: true, message: "Vui lòng nhập tài khoản của bạn" },
             ]}
           >
             <Input placeholder="Tài khoản" />
@@ -101,7 +104,7 @@ export default function RepairUserManagement(props: Props): JSX.Element {
             className="matKhau"
             name="matKhau"
             rules={[
-              { required: true, message: "Mật khẩu không được để trống" },
+              { required: true, message: "Vui lòng nhập mật khẩu của bạn" },
             ]}
           >
             <Input.Password
@@ -117,7 +120,9 @@ export default function RepairUserManagement(props: Props): JSX.Element {
           <Form.Item
             className="hoTen"
             name="hoTen"
-            rules={[{ required: true, message: "Họ tên không được để trống" }]}
+            rules={[
+              { required: true, message: "Vui lòng nhập họ tên của bạn" },
+            ]}
           >
             <Input placeholder="Họ tên" />
           </Form.Item>
@@ -130,7 +135,10 @@ export default function RepairUserManagement(props: Props): JSX.Element {
             className="soDT"
             name="soDT"
             rules={[
-              { required: true, message: "Số điện thoại không được để trống" },
+              {
+                required: true,
+                message: "Vui lòng nhập số điện thoại của bạn",
+              },
             ]}
           >
             <Input placeholder="Số điện thoại" />
@@ -146,7 +154,7 @@ export default function RepairUserManagement(props: Props): JSX.Element {
             rules={[
               {
                 required: true,
-                message: "Mã loại người dùng không được để trống",
+                message: "Vui lòng chọn mã loại người dùng của bạn",
               },
             ]}
           >
@@ -163,7 +171,16 @@ export default function RepairUserManagement(props: Props): JSX.Element {
           <Form.Item
             className="email"
             name="email"
-            rules={[{ required: true, message: "Email không được để trống" }]}
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập email của bạn",
+              },
+              {
+                pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                message: "Email phải đúng định dạng.",
+              },
+            ]}
           >
             <Input placeholder="Email" />
           </Form.Item>

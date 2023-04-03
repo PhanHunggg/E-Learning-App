@@ -1,0 +1,10 @@
+.pagoination-content {
+  text-align: center;
+}
+.pagoination-content button {
+  width: 50px;
+  margin: 10px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #41b294;
+}/*# sourceMappingURL=pagination.css.map */

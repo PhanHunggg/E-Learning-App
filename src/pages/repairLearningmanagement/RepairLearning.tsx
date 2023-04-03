@@ -13,10 +13,11 @@ import {
   updateCourseApi,
   updateImgApi,
 } from "../../services/course ";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/config";
+import { useDispatch, useSelector } from "react-redux";
+import { RootDispatch, RootState } from "../../store/config";
 import "../addLearningManagement/addLearningManagement.scss";
 import TextArea from "antd/es/input/TextArea";
+import { fetchCourseListAction } from "../../store/reducers/eduReducer";
 
 type SizeType = Parameters<typeof Form>[0]["size"];
 
@@ -30,6 +31,7 @@ export default function RepairLearning(props: Props): JSX.Element {
   const [imgPreview, setImgPreview] = useState<string>();
   const stateEdu = useSelector((state: RootState) => state.eduReducer);
   const [form] = Form.useForm();
+  const dispatch = useDispatch<RootDispatch>();
 
   const getProfile = async () => {
     const result: any = await fetchCourseInformationApi(props.id);
@@ -114,6 +116,7 @@ export default function RepairLearning(props: Props): JSX.Element {
       notification.success({
         message: "Cập nhật thành công",
       });
+      dispatch(fetchCourseListAction());
     } catch (error: any) {
       notification.error({
         message: error.response.data,
@@ -151,17 +154,16 @@ export default function RepairLearning(props: Props): JSX.Element {
             <span className="icon__form">
               <i className="fa fa-lock"></i>
             </span>
-            <Form.Item name="maKhoaHoc">
+            <Form.Item
+              name="maKhoaHoc"
+              rules={[
+                {
+                  required: true,
+                  message: "Vui lòng nhập mã khóa học của bạn",
+                },
+              ]}
+            >
               <Input placeholder="Mã khóa học" />
-            </Form.Item>
-          </div>
-
-          <div className="item__learning">
-            <span className="icon__form">
-              <i className="fa fa-user-secret"></i>
-            </span>
-            <Form.Item name="biDanh">
-              <Input placeholder="Bí danh" />
             </Form.Item>
           </div>
 
@@ -169,8 +171,30 @@ export default function RepairLearning(props: Props): JSX.Element {
             <span className="icon__form">
               <i className="fa fa-book"></i>
             </span>
-            <Form.Item name="tenKhoaHoc">
+            <Form.Item
+              name="tenKhoaHoc"
+              rules={[
+                {
+                  required: true,
+                  message: "Vui lòng nhập tên khóa học của bạn",
+                },
+              ]}
+            >
               <Input placeholder="Tên khóa học" />
+            </Form.Item>
+          </div>
+
+          <div className="item__learning">
+            <span className="icon__form">
+              <i className="fa fa-user-secret"></i>
+            </span>
+            <Form.Item
+              name="biDanh"
+              rules={[
+                { required: true, message: "Vui lòng nhập bí danh của bạn" },
+              ]}
+            >
+              <Input placeholder="Bí danh" />
             </Form.Item>
           </div>
 
@@ -178,7 +202,12 @@ export default function RepairLearning(props: Props): JSX.Element {
             <span className="icon__form">
               <i className="fa fa-thumbs-up"></i>
             </span>
-            <Form.Item name="danhGia">
+            <Form.Item
+              name="danhGia"
+              rules={[
+                { required: true, message: "Vui lòng nhập đánh giá của bạn" },
+              ]}
+            >
               <InputNumber placeholder="Đánh giá" className="danhGia" />
             </Form.Item>
           </div>
@@ -187,7 +216,12 @@ export default function RepairLearning(props: Props): JSX.Element {
             <span className="icon__form">
               <i className="fa fa-eye"></i>
             </span>
-            <Form.Item name="luotXem">
+            <Form.Item
+              name="luotXem"
+              rules={[
+                { required: true, message: "Vui lòng nhập lượt xem của bạn" },
+              ]}
+            >
               <InputNumber
                 type="number"
                 placeholder="Lượt xem"
@@ -201,7 +235,13 @@ export default function RepairLearning(props: Props): JSX.Element {
             <span className="icon__form">
               <i className="fa fa-users"></i>
             </span>
-            <Form.Item className="same_option" name="maNhom">
+            <Form.Item
+              className="same_option"
+              name="maNhom"
+              rules={[
+                { required: true, message: "Vui lòng chọn mã nhóm của bạn" },
+              ]}
+            >
               <Select placeholder="Mã nhóm">
                 <Select.Option value="GP01">GP01</Select.Option>
                 <Select.Option value="GP02">GP02</Select.Option>
@@ -213,7 +253,15 @@ export default function RepairLearning(props: Props): JSX.Element {
             <span className="icon__form">
               <i className="fa fa-book-open"></i>
             </span>
-            <Form.Item name="maDanhMucKhoaHoc">
+            <Form.Item
+              name="maDanhMucKhoaHoc"
+              rules={[
+                {
+                  required: true,
+                  message: "Vui lòng chọn danh mục khóa học của bạn",
+                },
+              ]}
+            >
               <Select className="same_option" placeholder="Danh mục khóa học">
                 {renderCatalogList()}
               </Select>
@@ -224,7 +272,12 @@ export default function RepairLearning(props: Props): JSX.Element {
             <span className="icon__form">
               <i className="fa fa-user"></i>
             </span>
-            <Form.Item name="nguoiTao">
+            <Form.Item
+              name="nguoiTao"
+              rules={[
+                { required: true, message: "Vui lòng chọn người tạo của bạn" },
+              ]}
+            >
               <Select className="same_option" placeholder="Người tạo">
                 <Select.Option value="GV">{`${stateEdu.userInfo?.maLoaiNguoiDung}`}</Select.Option>
               </Select>
@@ -235,11 +288,17 @@ export default function RepairLearning(props: Props): JSX.Element {
             <span className="icon__form">
               <i className="fa fa-calendar"></i>
             </span>
-
-            <Form.Item className="date" name="ngayTao">
+            <Form.Item
+              className="date"
+              name="ngayTao"
+              rules={[
+                { required: true, message: "Vui lòng chọn ngày tạo của bạn" },
+              ]}
+            >
               <Input />
             </Form.Item>
           </div>
+
           <div className="item__image">
             <Form.Item className="hinhAnh" name="hinhAnh">
               <Input type="file" onChange={handleFile} />
@@ -255,7 +314,11 @@ export default function RepairLearning(props: Props): JSX.Element {
         <div className="icon__form">
           <img src={`${profile?.hinhAnh}`} alt="REACTJS" />
         </div>
-        <Form.Item className="moTa" name="moTa">
+        <Form.Item
+          className="moTa"
+          name="moTa"
+          rules={[{ required: true, message: "Vui lòng nhập mô tả của bạn" }]}
+        >
           <TextArea placeholder="Mô tả" rows={4} />
         </Form.Item>
       </div>

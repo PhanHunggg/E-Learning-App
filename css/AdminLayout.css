@@ -1,4 +1,52 @@
+.layoutMain .site-layout {
+  width: auto !important;
+}
+
 .ant-menu span {
   font-size: 15px !important;
   font-weight: 600;
+}
+
+.iphone6plus .ant-layout-sider-dark {
+  width: 100px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+}
+.iphone6plus .ant-layout-sider-trigger {
+  width: 99px;
+  min-width: 99px;
+  max-width: 99px;
+}
+
+.mobile .ant-layout-sider-dark {
+  width: 100px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+}
+.mobile .ant-layout-sider-trigger {
+  width: 99px;
+  min-width: 99px;
+  max-width: 99px;
+}
+
+.tablet .ant-layout-sider-dark {
+  width: 100px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+}
+.tablet .ant-layout-sider-trigger {
+  width: 99px;
+  min-width: 99px;
+  max-width: 99px;
+}
+
+.laptop .ant-layout-sider-dark {
+  width: 100px !important;
+  min-width: 100px !important;
+  max-width: 100px !important;
+}
+.laptop .ant-layout-sider-trigger {
+  width: 99px;
+  min-width: 99px;
+  max-width: 99px;
 }/*# sourceMappingURL=AdminLayout.css.map */

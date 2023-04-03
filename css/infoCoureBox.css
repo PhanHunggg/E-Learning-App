@@ -1,11 +1,24 @@
 .infoCoureBox {
   width: 100%;
-  height: 475px;
 }
 .infoCoureBox .row {
   width: 100%;
   height: 100%;
   margin: 0;
+}
+.infoCoureBox .row.active .left {
+  margin-bottom: 25px;
+}
+.infoCoureBox .row.active .right .row .item .infoSmallItemA {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.infoCoureBox .row.active .right .row .item .infoLargeItemB {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.infoCoureBox .row.active .right .row .item.item3 {
+  margin-bottom: 20px;
 }
 .infoCoureBox .row .left {
   padding-right: 0;
@@ -74,6 +87,7 @@
 }
 .infoCoureBox .row .right .row {
   justify-content: space-around;
+  margin-left: 20px;
 }
 .infoCoureBox .row .right .row .item {
   padding: 0;

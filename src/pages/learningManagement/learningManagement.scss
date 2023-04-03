@@ -1,8 +1,33 @@
 .header__adminLeaning {
+    justify-content: space-between;
+
+    .button__addLearn {
+        outline: #1465d8;
+    }
+
     .ant-input-affix-wrapper {
         width: 25%;
         height: 35px;
         margin-left: 20%;
+    }
+
+    .icon {
+        i {
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            cursor: pointer;
+            text-align: center;
+            background-color: #1677ff;
+            color: white;
+            border-radius: 20%;
+            transition: all .3s;
+
+            &:hover {
+                background-color: #4096ff;
+            }
+        }
     }
 }
 
@@ -28,7 +53,6 @@
                 text-align: center;
 
                 button {
-                    width: 18% !important;
                     margin-right: 5px;
                     color: white;
                 }
@@ -41,21 +65,21 @@
             }
 
             .maKhoaHoc {
-                width: 10%;
-                max-width: 10%;
-                min-width: 10%;
+                width: 12%;
+                max-width: 12%;
+                min-width: 12%;
             }
 
             .tenKhoaHoc {
-                width: 16%;
-                max-width: 16%;
-                min-width: 16%;
+                width: 20%;
+                max-width: 20%;
+                min-width: 20%;
             }
 
             .hinhAnh {
-                width: 21%;
-                max-width: 21%;
-                min-width: 21%;
+                width: 26%;
+                max-width: 26%;
+                min-width: 26%;
                 overflow: hidden;
 
                 img {
@@ -75,9 +99,9 @@
             }
 
             .chucNangLearning {
-                width: 26%;
-                max-width: 26%;
-                min-width: 26%;
+                width: 21%;
+                max-width: 21%;
+                min-width: 21%;
 
                 .repair {
                     transition: all .3s;

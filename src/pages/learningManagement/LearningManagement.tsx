@@ -15,8 +15,21 @@ import { deleteCourseApi } from "../../services/course ";
 
 import Search from "antd/es/transfer/search";
 import RepairLearning from "../repairLearningmanagement/RepairLearning";
+import { useNavigate } from "react-router-dom";
+import { withViewport } from "../../HOCs/withViewport";
+import { useLoading } from "../../contexts/loading/LoadingHook";
+import { DESKTOP, LAPTOP, TABLET } from "../../constants";
 
-export default function LearningManagement(): JSX.Element {
+interface Props {
+  device: any;
+}
+
+function LearningManagement(props: Props): JSX.Element {
+  const dispatch = useDispatch<RootDispatch>();
+
+  const { isLoading, setLoading } = useLoading();
+
+  const navigate = useNavigate();
   const [id, setId] = useState<any>();
 
   const [keyWord, setKeyWord] = useState<any>();
@@ -37,6 +50,7 @@ export default function LearningManagement(): JSX.Element {
           <span>{idx + 1}</span>
         </>
       ),
+      responsive: ["sm"],
     },
     {
       title: "Mã khóa học",
@@ -55,6 +69,7 @@ export default function LearningManagement(): JSX.Element {
       className: "hinhAnh",
       key: "hinhAnh",
       render: (text) => <>{text.hinhAnh ? <img src={text.hinhAnh} /> : ""}</>,
+      responsive: ["md"],
     },
     {
       title: "Người tạo",
@@ -65,6 +80,7 @@ export default function LearningManagement(): JSX.Element {
           <p>{text.nguoiTao.hoTen}</p>
         </>
       ),
+      responsive: ["sm"],
     },
     {
       title: "Chức năng",
@@ -97,10 +113,10 @@ export default function LearningManagement(): JSX.Element {
     } else {
       try {
         await deleteCourseApi(course.maKhoaHoc);
-        setCourseList(data);
         notification.success({
           message: "Xóa khóa học thành công",
         });
+        dispatch(fetchCourseListAction());
       } catch (error: any) {
         notification.error({
           message: error.response.data,
@@ -109,11 +125,18 @@ export default function LearningManagement(): JSX.Element {
     }
   };
 
-  const dispatch = useDispatch<RootDispatch>();
+  useEffect(() => {
+    if (stateEdu.courseList.length) return;
+    setLoading(true);
+
+    dispatch(fetchCourseListAction());
+
+    setLoading(false);
+  }, []);
 
   useEffect(() => {
-    dispatch(fetchCourseListAction());
-  }, []);
+    setCourseList(stateEdu.courseList);
+  }, [stateEdu.courseList]);
 
   useEffect(() => {
     dispatch(findCourseAction(keyWord));
@@ -170,7 +193,16 @@ export default function LearningManagement(): JSX.Element {
 
   return (
     <>
-      <div className="header__adminLeaning d-flex">
+      <div
+        className={`header__adminLeaning d-flex ${
+          props.device !== DESKTOP &&
+          "active" &&
+          props.device !== LAPTOP &&
+          "active" &&
+          props.device !== TABLET &&
+          "active"
+        }`}
+      >
         <Button
           style={{
             padding: "16px 10px ",
@@ -181,6 +213,7 @@ export default function LearningManagement(): JSX.Element {
           }}
           type="primary"
           onClick={showModal}
+          className="button__addLearn"
         >
           Thêm Khóa Học
         </Button>
@@ -188,6 +221,14 @@ export default function LearningManagement(): JSX.Element {
           onChange={handleChange}
           placeholder="Nhập tên khóa học cần tìm"
         />
+        <span
+          className="icon"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <i className="fa fa-home"></i>
+        </span>
       </div>
       <Table
         className="leaningList"
@@ -214,3 +255,5 @@ export default function LearningManagement(): JSX.Element {
     </>
   );
 }
+
+export default withViewport(LearningManagement);

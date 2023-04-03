@@ -3,39 +3,53 @@ import type { MenuProps } from "antd";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-
+import { DESKTOP, IPHONE6PLUS, LAPTOP, MOBILE, TABLET } from "../../constants";
+import { withViewport } from "../../HOCs/withViewport";
 import "./AdminLayout.scss";
 
-const { Content, Sider } = Layout;
-
-type MenuItem = Required<MenuProps>["items"][number];
-
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[]
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  } as MenuItem;
+interface Props {
+  device: any;
 }
 
-const items: MenuItem[] = [
-  getItem("Người Dùng", "/admin/user-management", <UserOutlined />),
-  getItem("Khóa Học", "/admin/learning-management", <CalendarOutlined />),
-];
+function AdminLayout(props: Props): JSX.Element {
+  const { Content, Sider } = Layout;
 
-export default function AdminLayout(): JSX.Element {
+  type MenuItem = Required<MenuProps>["items"][number];
+
+  function getItem(
+    label: React.ReactNode,
+    key: React.Key,
+    icon?: React.ReactNode,
+    children?: MenuItem[]
+  ): MenuItem {
+    return {
+      key,
+      icon,
+      children,
+      label,
+    } as MenuItem;
+  }
+
+  const items: MenuItem[] = [
+    getItem("Người Dùng", "/admin/user-management", <UserOutlined />),
+    getItem("Khóa Học", "/admin/learning-management", <CalendarOutlined />),
+  ];
+
   const navigate = useNavigate();
 
   const [collapsed, setCollapsed] = useState(false);
 
+  console.log(props.device);
+
   return (
-    <Layout className="layoutMain" style={{ minHeight: "100vh" }}>
+    <Layout
+      className={`layoutMain ${props.device === TABLET && "tablet"} ${
+        props.device === IPHONE6PLUS && "iphone6plus"
+      } ${props.device === MOBILE && "mobile"} ${
+        props.device === LAPTOP && "laptop"
+      } ${props.device === DESKTOP && "desktop"}`}
+      style={{ minHeight: "100vh", width: "100%" }}
+    >
       <Sider
         collapsible
         collapsed={collapsed}
@@ -63,3 +77,5 @@ export default function AdminLayout(): JSX.Element {
     </Layout>
   );
 }
+
+export default withViewport(AdminLayout);

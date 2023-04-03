@@ -1,7 +1,36 @@
+.header__admin {
+  justify-content: space-between;
+}
+.header__admin .button__addUser {
+  outline: #1465d8;
+}
+.header__admin .anticon-home {
+  cursor: pointer;
+  margin-right: 20px;
+  font-size: 30px;
+}
+.header__admin .anticon-home svg {
+  background-color: #1677ff;
+}
 .header__admin .ant-input-affix-wrapper {
   width: 25%;
   height: 35px;
   margin-left: 20%;
+}
+.header__admin .icon i {
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #1677ff;
+  color: white;
+  border-radius: 20%;
+  transition: all 0.3s;
+}
+.header__admin .icon i:hover {
+  background-color: #4096ff;
 }
 
 .ant-table-wrapper .ant-table-thead tr {
@@ -75,4 +104,24 @@
   transition: all 0.3s;
   margin-right: 5px;
   font-weight: 600;
+}
+
+.user__management {
+  width: 35% !important;
+}
+
+.laptop.user__management {
+  width: 45% !important;
+}
+
+.tablet.user__management {
+  width: 50% !important;
+}
+
+.mobile.user__management {
+  width: 55% !important;
+}
+
+.iphone6plus.user__management {
+  width: 60% !important;
 }/*# sourceMappingURL=userManagement.css.map */

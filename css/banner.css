@@ -1,6 +1,5 @@
 .banner {
   width: 100%;
-  height: 700px;
 }
 .banner .row {
   width: 100%;
@@ -107,6 +106,179 @@
   height: 106px;
 }
 
+.banner.tablet .row .title {
+  margin-top: 58px;
+}
+.banner.tablet .row .title .cloud {
+  left: 12%;
+  top: -24%;
+}
+.banner.tablet .row .title .rocket {
+  left: 6%;
+  bottom: -6%;
+}
+.banner.tablet .row .title .slogan img {
+  right: 14%;
+  top: 50%;
+  width: 22%;
+  height: 43%;
+}
+
+.banner.mobile .row .title {
+  margin-top: 60px;
+}
+.banner.mobile .row .title .cloud {
+  left: 12%;
+  top: -21%;
+}
+.banner.mobile .row .title .rocket {
+  left: -3%;
+  bottom: -8%;
+}
+.banner.mobile .row .title .slogan {
+  margin-left: 40px;
+}
+.banner.mobile .row .title .slogan img {
+  right: 3%;
+  top: 26%;
+  width: 29%;
+  height: 39%;
+}
+.banner.mobile .row .image .message {
+  top: 37%;
+  right: 43%;
+}
+
+.banner.iphone6_plus .row .title {
+  margin-top: 60px;
+  margin-left: 21px;
+}
+.banner.iphone6_plus .row .title .cloud {
+  left: -15%;
+  top: -23%;
+}
+.banner.iphone6_plus .row .title .cloud img {
+  width: 65px;
+  height: 60px;
+}
+.banner.iphone6_plus .row .title .rocket {
+  left: -13%;
+  bottom: -7%;
+}
+.banner.iphone6_plus .row .title .rocket img {
+  width: 60px;
+  height: 60px;
+}
+.banner.iphone6_plus .row .title .slogan h1 {
+  font-weight: 600;
+  font-size: 40px;
+}
+.banner.iphone6_plus .row .title .slogan h1:last-of-type {
+  font-size: 55px;
+}
+.banner.iphone6_plus .row .title .slogan h1:last-of-type span {
+  font-size: 40px;
+}
+.banner.iphone6_plus .row .title .slogan img {
+  right: -1%;
+  top: 27%;
+  width: 29%;
+  height: 39%;
+}
+.banner.iphone6_plus .row .title .slogan button {
+  font-size: 13px;
+}
+.banner.iphone6_plus .row .image .message {
+  top: 40%;
+  right: 44%;
+  animation: message2 2.5s linear infinite alternate;
+}
+.banner.iphone6_plus .row .image .message img {
+  width: 50px;
+  height: 50px;
+}
+.banner.iphone6_plus .row .image .cloud {
+  left: 4%;
+  top: 2%;
+}
+.banner.iphone6_plus .row .image .cloud img {
+  width: 46px;
+  height: 45px;
+}
+.banner.iphone6_plus .row .image .cloud.mid {
+  left: 10%;
+  top: 12%;
+}
+.banner.iphone6_plus .row .image .cloud.bottom {
+  left: 14%;
+  top: 25%;
+}
+
+.banner.iphone6 .row .title {
+  margin-top: 60px;
+  margin-left: 21px;
+}
+.banner.iphone6 .row .title .cloud {
+  left: -17%;
+  top: -21%;
+}
+.banner.iphone6 .row .title .cloud img {
+  width: 55px;
+  height: 55px;
+}
+.banner.iphone6 .row .title .rocket {
+  left: -13%;
+  bottom: -7%;
+}
+.banner.iphone6 .row .title .rocket img {
+  width: 46px;
+  height: 46px;
+}
+.banner.iphone6 .row .title .slogan h1 {
+  font-weight: 600;
+  font-size: 40px;
+}
+.banner.iphone6 .row .title .slogan h1:last-of-type {
+  font-size: 55px;
+}
+.banner.iphone6 .row .title .slogan h1:last-of-type span {
+  font-size: 40px;
+}
+.banner.iphone6 .row .title .slogan img {
+  right: -1%;
+  top: 35%;
+  width: 35%;
+  height: 39%;
+}
+.banner.iphone6 .row .title .slogan button {
+  font-size: 13px;
+}
+.banner.iphone6 .row .image .message {
+  top: 39%;
+  right: 44%;
+  animation: message2 2.5s linear infinite alternate;
+}
+.banner.iphone6 .row .image .message img {
+  width: 44px;
+  height: 44px;
+}
+.banner.iphone6 .row .image .cloud {
+  left: 4%;
+  top: 2%;
+}
+.banner.iphone6 .row .image .cloud img {
+  width: 46px;
+  height: 45px;
+}
+.banner.iphone6 .row .image .cloud.mid {
+  left: 10%;
+  top: 12%;
+}
+.banner.iphone6 .row .image .cloud.bottom {
+  left: 14%;
+  top: 25%;
+}
+
 @keyframes rocket {
   0% {
     transform: rotate(-43deg) translate(0px, 0px);
@@ -120,7 +292,7 @@
     transform: translateX(0px);
   }
   100% {
-    transform: translateX(350px);
+    transform: translateX(285px);
   }
 }
 @keyframes cloud_right {
@@ -139,6 +311,14 @@
   }
   100% {
     transform: rotate(19deg) translate(24px, -9px);
+  }
+}
+@keyframes message2 {
+  0% {
+    transform: rotate(-19deg) translateX(-11px);
+  }
+  100% {
+    transform: rotate(22deg) translate(8px, -3px);
   }
 }
 @keyframes slogan {

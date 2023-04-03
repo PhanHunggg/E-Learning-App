@@ -1,7 +1,10 @@
 import { Button, Form, Input, notification, Select } from "antd";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { userLoginDto } from "../../interfaces/user";
 import { addUserApi } from "../../services/user";
+import { RootDispatch } from "../../store/config";
+import { fetchUserListAction } from "../../store/reducers/eduReducer";
 import "./addUserManagement.scss";
 
 const { Option } = Select;
@@ -9,6 +12,8 @@ const { Option } = Select;
 type SizeType = Parameters<typeof Form>[0]["size"];
 
 export default function AddUserManagement(): JSX.Element {
+  const dispatch = useDispatch<RootDispatch>();
+
   const [form] = Form.useForm();
 
   const [componentSize, setComponentSize] = useState<SizeType | "default">(
@@ -35,16 +40,28 @@ export default function AddUserManagement(): JSX.Element {
       notification.success({
         message: "Thêm người dùng thành công",
       });
+      form.resetFields();
+      dispatch(fetchUserListAction());
     } catch (error: any) {
       notification.error({
         message: error.response.data,
       });
     }
-    form.resetFields();
+  };
+
+  const validateMessages = {
+    required: "${label} is required!",
+    types: {
+      email: "${label} is not a valid email!",
+      number: "${label} is not a valid number!",
+    },
+    number: {
+      range: "${label} must be between ${min} and ${max}",
+    },
   };
 
   return (
-    <div className="form__User">
+    <div className={` form__User`}>
       <Form
         form={form}
         layout="horizontal"
@@ -52,7 +69,8 @@ export default function AddUserManagement(): JSX.Element {
         onValuesChange={onFormLayoutChange}
         size={componentSize as SizeType}
         onFinish={handleFinish}
-        style={{ marginLeft: 160, marginRight: 100 }}
+        style={{ marginLeft: 35, marginRight: 0 }}
+        validateMessages={validateMessages}
       >
         <div className="item">
           <span className="icon__form">
@@ -62,7 +80,7 @@ export default function AddUserManagement(): JSX.Element {
             className="taiKhoan"
             name="taiKhoan"
             rules={[
-              { required: true, message: "Tài khoản không được để trống" },
+              { required: true, message: "Vui lòng nhập tài khoản của bạn" },
             ]}
           >
             <Input placeholder="Tài khoản" />
@@ -76,7 +94,7 @@ export default function AddUserManagement(): JSX.Element {
             className="matKhau"
             name="matKhau"
             rules={[
-              { required: true, message: "Mật khẩu không được để trống" },
+              { required: true, message: "Vui lòng nhập mật khẩu của bạn" },
             ]}
           >
             <Input.Password
@@ -92,7 +110,9 @@ export default function AddUserManagement(): JSX.Element {
           <Form.Item
             className="hoTen"
             name="hoTen"
-            rules={[{ required: true, message: "Họ tên không được để trống" }]}
+            rules={[
+              { required: true, message: "Vui lòng nhập họ tên của bạn" },
+            ]}
           >
             <Input placeholder="Họ tên" />
           </Form.Item>
@@ -105,7 +125,10 @@ export default function AddUserManagement(): JSX.Element {
             className="soDT"
             name="soDT"
             rules={[
-              { required: true, message: "Số điện thoại không được để trống" },
+              {
+                required: true,
+                message: "Vui lòng nhập số điện thoại của bạn",
+              },
             ]}
           >
             <Input placeholder="Số điện thoại" />
@@ -121,7 +144,7 @@ export default function AddUserManagement(): JSX.Element {
             rules={[
               {
                 required: true,
-                message: "Mã loại người dùng không được để trống",
+                message: "Vui lòng chọn mã loại người dùng của bạn",
               },
             ]}
           >
@@ -138,12 +161,22 @@ export default function AddUserManagement(): JSX.Element {
           <Form.Item
             className="email"
             name="email"
-            rules={[{ required: true, message: "Email không được để trống" }]}
+            validateFirst
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập email của bạn",
+              },
+              {
+                pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                message: "Email phải đúng định dạng.",
+              },
+            ]}
           >
             <Input placeholder="Email" />
           </Form.Item>
         </div>
-        <Form.Item className="button">
+        <Form.Item className="button__user">
           <Button type="primary" htmlType="submit">
             Đăng ký
           </Button>

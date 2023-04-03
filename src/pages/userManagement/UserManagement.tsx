@@ -14,33 +14,53 @@ import AddUserManagement from "../addUserManagement/AddUserManagement";
 import { deleteUserApi } from "../../services/user";
 import Search from "antd/es/transfer/search";
 import RepairUserManagement from "../repairUserManagement/RepairUserManagement";
+import { useNavigate } from "react-router-dom";
+import { withViewport } from "../../HOCs/withViewport";
+import { useLoading } from "../../contexts/loading/LoadingHook";
+import { DESKTOP, IPHONE6PLUS, LAPTOP, MOBILE, TABLET } from "../../constants";
 
-export default function UserManagement(): JSX.Element {
+interface Props {
+  device: any;
+}
+
+function UserManagement(props: Props): JSX.Element {
+  const navigate = useNavigate();
+
   const stateEdu = useSelector((state: RootState) => state.eduReducer);
 
-  const [id, setId] = useState<any>();
-
-  const [keyWord, setKeyWord] = useState<any>();
-
   const dispatch = useDispatch<RootDispatch>();
-
-  useEffect(() => {
-    dispatch(fetchUserListAction());
-  }, []);
-
-  useEffect(() => {
-    dispatch(findUserRepairAction());
-  }, []);
-
-  useEffect(() => {
-    dispatch(findUserAction(keyWord));
-  }, [keyWord]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [userList, setUserList] = useState<UserList<MaLoaiNguoiDung>[]>(
     stateEdu.UserList
   );
+
+  const { isLoading, setLoading } = useLoading();
+
+  const [id, setId] = useState<any>();
+
+  const [keyWord, setKeyWord] = useState<any>();
+
+  useEffect(() => {
+    if (stateEdu.UserList.length) return;
+    setLoading(true);
+
+    dispatch(fetchUserListAction());
+    dispatch(findUserRepairAction());
+
+    if (stateEdu.UserList.length) {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    setUserList(stateEdu.UserList);
+  }, [stateEdu.UserList]);
+
+  useEffect(() => {
+    dispatch(findUserAction(keyWord));
+  }, [keyWord]);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -56,16 +76,15 @@ export default function UserManagement(): JSX.Element {
 
   const handleDeleteUser = async (user: UserList<MaLoaiNguoiDung>) => {
     const data = [...stateEdu.UserList];
-    const idx = data.findIndex((ele) => ele.taiKhoan === user.taiKhoan);
 
     try {
       await deleteUserApi(user.taiKhoan);
       notification.success({
         message: "Xóa người dùng thành công",
       });
-      data.splice(idx, 1);
       setUserList(data);
       setKeyWord([]);
+      dispatch(fetchUserListAction());
     } catch (error: any) {
       notification.error({
         message: error.response.data,
@@ -83,6 +102,7 @@ export default function UserManagement(): JSX.Element {
           <span>{idx + 1}</span>
         </>
       ),
+      responsive: ["sm"],
     },
     {
       title: "Tài khoản",
@@ -99,6 +119,7 @@ export default function UserManagement(): JSX.Element {
           <span>{text.maLoaiNguoiDung}</span>
         </>
       ),
+      responsive: ["md"],
     },
     {
       title: "Họ và tên",
@@ -111,13 +132,14 @@ export default function UserManagement(): JSX.Element {
       key: "email",
       className: "email ",
       render: (text) => <>{text.email}</>,
+      responsive: ["lg"],
     },
-
     {
       title: "Số điện thoại",
       key: "soDt",
       className: "soDt",
       dataIndex: "soDt",
+      responsive: ["sm"],
     },
     {
       title: "Chức năng",
@@ -176,7 +198,7 @@ export default function UserManagement(): JSX.Element {
 
   return (
     <>
-      <div className="header__admin d-flex">
+      <div className={`header__admin d-flex `}>
         <Button
           style={{
             padding: "16px 10px ",
@@ -187,6 +209,7 @@ export default function UserManagement(): JSX.Element {
           }}
           type="primary"
           onClick={showModal}
+          className="button__addUser"
         >
           Thêm Người Dùng
         </Button>
@@ -194,6 +217,14 @@ export default function UserManagement(): JSX.Element {
           onChange={handleChange}
           placeholder="Nhập tên hoặc tài khoản người dùng"
         />
+        <span
+          className="icon"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <i className="fa fa-home"></i>
+        </span>
       </div>
       <Table columns={columns} dataSource={handleFilterUser(filter) as any} />
       <Modal
@@ -201,6 +232,11 @@ export default function UserManagement(): JSX.Element {
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        className={`${props.device === TABLET && "tablet"} ${
+          props.device === IPHONE6PLUS && "iphone6plus"
+        } ${props.device === MOBILE && "mobile"} ${
+          props.device === LAPTOP && "laptop"
+        } ${props.device === DESKTOP && "desktop"} user__management`}
       >
         <AddUserManagement />
       </Modal>
@@ -215,3 +251,5 @@ export default function UserManagement(): JSX.Element {
     </>
   );
 }
+
+export default withViewport(UserManagement);

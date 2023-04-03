@@ -1,5 +1,4 @@
 .boxNumber .box {
-  height: 275px;
   background-color: #f0f8ff;
   padding: 0;
 }
@@ -20,4 +19,14 @@
 }
 .boxNumber .box .boxNumber .textNumber span {
   font-weight: 500;
+}
+.boxNumber.active .box .boxNumber {
+  margin-bottom: 15px;
+}
+.boxNumber.active .box .boxNumber img {
+  width: 70px;
+  height: 70px;
+}
+.boxNumber.active .box .boxNumber .textNumber {
+  font-size: 45px;
 }/*# sourceMappingURL=boxNumber.css.map */

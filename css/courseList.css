@@ -1,0 +1,105 @@
+.course_list {
+  padding: 50px;
+}
+.course_list h6 {
+  color: #f6ba35;
+  font-weight: 500;
+  font-size: 18px;
+}
+.course_list h6 i {
+  margin-right: 5px;
+  color: pink;
+  font-size: 20px;
+}
+.course_list .cardGlobalRes {
+  padding: 0;
+  border: none;
+}
+.course_list .cardGlobalRes a {
+  color: black;
+  text-decoration: none;
+  width: 278px;
+  height: 370px;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+.course_list .cardGlobalRes a:hover {
+  transform: translateY(-4px);
+}
+.course_list .cardGlobalRes a .card_header {
+  position: relative;
+  height: 185px;
+}
+.course_list .cardGlobalRes a .card_header img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 278px;
+  height: 100%;
+}
+.course_list .cardGlobalRes a .card_header span {
+  color: white;
+  position: absolute;
+  bottom: -7%;
+  left: 0;
+  background-color: rgb(65, 178, 148);
+  padding: 0px 10px;
+}
+.course_list .cardGlobalRes a .card_body {
+  padding: 10px;
+}
+.course_list .cardGlobalRes a .card_body h6 {
+  font-size: 16px;
+  margin-top: 16px;
+}
+.course_list .cardGlobalRes a .card_body .author {
+  display: flex;
+  align-items: center;
+}
+.course_list .cardGlobalRes a .card_body .author .img {
+  padding: 2px;
+  border-color: #f6ba35 transparent;
+  border-left: 1px solid transparent;
+  border-bottom: 1px solid #f6ba35;
+  border-right: 1px solid transparent;
+  border-top: 1px solid #f6ba35;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.course_list .cardGlobalRes a .card_body .author .img img {
+  width: 100%;
+}
+.course_list .cardGlobalRes a .card_body .author span {
+  color: #8c8c8c;
+  font-weight: 500;
+}
+.course_list .cardGlobalRes a .card_footer {
+  padding: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.course_list .cardGlobalRes a .card_footer .total p {
+  font-size: 12px;
+  color: #8c8c8c;
+  text-decoration-line: line-through;
+  margin: 0;
+}
+.course_list .cardGlobalRes a .card_footer .total p:last-of-type {
+  font-size: 16px;
+  font-weight: 500;
+  color: #41b294;
+  text-decoration-line: none;
+}
+.course_list .cardGlobalRes a .card_footer .rate {
+  color: #f6ba35;
+}
+.course_list .cardGlobalRes a .card_footer .rate span {
+  font-weight: 500;
+}
+.course_list .cardGlobalRes a .card_footer .rate span:last-of-type {
+  font-size: 12px;
+  color: #8c8c8c;
+}/*# sourceMappingURL=courseList.css.map */

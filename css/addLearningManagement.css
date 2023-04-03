@@ -33,14 +33,17 @@
   font-size: 21px !important;
 }
 .ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .ant-form-item {
-  width: 90%;
+  width: 78%;
 }
 .ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .same_option .ant-select-selector {
   border-radius: 0 6px 6px 0;
   height: 38px;
 }
 .ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .same_option .ant-select-selector .ant-select-selection-placeholder {
-  line-height: 35px;
+  line-height: 38px;
+}
+.ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .same_option .ant-select-selector .ant-select-selection-item {
+  line-height: 38px;
 }
 .ant-modal .ant-modal-content .ant-modal-body .all__item .item__learning .danhGia {
   padding: 3px 0;
@@ -71,6 +74,7 @@
 }
 .ant-modal .ant-modal-content .ant-modal-body .all__item .item__image {
   margin-bottom: 20px;
+  width: 90%;
 }
 .ant-modal .ant-modal-content .ant-modal-body .text__moTa {
   height: 50px;

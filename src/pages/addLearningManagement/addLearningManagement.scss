@@ -34,7 +34,7 @@
                     }
 
                     .ant-form-item {
-                        width: 90%;
+                        width: 78%;
                     }
 
                     .same_option {
@@ -43,7 +43,11 @@
                             height: 38px;
 
                             .ant-select-selection-placeholder {
-                                line-height: 35px;
+                                line-height: 38px;
+                            }
+
+                            .ant-select-selection-item {
+                                line-height: 38px;
                             }
                         }
                     }
@@ -88,6 +92,7 @@
 
                 .item__image {
                     margin-bottom: 20px;
+                    width: 90%;
                 }
             }
 
@@ -141,3 +146,4 @@
         }
     }
 }
+
