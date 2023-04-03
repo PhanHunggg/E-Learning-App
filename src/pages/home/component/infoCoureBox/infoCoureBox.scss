@@ -171,6 +171,29 @@
   }
 }
 
+.infoCoureBox{
+  .row{
+    &.iPad_pro {
+      .right{
+        .row{
+          .item {
+            .infoSmallItemA{
+              width: 90%;
+              margin-bottom: 20px
+    
+            }
+            .infoLargeItemB{
+              width: 90%;
+              margin-bottom: 20px;
+             
+            }
+            
+          }
+        } 
+      }
+    } 
+  }
+}
 
 @keyframes shine {
   0% {

@@ -106,6 +106,32 @@
   height: 106px;
 }
 
+<<<<<<< HEAD
+=======
+.banner.iPad_pro .row {
+  margin: 0;
+  margin-left: 15px;
+}
+.banner.iPad_pro .row .title .slogan h1 {
+  font-size: 48px;
+}
+.banner.iPad_pro .row .title .cloud {
+  top: 5%;
+}
+.banner.iPad_pro .row .title .rocket {
+  left: -11%;
+  bottom: 13%;
+}
+.banner.iPad_pro .row .image .message {
+  top: 38%;
+  right: 44%;
+}
+.banner.iPad_pro .row .image .message img {
+  width: 86px;
+  height: 86px;
+}
+
+>>>>>>> 09521f97f2625caee131989520241a20ce055193
 .banner.tablet .row .title {
   margin-top: 58px;
 }

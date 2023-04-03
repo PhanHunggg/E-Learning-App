@@ -1,5 +1,5 @@
 import React from 'react'
-import { DESKTOP, LAPTOP } from '../../../../constants';
+import { DESKTOP, IPAD_PRO } from '../../../../constants';
 import { withViewport } from '../../../../HOCs/withViewport';
 import Left from './components/left/Left'
 import Right from './components/right/Right'
@@ -11,7 +11,7 @@ interface Props {
 function InfoCoureBox(props: Props): JSX.Element {
     return (
         <section className='infoCoureBox px-5'>
-            <div className={`row ${(props.device !== DESKTOP && "active") && (props.device !== LAPTOP && "active")} `}>
+            <div className={`row ${(props.device !== DESKTOP && "active") && (props.device !== IPAD_PRO && "active")} ${props.device === IPAD_PRO && "iPad_pro"} `}>
                 <Left />
                 <Right />
             </div >

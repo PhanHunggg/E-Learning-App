@@ -115,6 +115,16 @@
   color: #8c8c8c;
 }
 
+<<<<<<< HEAD
+=======
+.course.iPad_pro .course_list .cardGlobalRes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+>>>>>>> 09521f97f2625caee131989520241a20ce055193
 .course.mobile .course_list .cardGlobalRes {
   padding: 16px 0px 0px 15px;
   align-items: center;

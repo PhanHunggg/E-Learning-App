@@ -1,4 +1,5 @@
 .profile {
+  padding-top: 100px;
   p {
     margin: 0;
   }
@@ -17,8 +18,8 @@
         align-items: center;
         padding: 20px;
         img {
-          width: 130px;
-          height: 130px;
+          width: 115px;
+          height: 115px;
           border-radius: 50%;
           object-fit: cover;
           margin-bottom: 10px;
@@ -66,10 +67,10 @@
             text-transform: uppercase;
             font-size: 15px;
             font-weight: 500;
-            &:focus{
+            &:focus {
               box-shadow: none;
             }
-            &:hover{
+            &:hover {
               background-color: #ffc6c7;
               color: #000;
             }
@@ -248,6 +249,7 @@
           max-height: 600px;
           overflow: hidden;
           overflow-y: scroll;
+          min-height: 483px;
           &::-webkit-scrollbar {
             width: 10px;
           }
@@ -319,12 +321,27 @@
               align-items: flex-end;
             }
           }
+          .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 480px;
+            width: 100%;
+          }
         }
       }
     }
   }
   &.active {
     .infoPageContent {
+      .left {
+        .info {
+          h5 {
+            font-size: 1.2rem;
+          }
+        }
+      }
       .right {
         .nav-pills {
           justify-content: center;
@@ -368,7 +385,6 @@
     }
   }
 }
-
 @keyframes animate {
   100% {
     transform: scaleX(1);

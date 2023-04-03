@@ -2,7 +2,7 @@ import {
   MOBILE,
   TABLET,
   DESKTOP,
-  LAPTOP,
+  IPAD_PRO,
   IPHONE6,
   IPHONE6PLUS,
 } from "../constants/index";
@@ -21,13 +21,13 @@ export const useViewPort = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  if (width >= 576 && width <= 767) {
+  if (width >= 576 && width < 767) {
     return MOBILE;
-  } else if (width > 767 && width <= 960) {
+  } else if (width >= 767 && width < 960) {
     return TABLET;
-  } else if (width > 960 && width <= 1200) {
-    return LAPTOP;
-  } else if (width > 1200) {
+  } else if (width >= 960 && width < 1200) {
+    return IPAD_PRO;
+  } else if (width >= 1200) {
     return DESKTOP;
   } else if (width < 414) {
     return IPHONE6;

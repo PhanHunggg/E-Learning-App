@@ -2,7 +2,7 @@ import React from 'react'
 import "./boxNumber.scss"
 import CountUp from 'react-countup';
 import { withViewport } from '../../../../HOCs/withViewport';
-import { DESKTOP, LAPTOP, TABLET } from '../../../../constants';
+import { DESKTOP, IPAD_PRO, TABLET } from '../../../../constants';
 
 interface Props {
     device: any;
@@ -10,7 +10,7 @@ interface Props {
 
 function BoxNumber(props: Props): JSX.Element {
     return (
-        <section className={`boxNumber ${(props.device !== DESKTOP && "active") && (props.device !== LAPTOP && "active") && (props.device !== TABLET && "active")}`}>
+        <section className={`boxNumber ${(props.device !== DESKTOP && "active") && (props.device !== IPAD_PRO && "active") && (props.device !== TABLET && "active")}`}>
             <div className="box px-5 py-5">
                 <div className="row">
                     <div className="col-lg-3 pt-2 col-md-6">

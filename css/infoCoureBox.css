@@ -148,6 +148,15 @@
   font-size: 18px;
 }
 
+.infoCoureBox .row.iPad_pro .right .row .item .infoSmallItemA {
+  width: 90%;
+  margin-bottom: 20px;
+}
+.infoCoureBox .row.iPad_pro .right .row .item .infoLargeItemB {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
 @keyframes shine {
   0% {
     left: -160%;

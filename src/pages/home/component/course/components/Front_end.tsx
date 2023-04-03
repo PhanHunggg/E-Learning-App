@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { EduState } from '../../../../../store/reducers/eduReducer';
 interface Props {
     courseState: EduState;
@@ -7,7 +7,8 @@ interface Props {
 
 export default function Front_end(props: Props) {
 
-    const handleCourseFontEnd = () => {
+  const navigate = useNavigate()
+  const handleCourseFontEnd = () => {
         const data = props.courseState?.courseList
         let arrFrontEnd = [];
         for (let index = 0; index < data.length; index++) {
@@ -51,6 +52,37 @@ export default function Front_end(props: Props) {
                             <span>(9999)</span>
                         </div>
                     </div>
+                    <div className="subCard">
+                <div className="subCard_header">
+                  <img src="./images/GV.png" alt="Giáo viên" />
+                  <span>{ele.nguoiTao.hoTen}</span>
+                </div>
+                <div className="body">
+                  <h5>{ele.tenKhoaHoc}</h5>
+                  <p className='cardTitle'>Đã có hơn 6200 bạn đăng kí học và có việc làm thông qua chương trình đào tạo Bootcamp Lập trình Front End chuyên nghiệp. Khóa học 100% thực hành cường độ cao theo dự án thực tế và kết nối doanh nghiệp hỗ trợ tìm việc ngay sau khi học...</p>
+                  <div className="cardIcon">
+                    <span>
+                      <i className='far fa-clock iconOclock'></i>
+                      8 giờ
+                    </span>
+                    <span>
+                      <i className='far fa-calendar-alt iconCalendar'></i>
+                      4 giờ
+                    </span>
+                    <span>
+                      <i className='fas fa-signal iconLevel'></i>
+                      Tất cả
+                    </span>
+                  </div>
+                </div>
+                <div className="subCard_footer">
+                  <button onClick={() => {
+                    navigate(`/course-detail/${ele.maKhoaHoc}`)
+                  }} className='btn btn-primary'>
+                    Xem chi tiết
+                  </button>
+                </div>
+              </div>
                 </Link>
             </div>
 
@@ -59,7 +91,7 @@ export default function Front_end(props: Props) {
     return (
         <div className=" course_list front_end">
             <h6>Khóa học Front End React Js</h6>
-            <div className="row mt-4">
+            <div className="row ">
                 {renderCourseFrontEnd()}
             </div>
         </div>

@@ -1,5 +1,13 @@
 .header {
   padding: 0.5rem 3rem !important;
+  position: fixed !important;
+  width: 100%;
+  z-index: 999;
+  background-color: transparent;
+  transition: all 0.5s;
+  &.sticky {
+    background-color: #DFF1F0;
+  }
   .navbar-brand {
     width: 500px;
     img {
@@ -62,7 +70,21 @@
   }
 }
 
+.header.iPad_pro {
+  .navbar-brand {
+    width: 275px;
+    img {
+      width: 235px;
+      height: 76px;
+    }
+  }
+}
+
 .header.tablet {
+  .btn_login {
+    position: absolute;
+    right: 16%;
+  }
   .userInfo {
     position: absolute;
     top: 25px;
@@ -110,6 +132,10 @@
       height: 68px;
     }
   }
+  .btn_login {
+    position: absolute;
+    right: 19%;
+  }
   .userInfo {
     position: absolute;
     top: 21px;
@@ -138,11 +164,17 @@
 .header.iphone6_plus {
   padding: 1rem !important;
   .navbar-brand {
-      width: 145px;
-      img {
+    width: 145px;
+    img {
       width: 100%;
       height: 44px;
     }
+  }
+  .btn_login {
+    position: absolute;
+    right: 20%;
+    padding: 5px 10px;
+    font-size: 14px;
   }
   .userInfo {
     position: absolute;
@@ -188,11 +220,17 @@
 .header.iphone6 {
   padding: 1rem !important;
   .navbar-brand {
-      width: 145px;
-      img {
+    width: 145px;
+    img {
       width: 100%;
       height: 44px;
     }
+  }
+  .btn_login {
+    position: absolute;
+    right: 21%;
+    padding: 6px 9px;
+    font-size: 14px;
   }
   .userInfo {
     position: absolute;

@@ -238,6 +238,10 @@
   max-height: 600px;
   overflow: hidden;
   overflow-y: scroll;
+<<<<<<< HEAD
+=======
+  min-height: 483px;
+>>>>>>> 09521f97f2625caee131989520241a20ce055193
 }
 .profile .infoPageContent .right .myCourseInfo .myCourseItem::-webkit-scrollbar {
   width: 10px;
@@ -299,6 +303,17 @@
   justify-content: center;
   align-items: flex-end;
 }
+<<<<<<< HEAD
+=======
+.profile .infoPageContent .right .myCourseInfo .myCourseItem .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 480px;
+  width: 100%;
+}
+>>>>>>> 09521f97f2625caee131989520241a20ce055193
 .profile.active .infoPageContent .right .nav-pills {
   justify-content: center;
   align-items: center;

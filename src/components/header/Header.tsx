@@ -1,12 +1,12 @@
 
-import React, { useEffect } from "react";
+import React, { HtmlHTMLAttributes, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   DESKTOP,
   IPHONE6,
   IPHONE6PLUS,
-  LAPTOP,
+  IPAD_PRO,
   MOBILE,
   TABLET,
 } from "../../constants";
@@ -28,17 +28,31 @@ interface Props {
 }
 
 function Header(props: Props): JSX.Element {
-
+  const [isSticky, setSticky] = useState<boolean>(false);
   const { isLoading, setLoading } = useLoading();
 
   const dispatch = useDispatch<RootDispatch>();
   const courseState = useSelector((state: RootState) => state.eduReducer);
   const navigate = useNavigate();
+  const handleScroll = () => {
+    if (window.scrollY > 70) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     setLoading(true)
     dispatch(fetchCourseCatalogAction());
-    console.log(courseState.userInfo)
     setLoading(false)
   }, [isLoading]);
 
@@ -46,24 +60,28 @@ function Header(props: Props): JSX.Element {
     return courseState.courseCatalog.map((ele: CourseCatalogDto) => {
       return (
         <li key={ele.maDanhMuc}>
-          <a className="dropdown-item" href={`/courseCatalog/${ele.maDanhMuc}`} >
+          <Link className="dropdown-item" to={`/courseCatalog/${ele.maDanhMuc}`} >
             {ele.tenDanhMuc}
-          </a>
+          </Link>
         </li>
       );
     });
   };
- 
+
+
+
   return (
     <nav
-      className={`navbar navbar-expand-lg navbar-light bg-light header ${props.device === MOBILE && "mobile"
+      className={`navbar navbar-expand-lg navbar-light header ${props.device === MOBILE && "mobile"
         } ${props.device === TABLET && "tablet"} ${props.device === IPHONE6 && "iphone6"
         } ${props.device === DESKTOP && "desktop"} ${props.device === IPHONE6PLUS && "iphone6_plus"
-        }`}
+        } ${props.device === IPAD_PRO && "iPad_pro"
+        } ${isSticky ? 'sticky' : ''}`}
+
     >
-      <Link className="navbar-brand" to="/">
+      <NavLink className="navbar-brand" to="/">
         <img src="https://demo2.cybersoft.edu.vn/logo.png" alt="logo" />
-      </Link>
+      </NavLink>
       <button
         className="navbar-toggler btn"
         type="button"
@@ -101,28 +119,28 @@ function Header(props: Props): JSX.Element {
             onClick={() => {
               navigate("/login");
             }}
-            className="btn btn-warning"
+            className="btn btn-warning btn_login"
           >
             Đăng nhập
           </button>
         ))}
 
       <div className="collapse navbar-collapse" id="navbarScroll">
-      
+
         <ul className="navbar-nav  my-2 my-lg-0 navbar-nav-scroll">
           <li className="nav-item active">
             <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
           </li>
           <li className="nav-item dropdown">
-            <a
+            <Link
               className="nav-link dropdown-toggle"
-              href="#"
+              to="/"
               role="button"
               data-toggle="dropdown"
               aria-expanded="false"
             >
               Danh mục
-            </a>
+            </Link>
             <ul className="dropdown-menu courseCatalog">
               {renderCourseCatalog()}
             </ul>
@@ -131,12 +149,12 @@ function Header(props: Props): JSX.Element {
             <Link className="nav-link" to="/course">Khóa học</Link>
           </li>
 
-          <li className="nav-item">
-            <Link to="/" className="nav-link ">Blog</Link>
+          <li className="nav-item" >
+            <Link to="/" className="nav-link disabled">Blog</Link>
           </li>
 
           <li className="nav-item">
-            <Link to="/" className="nav-link ">Thông tin</Link>
+            <Link to="/" className="nav-link disabled">Thông tin</Link>
           </li>
           {
             (courseState?.userInfo?.maLoaiNguoiDung === "GV") && <li className="nav-item">
@@ -144,7 +162,7 @@ function Header(props: Props): JSX.Element {
             </li>
           }
         </ul>
-        {(props.device === DESKTOP || props.device === LAPTOP) &&
+        {(props.device === DESKTOP || props.device === IPAD_PRO) &&
           (courseState?.userInfo ? (
             <div className="userInfo">
               <button
@@ -169,7 +187,7 @@ function Header(props: Props): JSX.Element {
               onClick={() => {
                 navigate("/login");
               }}
-              className="btn btn-warning"
+              className="btn btn-warning "
             >
               Đăng nhập
             </button>

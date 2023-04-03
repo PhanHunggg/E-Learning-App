@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 
-import { Button, Form, Input, notification } from 'antd';
+
 import "./login.scss"
-import { userLoginDto } from '../../interfaces/user';
-import { login } from '../../services/user';
-import { useNavigate } from 'react-router-dom';
+
 import SignIn from './component/SignIn';
 import SignUp from './component/SignUp';
+import { withViewport } from '../../HOCs/withViewport';
+import { DESKTOP, IPAD_PRO, IPHONE6, IPHONE6PLUS, MOBILE } from '../../constants';
 
-export default function Login(): JSX.Element {
+interface Props {
+    device: any;
+}
+function Login(props: Props): JSX.Element {
     const [box, setBox] = useState<boolean>(false)
 
     const handleButton = (value: string) => {
@@ -21,7 +24,7 @@ export default function Login(): JSX.Element {
 
 
     return (
-        <div className="login">
+        <div className={`login ${props.device === IPAD_PRO && "iPad_pro"} ${(props.device !== IPAD_PRO) && (props.device !== DESKTOP) && "active"} ${props.device === MOBILE && "mobile"} ${props.device === IPHONE6 && "iphone6"} ${props.device === IPHONE6PLUS && "iphone6_plus"}`}>
             <div className="form container mx-auto">
                 <div className="background">
                     <div className="box signIn">
@@ -56,3 +59,4 @@ export default function Login(): JSX.Element {
 
     )
 }
+export default withViewport(Login)
