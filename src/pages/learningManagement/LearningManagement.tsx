@@ -18,7 +18,7 @@ import RepairLearning from "../repairLearningmanagement/RepairLearning";
 import { useNavigate } from "react-router-dom";
 import { withViewport } from "../../HOCs/withViewport";
 import { useLoading } from "../../contexts/loading/LoadingHook";
-import { DESKTOP, LAPTOP, TABLET } from "../../constants";
+import { DESKTOP, IPAD_PRO, TABLET } from "../../constants";
 
 interface Props {
   device: any;
@@ -197,7 +197,7 @@ function LearningManagement(props: Props): JSX.Element {
         className={`header__adminLeaning d-flex ${
           props.device !== DESKTOP &&
           "active" &&
-          props.device !== LAPTOP &&
+          props.device !== IPAD_PRO &&
           "active" &&
           props.device !== TABLET &&
           "active"

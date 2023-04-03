@@ -29,23 +29,22 @@ export default function RepairUserManagement(props: Props): JSX.Element {
 
   const getProfile = () => {
     const data = [...stateEdu.findUserRepairList];
-    const idx = data.findIndex((ele) => ele.taiKhoan === props.id.taiKhoan);
+    const idx = data.findIndex((ele) => ele?.taiKhoan === props.id?.taiKhoan);
     const result: any = data[idx];
     form.setFieldsValue({
-      taiKhoan: result.taiKhoan,
-      hoTen: result.hoTen,
-      email: result.email,
-      soDT: result.soDt,
-      maLoaiNguoiDung: result.maLoaiNguoiDung,
-      matKhau: result.matKhau,
-      maNhom: result.tenLoaiNguoiDung,
+      taiKhoan: result?.taiKhoan,
+      hoTen: result?.hoTen,
+      email: result?.email,
+      soDT: result?.soDt,
+      maLoaiNguoiDung: result?.maLoaiNguoiDung,
+      matKhau: result?.matKhau,
+      maNhom: result?.tenLoaiNguoiDung,
     });
-    console.log(result);
   };
 
   useEffect(() => {
     getProfile();
-  }, [props.id]);
+  }, [props?.id]);
 
   const handleFinish = async (values: userLoginDto) => {
     const data: any = {
@@ -93,7 +92,7 @@ export default function RepairUserManagement(props: Props): JSX.Element {
               { required: true, message: "Vui lòng nhập tài khoản của bạn" },
             ]}
           >
-            <Input placeholder="Tài khoản" />
+            <Input placeholder="Tài khoản" disabled={true} />
           </Form.Item>
         </div>
         <div className="item">

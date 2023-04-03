@@ -3,7 +3,13 @@ import type { MenuProps } from "antd";
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { DESKTOP, IPHONE6PLUS, LAPTOP, MOBILE, TABLET } from "../../constants";
+import {
+  DESKTOP,
+  IPHONE6PLUS,
+  IPAD_PRO,
+  MOBILE,
+  TABLET,
+} from "../../constants";
 import { withViewport } from "../../HOCs/withViewport";
 import "./AdminLayout.scss";
 
@@ -46,7 +52,7 @@ function AdminLayout(props: Props): JSX.Element {
       className={`layoutMain ${props.device === TABLET && "tablet"} ${
         props.device === IPHONE6PLUS && "iphone6plus"
       } ${props.device === MOBILE && "mobile"} ${
-        props.device === LAPTOP && "laptop"
+        props.device === IPAD_PRO && "laptop"
       } ${props.device === DESKTOP && "desktop"}`}
       style={{ minHeight: "100vh", width: "100%" }}
     >

@@ -99,16 +99,17 @@ function CourseDetail(props: Props): JSX.Element {
       <div className="detailCourseContent course">
         <div className="row">
           <CourseLeft course={course} />
-<<<<<<< HEAD
           <CourseRight
             handleCancel={handleCancel}
             handleSignUp={handleSignUp}
             course={course}
           />
-=======
-          <CourseRight handleCancel={handleCancel} handleSignUp={handleSignUp} course={course} />
+          <CourseRight
+            handleCancel={handleCancel}
+            handleSignUp={handleSignUp}
+            course={course}
+          />
           <Reference courseState={eduState} />
->>>>>>> 09521f97f2625caee131989520241a20ce055193
         </div>
       </div>
     </section>

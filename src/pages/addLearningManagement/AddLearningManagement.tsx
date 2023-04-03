@@ -10,7 +10,6 @@ import {
 } from "antd";
 import React, { useState } from "react";
 import { addCourseApi, updateImgApi } from "../../services/course ";
-
 import { CatalogDto, CourseListDto, ManageDto } from "../../interfaces/course";
 import { useDispatch, useSelector } from "react-redux";
 import { RootDispatch, RootState } from "../../store/config";

@@ -61,7 +61,7 @@ export default function AddUserManagement(): JSX.Element {
   };
 
   return (
-    <div className={` form__User`}>
+    <div className="form__User">
       <Form
         form={form}
         layout="horizontal"

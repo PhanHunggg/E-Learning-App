@@ -17,7 +17,13 @@ import RepairUserManagement from "../repairUserManagement/RepairUserManagement";
 import { useNavigate } from "react-router-dom";
 import { withViewport } from "../../HOCs/withViewport";
 import { useLoading } from "../../contexts/loading/LoadingHook";
-import { DESKTOP, IPHONE6PLUS, LAPTOP, MOBILE, TABLET } from "../../constants";
+import {
+  DESKTOP,
+  IPAD_PRO,
+  IPHONE6PLUS,
+  MOBILE,
+  TABLET,
+} from "../../constants";
 
 interface Props {
   device: any;
@@ -43,7 +49,7 @@ function UserManagement(props: Props): JSX.Element {
   const [keyWord, setKeyWord] = useState<any>();
 
   useEffect(() => {
-    if (stateEdu.UserList.length) return;
+    if (stateEdu.UserList.length && stateEdu.findUserRepairList.length) return;
     setLoading(true);
 
     dispatch(fetchUserListAction());
@@ -188,8 +194,8 @@ function UserManagement(props: Props): JSX.Element {
   const [open, setOpen] = useState(false);
 
   const showModalRepair = (text: any) => {
-    setOpen(true);
     setId(text);
+    setOpen(true);
   };
 
   const hideModal = () => {
@@ -235,7 +241,7 @@ function UserManagement(props: Props): JSX.Element {
         className={`${props.device === TABLET && "tablet"} ${
           props.device === IPHONE6PLUS && "iphone6plus"
         } ${props.device === MOBILE && "mobile"} ${
-          props.device === LAPTOP && "laptop"
+          props.device === IPAD_PRO && "laptop"
         } ${props.device === DESKTOP && "desktop"} user__management`}
       >
         <AddUserManagement />
@@ -245,6 +251,11 @@ function UserManagement(props: Props): JSX.Element {
         open={open}
         onOk={hideModal}
         onCancel={hideModal}
+        className={`${props.device === TABLET && "tablet"} ${
+          props.device === IPHONE6PLUS && "iphone6plus"
+        } ${props.device === MOBILE && "mobile"} ${
+          props.device === IPAD_PRO && "laptop"
+        } ${props.device === DESKTOP && "desktop"} user__repair`}
       >
         <RepairUserManagement id={id} />
       </Modal>
