@@ -1,6 +1,6 @@
 .course {
   &.active {
-    .course_list {
+    .course_list_detail {
       .cardGlobalRes {
         padding: 16px 0px 0px 30px;
         align-items: center;
@@ -10,8 +10,11 @@
   p {
     margin: 0;
   }
-  .course_list {
+  .course_list_detail {
     width: 100%;
+    .row{
+      margin-right: 0;
+    }
     &.reference {
       h6 {
         margin-top: 38px;
@@ -216,7 +219,7 @@
 }
 
 .course.mobile {
-  .course_list {
+  .course_list_detail {
     .cardGlobalRes {
       padding: 16px 0px 0px 15px;
       align-items: center;
@@ -225,7 +228,7 @@
 }
 
 .course.iphone6_plus {
-  .course_list {
+  .course_list_detail {
     .cardGlobalRes {
       padding: 16px 0px 0px 30px;
       align-items: center;
@@ -234,7 +237,7 @@
 }
 
 .course.iphone6 {
-  .course_list {
+  .course_list_detail {
     .cardGlobalRes {
       padding: 16px 0px 0px 30px;
       align-items: center;

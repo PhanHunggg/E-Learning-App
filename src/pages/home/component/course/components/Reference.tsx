@@ -12,7 +12,7 @@ export default function Reference(props: Props) {
         return props.courseState?.courseList?.map((ele, idx) => {
             return <React.Fragment key={ele.maKhoaHoc}>
                 {
-                    (5 < idx && idx <= 10) && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-5">
+                    (5 < idx && idx < 10) && ele.nguoiTao.hoTen && <div className="col-xl-3 col-md-6 card cardGlobalRes mt-5">
                         <Link to={`/course-detail/${ele.maKhoaHoc}`}>
                             <div className="card_header">
                                 <img src={ele.hinhAnh} alt={ele.biDanh} />
@@ -79,7 +79,7 @@ export default function Reference(props: Props) {
         })
     }
     return (
-        <div className=" course_list reference col-12">
+        <div className=" course_list_detail reference col-12">
             <h6>Khóa học tham khảo</h6>
             <div className="row mt-4">
                 {renderReference()}
