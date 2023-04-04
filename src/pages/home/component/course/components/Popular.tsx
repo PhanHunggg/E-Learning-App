@@ -79,7 +79,7 @@ export default function Popular(props: Props): JSX.Element {
     })
   }
   return (
-    <div className=" course_list popular">
+    <div className=" course_list_detail popular">
       <h6>Khóa học phổ biến</h6>
       <div className="row">
         {renderCoursePopalar()}
