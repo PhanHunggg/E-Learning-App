@@ -89,7 +89,7 @@ export default function Front_end(props: Props) {
         })
     }
     return (
-        <div className=" course_list front_end">
+        <div className=" course_list_detail front_end">
             <h6>Khóa học Front End React Js</h6>
             <div className="row ">
                 {renderCourseFrontEnd()}
