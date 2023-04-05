@@ -100,3 +100,14 @@ export const cancelCourseApi = (data: SignUpCourseDto): AxiosPromise => {
     data,
   });
 };
+
+
+
+export const fetchCourseByCatalogApi = (
+  course: string
+): AxiosPromise<CourseListDto<ManageDto, CatalogDto>[]> => {
+  return axiosRequest({
+    url: `/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${course}&MaNhom=${GROUP_ID}`,
+    method: "GET",
+  });
+};

@@ -6,8 +6,9 @@ import {
   CourseListDto,
   ManageDto,
 } from "../../interfaces/course";
-import { fetchCourseByCatalogApi } from "../../services/courseCatalog";
+
 import "./courseCatalog.scss";
+import { fetchCourseByCatalogApi } from "../../services/course ";
 
 export default function CourseCatalog(): JSX.Element {
   const [keyword, setKeyword] = useState<string>("");
