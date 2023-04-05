@@ -10,9 +10,6 @@ import storage from "redux-persist/lib/storage";
 const rootReducer = combineReducers({
   eduReducer,
   courseReducer,
- 
-  
-
 });
 
 export const store = configureStore({

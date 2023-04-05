@@ -11,8 +11,12 @@ export default function SignUp() {
     const patternEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/g
 
     const patternPhone = /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})/g
+    const [form] = Form.useForm();
 
     const navigate = useNavigate()
+    const handleReset = () => {
+        form.resetFields();
+    };
     const onFinish = async (values: userSignUpDto) => {
         try {
             await signUpApi(values);
@@ -20,6 +24,7 @@ export default function SignUp() {
                 message: "Đăng ký thành công!",
                 duration: 1,
             })
+            handleReset()
             navigate("/login");
         } catch (error: any) {
             notification.error({
@@ -36,6 +41,7 @@ export default function SignUp() {
         name="basic"
         onFinish={onFinish}
         autoComplete="off"
+        form={form}
     >
         <Form.Item
             label="Tài Khoản"
@@ -138,7 +144,7 @@ export default function SignUp() {
             rules={[
                 { required: true, message: 'Vui lòng chọn mã nhóm!' }
             ]}>
-            <Select placeholder= "Chọn mã nhóm">
+            <Select placeholder="Chọn mã nhóm">
                 <Select.Option key="GP01">GP01</Select.Option>
                 <Select.Option key="GP02">GP02</Select.Option>
                 <Select.Option key="GP03">GP03</Select.Option>
