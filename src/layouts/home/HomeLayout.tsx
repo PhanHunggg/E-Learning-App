@@ -6,11 +6,11 @@ import Header from "../../components/header/Header";
 
 export default function HomeLayout(): JSX.Element {
   return (
-    <>
+    <div>
       <Header />
       <Outlet />
       <BackToTopButton />
       <Footer />
-    </>
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { useLoading } from "../../../../contexts/loading/LoadingHook";
 import { CatalogDto, CourseListDto, ManageDto } from "../../../../interfaces/course";
 import { fetchCourseListApi } from "../../../../services/course ";
 
@@ -8,24 +7,33 @@ import Pagination from "../pagination/Pagination";
 import AllCoursList from "./component/AllCoursList";
 
 import "./courseList.scss";
+import { useLoading } from "../../../../contexts/loading/LoadingHook";
 
 export default function CourseList(): JSX.Element {
 
   const [courses, setCourses] = useState<CourseListDto<ManageDto, CatalogDto>[]>([]);
   const [page, setPage] = useState(0);
+  const { isLoading, setLoading } = useLoading()
+
 
   const [perPage, setPerPage] = useState(12);
 
 
-  const { isLoading, setLoading } = useLoading();
+
   useEffect(() => {
-    setLoading(true)
-    renderCourses()
-    setLoading(false)
+    if (courses.length) return
+    setLoading(true);
+    renderCourses().then(() => {
+      setLoading(false);
+    })
+
+
+
   }, [isLoading]);
 
   const renderCourses = async () => {
     const { data } = await fetchCourseListApi();
+
     setCourses(data);
   }
 

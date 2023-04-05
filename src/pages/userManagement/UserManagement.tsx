@@ -16,7 +16,6 @@ import Search from "antd/es/transfer/search";
 import RepairUserManagement from "../repairUserManagement/RepairUserManagement";
 import { useNavigate } from "react-router-dom";
 import { withViewport } from "../../HOCs/withViewport";
-import { useLoading } from "../../contexts/loading/LoadingHook";
 import {
   DESKTOP,
   IPAD_PRO,
@@ -42,7 +41,6 @@ function UserManagement(props: Props): JSX.Element {
     stateEdu.UserList
   );
 
-  const { isLoading, setLoading } = useLoading();
 
   const [id, setId] = useState<any>();
 
@@ -50,14 +48,11 @@ function UserManagement(props: Props): JSX.Element {
 
   useEffect(() => {
     if (stateEdu.UserList.length && stateEdu.findUserRepairList.length) return;
-    setLoading(true);
 
     dispatch(fetchUserListAction());
     dispatch(findUserRepairAction());
 
-    if (stateEdu.UserList.length) {
-      setLoading(false);
-    }
+ 
   }, []);
 
   useEffect(() => {

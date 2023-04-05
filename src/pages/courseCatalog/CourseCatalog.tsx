@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useLoading } from "../../contexts/loading/LoadingHook";
 import {
   CatalogDto,
   CourseListDto,
@@ -9,20 +8,22 @@ import {
 
 import "./courseCatalog.scss";
 import { fetchCourseByCatalogApi } from "../../services/course ";
+import { useLoading } from "../../contexts/loading/LoadingHook";
 
 export default function CourseCatalog(): JSX.Element {
   const [keyword, setKeyword] = useState<string>("");
   const navigate = useNavigate()
-  const { isLoading, setLoading } = useLoading();
   const params = useParams();
   const [course, setCourse] =
     useState<CourseListDto<ManageDto, CatalogDto>[]>();
+  const { isLoading, setLoading } = useLoading()
 
   useEffect(() => {
-    setLoading(true)
-    getCourseByCatalog();
 
+    setLoading(true)
+    getCourseByCatalog()
     setLoading(false)
+
   }, [isLoading, params.course]);
 
   const getCourseByCatalog = async () => {

@@ -69,7 +69,7 @@ export const fetchUserProfileApi = (): AxiosPromise<
   userProfileDto<RegistrationCourseDetailDto>
 > => {
   return axiosRequest({
-    url: "/QuanLyNguoiDung/ThongTinNguoiDung",
+    url: "/QuanLyNguoiDung/ThongTinTaiKhoan",
     method: "POST",
   });
 };

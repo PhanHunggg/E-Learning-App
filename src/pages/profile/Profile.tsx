@@ -9,6 +9,7 @@ import LeftProfile from './components/leftProfile/LeftProfile'
 import RightProfile from './components/right-profile/RightProfile'
 
 import "./profile.scss"
+import { useLoading } from '../../contexts/loading/LoadingHook'
 
 interface Props {
     device: any;
@@ -17,14 +18,19 @@ interface Props {
 function Profile(props: Props): JSX.Element {
 
     const [userProfile, setUserProfile] = useState<userProfileDto<RegistrationCourseDetailDto> | any>()
+    const { isLoading, setLoading } = useLoading()
 
     useEffect(() => {
-        getUserProfile();
-    }, []);
+        if (userProfile) return
+        setLoading(true)
+        getUserProfile().then(() => {
+            setLoading(false)
+        });
+    }, [isLoading]);
 
     const getUserProfile = async () => {
-        const userProfile = await fetchUserProfileApi()
-        setUserProfile(userProfile.data);
+        const result = await fetchUserProfileApi()
+        setUserProfile(result.data);
     }
     return (
         <div className={`profile ${(props.device !== DESKTOP && "active") && (props.device !== IPAD_PRO && "active")} ${(props.device === IPHONE6 && "find") || (props.device === IPHONE6PLUS && "find")}`}>

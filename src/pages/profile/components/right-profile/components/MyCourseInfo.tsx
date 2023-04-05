@@ -9,7 +9,7 @@ import { cancelCourseApi } from '../../../../../services/course '
 import { notification } from 'antd'
 
 export default function MyCourseInfo() {
-    const [userProfile, setUserProfile] = useState<userProfileDto<RegistrationCourseDetailDto> | any>()
+
     const eduState = useSelector((state: RootState) => state.eduReducer)
     const [keyword, setKeyword] = useState<string>("")
 
@@ -21,7 +21,7 @@ export default function MyCourseInfo() {
 
     const getUserProfile = async () => {
         const userProfile = await fetchUserProfileApi()
-        setUserProfile(userProfile.data);
+
         setCourseList(userProfile.data?.chiTietKhoaHocGhiDanh);
     }
 

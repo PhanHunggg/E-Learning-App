@@ -8,6 +8,7 @@ import Front_end from "./components/Front_end";
 import Popular from "./components/Popular";
 import Reference from "./components/Reference";
 import "./course.scss";
+import { useLoading } from "../../../../contexts/loading/LoadingHook";
 interface Props {
   device: any;
 }
@@ -15,21 +16,26 @@ interface Props {
 function Course(props: Props): JSX.Element {
   const dispatch = useDispatch<RootDispatch>();
   const courseState = useSelector((state: RootState) => state.eduReducer);
+  const { isLoading, setLoading } = useLoading()
 
   useEffect(() => {
-    dispatch(fetchCourseListAction());
-  }, []);
+    if (courseState.courseList.length) return
+    setLoading(true)
+    dispatch(fetchCourseListAction()).then(() => {
+      setLoading(false)
+
+    })
+  }, [isLoading]);
 
   return (
     <section
-      className={`course py-5 ${props.device === IPAD_PRO && "iPad_pro"} ${
-        props.device !== DESKTOP &&
+      className={`course py-5 ${props.device === IPAD_PRO && "iPad_pro"} ${props.device !== DESKTOP &&
         "active" &&
         props.device !== IPAD_PRO &&
         "active" &&
         props.device !== TABLET &&
         "active"
-      } `}
+        } `}
     >
       <Popular courseState={courseState} />
       <Reference courseState={courseState} />

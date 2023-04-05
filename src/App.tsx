@@ -3,19 +3,22 @@ import './App.css';
 
 import { BrowserRouter } from "react-router-dom"
 import Router from './routes/Router';
-import { useLoading } from './contexts/loading/LoadingHook';
-import LoadingIndicator from './contexts/loading/LoadingIndicator';
+import { LoadingProvider } from './contexts/loading/LoadingHook';
+
 
 
 function App() {
-  const { isLoading } = useLoading();
+
+
   return (
     <div className="App">
       <BrowserRouter>
-        {
-          isLoading ? <LoadingIndicator /> : <Router />
-        }
+        <LoadingProvider>
+          <Router />
+        </LoadingProvider>
       </BrowserRouter>
+
+
     </div>
   );
 }

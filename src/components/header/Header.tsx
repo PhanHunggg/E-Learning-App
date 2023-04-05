@@ -1,5 +1,5 @@
 
-import React, { HtmlHTMLAttributes, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
@@ -11,7 +11,6 @@ import {
   TABLET,
 } from "../../constants";
 
-import { useLoading } from "../../contexts/loading/LoadingHook";
 
 
 import { withViewport } from "../../HOCs/withViewport";
@@ -19,9 +18,11 @@ import { CourseCatalogDto } from "../../interfaces/course";
 import { RootDispatch, RootState } from "../../store/config";
 import {
   eduAction,
+  eduReducer,
   fetchCourseCatalogAction,
 } from "../../store/reducers/eduReducer";
 import "./header.scss";
+import { useLoading } from "../../contexts/loading/LoadingHook";
 
 interface Props {
   device: any;
@@ -29,10 +30,10 @@ interface Props {
 
 function Header(props: Props): JSX.Element {
   const [isSticky, setSticky] = useState<boolean>(false);
-  const { isLoading, setLoading } = useLoading();
 
   const dispatch = useDispatch<RootDispatch>();
   const courseState = useSelector((state: RootState) => state.eduReducer);
+  const { isLoading, setLoading } = useLoading()
   const navigate = useNavigate();
   const handleScroll = () => {
     if (window.scrollY > 70) {
@@ -51,9 +52,14 @@ function Header(props: Props): JSX.Element {
   }, []);
 
   useEffect(() => {
+    if (courseState.courseCatalog.length) return
+
     setLoading(true)
-    dispatch(fetchCourseCatalogAction());
-    setLoading(false)
+    dispatch(fetchCourseCatalogAction()).then(() => {
+      setLoading(false)
+    })
+
+
   }, [isLoading]);
 
   const renderCourseCatalog = (): JSX.Element[] => {

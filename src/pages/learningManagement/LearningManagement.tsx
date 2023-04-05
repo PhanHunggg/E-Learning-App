@@ -17,7 +17,6 @@ import Search from "antd/es/transfer/search";
 import RepairLearning from "../repairLearningmanagement/RepairLearning";
 import { useNavigate } from "react-router-dom";
 import { withViewport } from "../../HOCs/withViewport";
-import { useLoading } from "../../contexts/loading/LoadingHook";
 import { DESKTOP, IPAD_PRO, TABLET } from "../../constants";
 
 interface Props {
@@ -27,7 +26,6 @@ interface Props {
 function LearningManagement(props: Props): JSX.Element {
   const dispatch = useDispatch<RootDispatch>();
 
-  const { isLoading, setLoading } = useLoading();
 
   const navigate = useNavigate();
   const [id, setId] = useState<any>();
@@ -127,11 +125,9 @@ function LearningManagement(props: Props): JSX.Element {
 
   useEffect(() => {
     if (stateEdu.courseList.length) return;
-    setLoading(true);
 
     dispatch(fetchCourseListAction());
 
-    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -194,14 +190,13 @@ function LearningManagement(props: Props): JSX.Element {
   return (
     <>
       <div
-        className={`header__adminLeaning d-flex ${
-          props.device !== DESKTOP &&
+        className={`header__adminLeaning d-flex ${props.device !== DESKTOP &&
           "active" &&
           props.device !== IPAD_PRO &&
           "active" &&
           props.device !== TABLET &&
           "active"
-        }`}
+          }`}
       >
         <Button
           style={{

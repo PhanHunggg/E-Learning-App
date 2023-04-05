@@ -19,8 +19,8 @@ import { RootState } from "../../store/config";
 import { notification } from "antd";
 import { withViewport } from "../../HOCs/withViewport";
 import { IPHONE6, IPHONE6PLUS } from "../../constants";
-import { useLoading } from "../../contexts/loading/LoadingHook";
 import Reference from "../home/component/course/components/Reference";
+import { useLoading } from "../../contexts/loading/LoadingHook";
 
 interface Props {
   device: any;
@@ -32,18 +32,20 @@ function CourseDetail(props: Props): JSX.Element {
 
   const params = useParams();
   const eduState = useSelector((state: RootState) => state.eduReducer);
+  const {  setLoading } = useLoading()
 
   const getCourseDetail = async () => {
     const result = await fetchCourseDetailApi(params.course || "");
     setCourse(result.data);
   };
 
-  const { isLoading, setLoading } = useLoading();
   useEffect(() => {
+
     setLoading(true);
-    getCourseDetail();
+    getCourseDetail()
     setLoading(false);
-  }, [isLoading]);
+
+  }, [ params.course]);
 
   const handleSignUp = async () => {
     const data: SignUpCourseDto = {
@@ -87,10 +89,9 @@ function CourseDetail(props: Props): JSX.Element {
 
   return (
     <section
-      className={`course_detail ${
-        (props.device === IPHONE6 && "active") ||
+      className={`course_detail ${(props.device === IPHONE6 && "active") ||
         (props.device === IPHONE6PLUS && "active")
-      }`}
+        }`}
     >
       <div className="title">
         <h3>Thông tin khóa học</h3>
