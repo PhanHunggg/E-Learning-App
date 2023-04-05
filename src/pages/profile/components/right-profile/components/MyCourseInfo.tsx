@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../../../store/config'
 import RightItem from './RightItem'
 import { RegistrationCourseDetailDto, SignUpCourseDto } from "./../../../../../interfaces/course"
-import { userProfileDto } from '../../../../../interfaces/user'
 import { fetchUserProfileApi } from '../../../../../services/user'
 import { cancelCourseApi } from '../../../../../services/course '
 import { notification } from 'antd'

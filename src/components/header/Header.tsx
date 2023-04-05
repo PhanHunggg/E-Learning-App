@@ -18,7 +18,6 @@ import { CourseCatalogDto } from "../../interfaces/course";
 import { RootDispatch, RootState } from "../../store/config";
 import {
   eduAction,
-  eduReducer,
   fetchCourseCatalogAction,
 } from "../../store/reducers/eduReducer";
 import "./header.scss";
