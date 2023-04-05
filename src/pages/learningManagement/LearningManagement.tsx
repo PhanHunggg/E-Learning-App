@@ -221,14 +221,6 @@ function LearningManagement(props: Props): JSX.Element {
           onChange={handleChange}
           placeholder="Nhập tên khóa học cần tìm"
         />
-        <span
-          className="icon"
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          <i className="fa fa-home"></i>
-        </span>
       </div>
       <Table
         className="leaningList"

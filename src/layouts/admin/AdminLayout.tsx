@@ -37,6 +37,7 @@ function AdminLayout(props: Props): JSX.Element {
   }
 
   const items: MenuItem[] = [
+    getItem("", "/", <i className="fa fa-home"></i>),
     getItem("Người Dùng", "/admin/user-management", <UserOutlined />),
     getItem("Khóa Học", "/admin/learning-management", <CalendarOutlined />),
   ];

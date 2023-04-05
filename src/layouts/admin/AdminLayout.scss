@@ -5,9 +5,26 @@
 }
 
 .ant-menu {
-    span {
-        font-size: 15px !important;
-        font-weight: 600;
+    .ant-menu-item {
+        :nth-child(1) {
+            height: 50px;
+        }
+
+        span {
+            font-size: 15px !important;
+            font-weight: 600;
+        }
+
+        i {
+            // padding-left: 50px;
+            font-size: 25px !important;
+            cursor: pointer;
+            text-align: center;
+            color: white;
+            border-radius: 20%;
+            transition: all .3s;
+
+        }
     }
 
 }

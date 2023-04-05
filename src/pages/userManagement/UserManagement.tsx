@@ -223,14 +223,6 @@ function UserManagement(props: Props): JSX.Element {
           onChange={handleChange}
           placeholder="Nhập tên hoặc tài khoản người dùng"
         />
-        <span
-          className="icon"
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          <i className="fa fa-home"></i>
-        </span>
       </div>
       <Table columns={columns} dataSource={handleFilterUser(filter) as any} />
       <Modal

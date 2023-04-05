@@ -104,11 +104,6 @@ function CourseDetail(props: Props): JSX.Element {
             handleSignUp={handleSignUp}
             course={course}
           />
-          <CourseRight
-            handleCancel={handleCancel}
-            handleSignUp={handleSignUp}
-            course={course}
-          />
           <Reference courseState={eduState} />
         </div>
       </div>

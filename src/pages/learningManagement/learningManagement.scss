@@ -1,5 +1,4 @@
 .header__adminLeaning {
-    justify-content: space-between;
 
     .button__addLearn {
         outline: #1465d8;
@@ -11,24 +10,7 @@
         margin-left: 20%;
     }
 
-    .icon {
-        i {
-            font-size: 18px;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            cursor: pointer;
-            text-align: center;
-            background-color: #1677ff;
-            color: white;
-            border-radius: 20%;
-            transition: all .3s;
 
-            &:hover {
-                background-color: #4096ff;
-            }
-        }
-    }
 }
 
 .leaningList {

@@ -16,7 +16,7 @@ import "./pagination.scss"
     handleNextPage,
   }) => {
     return (
-      <div className="pagoination-content pagination-button-wrapper">
+      <div className="pagoination-content pagination-button-wrapper mt-4">
         <button
           className="pagination-button"
           onClick={() => handlePrevPage(currentPage)}

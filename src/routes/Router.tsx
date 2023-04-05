@@ -11,9 +11,10 @@ import AdminGuard from "../guards/AdminGuard";
 import CourseDetail from "../pages/course_detail/CourseDetail";
 import Profile from "../pages/profile/Profile";
 import Course from "../pages/course/Course";
-import CourseCatalog from "../pages/courseCatalog/CourseCatalog"
+import CourseCatalog from "../pages/courseCatalog/CourseCatalog";
 import NoAuthGuard from "../guards/NoAuthGuard";
 import AuthGuard from "../guards/AuthGuard";
+import PageNotFound from "../pages/PageNotFound/PageNotFound";
 
 export default function Router() {
   const routing = useRoutes([
@@ -33,7 +34,7 @@ export default function Router() {
               path: "/login",
               element: <Login />,
             },
-          ]
+          ],
         },
         {
           path: "/",
@@ -43,19 +44,19 @@ export default function Router() {
               path: "/course-detail/:course",
               element: <CourseDetail />,
             },
-          ]
+          ],
         },
         {
           path: "/profile",
-          element: <Profile />
+          element: <Profile />,
         },
         {
           path: "/course",
-          element: <Course />
+          element: <Course />,
         },
         {
           path: "courseCatalog/:course",
-          element: <CourseCatalog />
+          element: <CourseCatalog />,
         },
       ],
     },
@@ -83,6 +84,10 @@ export default function Router() {
           ],
         },
       ],
+    },
+    {
+      path: "*",
+      element: <PageNotFound />,
     },
   ]);
 
