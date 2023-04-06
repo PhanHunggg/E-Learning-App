@@ -62,7 +62,6 @@ function Header(props: Props): JSX.Element {
 
   };
   useEffect(() => {
-    console.log(navRef.current?.classList.contains("sticky"))
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
