@@ -6,7 +6,10 @@
   background-color: transparent;
   transition: all 0.5s;
   &.sticky {
-    background-color: #DFF1F0;
+    background-color: #dff1f0;
+  }
+  &.bg_nav {
+    background-color: #dff1f0;
   }
   .navbar-brand {
     width: 500px;
@@ -84,6 +87,9 @@
   .btn_login {
     position: absolute;
     right: 16%;
+    &.login_slide {
+      top: 10%;
+    }
   }
   .userInfo {
     position: absolute;
@@ -99,7 +105,6 @@
     justify-content: flex-start;
     opacity: 0;
     height: 0px;
-    pointer-events: none;
     &.show {
       opacity: 1;
       height: 220px;
@@ -135,6 +140,9 @@
   .btn_login {
     position: absolute;
     right: 19%;
+    &.login_slide {
+      top: 9%;
+    }
   }
   .userInfo {
     position: absolute;
@@ -175,6 +183,9 @@
     right: 20%;
     padding: 5px 10px;
     font-size: 14px;
+    &.login_slide {
+      top: 9%;
+    }
   }
   .userInfo {
     position: absolute;
@@ -231,6 +242,9 @@
     right: 21%;
     padding: 6px 9px;
     font-size: 14px;
+    &.login_slide {
+      top: 8%;
+    }
   }
   .userInfo {
     position: absolute;

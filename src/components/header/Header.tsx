@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
@@ -29,6 +29,8 @@ interface Props {
 
 function Header(props: Props): JSX.Element {
   const [isSticky, setSticky] = useState<boolean>(false);
+  const [login, setLogin] = useState<boolean>(false);
+  const [bgrNav, setBgrNav] = useState<boolean>(false);
 
   const dispatch = useDispatch<RootDispatch>();
   const courseState = useSelector((state: RootState) => state.eduReducer);
@@ -41,8 +43,26 @@ function Header(props: Props): JSX.Element {
       setSticky(false);
     }
   };
+  const inputRef = useRef<HTMLInputElement>(null);
+  const navRef = useRef<HTMLInputElement>(null);
 
+  const handleButtonClick = () => {
+    if (inputRef.current?.classList.contains("show") === false) {
+      setLogin(true)
+      if (navRef.current?.classList.contains("sticky") === false) {
+        setBgrNav(true)
+      } else {
+        setBgrNav(false)
+
+      }
+    } else {
+      setLogin(false)
+      setBgrNav(false)
+    }
+
+  };
   useEffect(() => {
+    console.log(navRef.current?.classList.contains("sticky"))
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
@@ -77,7 +97,8 @@ function Header(props: Props): JSX.Element {
 
   return (
     <nav
-      className={`navbar navbar-expand-lg navbar-light header ${props.device === MOBILE && "mobile"
+      ref={navRef}
+      className={`${bgrNav ? "bg_nav" : ""} navbar navbar-expand-lg navbar-light header ${props.device === MOBILE && "mobile"
         } ${props.device === TABLET && "tablet"} ${props.device === IPHONE6 && "iphone6"
         } ${props.device === DESKTOP && "desktop"} ${props.device === IPHONE6PLUS && "iphone6_plus"
         } ${props.device === IPAD_PRO && "iPad_pro"
@@ -88,6 +109,7 @@ function Header(props: Props): JSX.Element {
         <img src="https://demo2.cybersoft.edu.vn/logo.png" alt="logo" />
       </NavLink>
       <button
+        onClick={handleButtonClick}
         className="navbar-toggler btn"
         type="button"
         data-toggle="collapse"
@@ -124,13 +146,13 @@ function Header(props: Props): JSX.Element {
             onClick={() => {
               navigate("/login");
             }}
-            className="btn btn-warning btn_login"
+            className={`btn btn-warning btn_login ${login ? "login_slide" : ""}`}
           >
             Đăng nhập
           </button>
         ))}
 
-      <div className="collapse navbar-collapse" id="navbarScroll">
+      <div ref={inputRef} className="collapse navbar-collapse" id="navbarScroll">
 
         <ul className="navbar-nav  my-2 my-lg-0 navbar-nav-scroll">
           <li className="nav-item active">
