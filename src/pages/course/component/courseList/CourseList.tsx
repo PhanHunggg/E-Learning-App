@@ -38,12 +38,11 @@ export default function CourseList(): JSX.Element {
   }
 
   const handleNextPage = (page: number) => {
-
     setPage(page)
   }
 
   const handlePrevPage = (page: number) => {
-
+    
     setPage(page - 2)
   }
 

@@ -22,6 +22,7 @@ export default function CourseCatalog(): JSX.Element {
 
     setLoading(true)
     getCourseByCatalog()
+    window.scrollTo({ top: 0, behavior: "smooth" })
     setLoading(false)
 
   }, [isLoading, params.course]);
